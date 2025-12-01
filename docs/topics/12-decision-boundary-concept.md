@@ -2,8 +2,8 @@
 layout: topic
 title: "12. Decision Boundary Concept"
 topic_num: 12
-part: 1
-part_name: "Foundations"
+part: 3
+part_name: "Architecture"
 prev_topic: "11-problem-visualization"
 next_topic: "13-neuron-decision-maker"
 ---
