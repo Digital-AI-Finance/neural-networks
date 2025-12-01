@@ -1,0 +1,21 @@
+title: Neural Networks
+description: From Brain to Business - How Machines Learn to Predict
+theme: jekyll-theme-cayman
+baseurl: /neural-networks
+url: https://digital-ai-finance.github.io
+
+# Navigation
+header_pages:
+  - index.md
+  - syllabus.md
+  - resources.md
+  - exercises.md
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+
+# MathJax for formulas
+mathjax:
+  source: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
