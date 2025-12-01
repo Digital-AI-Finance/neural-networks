@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "12. Decision Boundary Concept"
+topic_num: 12
+part: 1
+part_name: "Foundations"
+prev_topic: "11-problem-visualization"
+next_topic: "13-neuron-decision-maker"
 ---
 
 # Decision Boundary Concept
-
-[Back to Home](../index.html)
 
 ---
 
@@ -128,5 +131,3 @@ Mathematically:
 - Curved boundaries: flexible shapes, require hidden layers
 - More layers = more complex boundaries possible
 - Balance complexity: enough to capture patterns, not so much as to overfit
-
-**Next Topic:** [13. Neuron Decision Maker](13-neuron-decision-maker.html) - How a single neuron makes decisions

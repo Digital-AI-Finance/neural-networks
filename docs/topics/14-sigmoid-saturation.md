@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "14. Sigmoid Saturation"
+topic_num: 14
+part: 2
+part_name: "Building Blocks"
+prev_topic: "13-neuron-decision-maker"
+next_topic: "15-boundary-evolution"
 ---
 
 # Sigmoid Saturation
-
-[Back to Home](../index.html)
 
 ---
 
@@ -138,5 +141,3 @@ Why did ReLU become the default activation for hidden layers in modern networks?
 - Vanishing gradients prevent learning in deep networks
 - ReLU has constant gradient = 1 for positive inputs
 - Modern networks use ReLU (or variants) for hidden layers
-
-**Next Topic:** [15. Boundary Evolution](15-boundary-evolution.html) - How more neurons create better boundaries

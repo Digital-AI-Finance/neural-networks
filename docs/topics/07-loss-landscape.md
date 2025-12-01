@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "07. Loss Landscape"
+topic_num: 7
+part: 4
+part_name: "Learning Process"
+prev_topic: "06-forward-propagation"
+next_topic: "08-gradient-descent"
 ---
 
 # Loss Landscape
-
-[Back to Home](../index.html)
 
 ---
 
@@ -123,5 +126,3 @@ This is why sigmoid (bounded between 0 and 1, never exactly 0 or 1) is preferred
 - Training seeks to find the minimum loss (optimal weights)
 - Cross-entropy severely penalizes confident wrong predictions
 - Landscape shape affects how easily we can find good solutions
-
-**Next Topic:** [08. Gradient Descent](08-gradient-descent.html) - How to navigate toward the minimum

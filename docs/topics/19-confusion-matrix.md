@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "19. Confusion Matrix"
+topic_num: 19
+part: 5
+part_name: "Application"
+prev_topic: "18-learning-rate-comparison"
+next_topic: "20-trading-backtest"
 ---
 
 # Confusion Matrix
-
-[Back to Home](../index.html)
 
 ---
 
@@ -164,5 +167,3 @@ Fewer correct catches, more missed opportunities.
 - Recall: "Do I catch all the actual positives?"
 - F1 balances precision and recall
 - Choose metrics based on business costs of different errors
-
-**Next Topic:** [20. Trading Backtest](20-trading-backtest.html) - Measuring real business value

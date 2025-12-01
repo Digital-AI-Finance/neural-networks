@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "16. Feature Hierarchy"
+topic_num: 16
+part: 3
+part_name: "Architecture"
+prev_topic: "15-boundary-evolution"
+next_topic: "17-overfitting-underfitting"
 ---
 
 # Feature Hierarchy
-
-[Back to Home](../index.html)
 
 ---
 
@@ -161,5 +164,3 @@ Does adding more layers always improve performance?
 - Deeper networks can represent more abstract concepts
 - Hidden representations are often not human-interpretable
 - More layers isn't always better - match complexity to problem
-
-**Next Topic:** [17. Overfitting vs Underfitting](17-overfitting-underfitting.html) - When learning goes wrong

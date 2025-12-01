@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "09. Market Prediction Data"
+topic_num: 9
+part: 5
+part_name: "Application"
+prev_topic: "08-gradient-descent"
+next_topic: "10-prediction-results"
 ---
 
 # Market Prediction Data
-
-[Back to Home](../index.html)
 
 ---
 
@@ -120,5 +123,3 @@ Problems:
 - Common features: price, volume, sentiment, volatility
 - Avoid data leakage - only use information available at prediction time
 - Target variable for classification: 1 (up) or 0 (down)
-
-**Next Topic:** [10. Prediction Results](10-prediction-results.html) - Evaluating network performance

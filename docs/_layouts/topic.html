@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | Neural Networks</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f6f8fa;
+    }
+    .container {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .sidebar {
+      width: 280px;
+      background: #ffffff;
+      border-right: 1px solid #e1e4e8;
+      padding: 20px;
+      height: 100vh;
+      overflow-y: auto;
+      position: sticky;
+      top: 0;
+    }
+    .sidebar h3 {
+      margin-top: 0;
+      color: #24292e;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li {
+      margin: 4px 0;
+    }
+    .sidebar a {
+      display: block;
+      padding: 6px 10px;
+      color: #586069;
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 4px;
+    }
+    .sidebar a:hover {
+      background: #f1f3f5;
+      color: #0366d6;
+    }
+    .sidebar li.current a {
+      background: #0366d6;
+      color: white;
+      font-weight: 600;
+    }
+    .sidebar .part-header {
+      font-weight: 600;
+      color: #24292e;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      padding: 6px 10px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .main-content {
+      flex: 1;
+      padding: 30px 50px;
+      max-width: 900px;
+    }
+    .breadcrumb {
+      font-size: 14px;
+      color: #586069;
+      margin-bottom: 20px;
+    }
+    .breadcrumb a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+    .markdown-body {
+      background: white;
+      padding: 40px;
+      border-radius: 6px;
+      border: 1px solid #e1e4e8;
+    }
+    .topic-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #e1e4e8;
+    }
+    .topic-nav a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #0366d6;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .topic-nav a:hover {
+      background: #0256c7;
+    }
+    .topic-nav .prev {
+      background: #6a737d;
+    }
+    .topic-nav .prev:hover {
+      background: #586069;
+    }
+    .topic-nav .disabled {
+      background: #e1e4e8;
+      color: #959da5;
+      cursor: not-allowed;
+    }
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #e1e4e8;
+      }
+      .main-content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h3>Course Topics</h3>
+      {% include sidebar.html %}
+    </aside>
+
+    <main class="main-content">
+      <nav class="breadcrumb">
+        <a href="{{ site.baseurl }}/">Home</a> &rsaquo;
+        <span>Part {{ page.part }}: {{ page.part_name }}</span> &rsaquo;
+        <span>{{ page.title }}</span>
+      </nav>
+
+      <article class="markdown-body">
+        {{ content }}
+      </article>
+
+      <nav class="topic-nav">
+        {% if page.prev_topic %}
+        <a href="{{ page.prev_topic }}.html" class="prev">&larr; Previous</a>
+        {% else %}
+        <span class="prev disabled">&larr; Previous</span>
+        {% endif %}
+
+        {% if page.next_topic %}
+        <a href="{{ page.next_topic }}.html" class="next">Next &rarr;</a>
+        {% else %}
+        <span class="next disabled">Next &rarr;</span>
+        {% endif %}
+      </nav>
+    </main>
+  </div>
+</body>
+</html>

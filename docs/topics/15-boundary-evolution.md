@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "15. Boundary Evolution"
+topic_num: 15
+part: 2
+part_name: "Building Blocks"
+prev_topic: "14-sigmoid-saturation"
+next_topic: "16-feature-hierarchy"
 ---
 
 # Boundary Evolution
-
-[Back to Home](../index.html)
 
 ---
 
@@ -143,5 +146,3 @@ If 10 neurons achieves 100% training accuracy but test accuracy is lower than si
 - Universal Approximation: enough neurons can fit any pattern
 - But more neurons also increases overfitting risk
 - Balance capacity with available data
-
-**Next Topic:** [16. Feature Hierarchy](16-feature-hierarchy.html) - What each layer learns

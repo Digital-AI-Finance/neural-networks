@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "13. Neuron Decision Maker"
+topic_num: 13
+part: 1
+part_name: "Foundations"
+prev_topic: "12-decision-boundary-concept"
+next_topic: "14-sigmoid-saturation"
 ---
 
 # Neuron Decision Maker
-
-[Back to Home](../index.html)
 
 ---
 
@@ -139,5 +142,3 @@ If we change the threshold from 0.5 to 0.7, how does this affect trading behavio
 - The decision boundary is where output = 0.5 (z = 0)
 - Threshold can be adjusted based on risk tolerance
 - Single neuron = single linear decision boundary
-
-**Next Topic:** [14. Sigmoid Saturation](14-sigmoid-saturation.html) - When activation functions cause problems

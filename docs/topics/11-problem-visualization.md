@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "11. Problem Visualization"
+topic_num: 11
+part: 1
+part_name: "Foundations"
+prev_topic: "10-prediction-results"
+next_topic: "12-decision-boundary-concept"
 ---
 
 # Problem Visualization
-
-[Back to Home](../index.html)
 
 ---
 
@@ -131,5 +134,3 @@ Real markets are not completely random, so some predictive power is possible. Bu
 - Plotting features reveals the complexity of the classification problem
 - Neural networks can learn non-linear boundaries through overlapping regions
 - Complete overlap = unpredictable; partial overlap = opportunity for learning
-
-**Next Topic:** [12. Decision Boundary Concept](12-decision-boundary-concept.html) - Linear vs curved boundaries

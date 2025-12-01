@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "10. Prediction Results"
+topic_num: 10
+part: 5
+part_name: "Application"
+prev_topic: "09-market-prediction-data"
+next_topic: "11-problem-visualization"
 ---
 
 # Prediction Results
-
-[Back to Home](../index.html)
 
 ---
 
@@ -136,5 +139,3 @@ If wins = losses in magnitude: net positive
 - Always evaluate on held-out test data, not training data
 - Even modest improvements (55-70%) can be valuable in finance
 - Gap between training and test accuracy indicates overfitting
-
-**Next Topic:** [11. Problem Visualization](11-problem-visualization.html) - Understanding why simple rules fail

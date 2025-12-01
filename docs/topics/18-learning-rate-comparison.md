@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "18. Learning Rate Comparison"
+topic_num: 18
+part: 4
+part_name: "Learning Process"
+prev_topic: "17-overfitting-underfitting"
+next_topic: "19-confusion-matrix"
 ---
 
 # Learning Rate Comparison
-
-[Back to Home](../index.html)
 
 ---
 
@@ -155,5 +158,3 @@ This reduces manual tuning compared to vanilla gradient descent.
 - Look for increasing loss = learning rate too high
 - Learning rate schedules reduce rate over time
 - Adaptive optimizers (Adam) adjust rate automatically
-
-**Next Topic:** [19. Confusion Matrix](19-confusion-matrix.html) - Detailed performance analysis

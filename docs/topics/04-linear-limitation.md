@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "04. Linear Limitation"
+topic_num: 4
+part: 2
+part_name: "Building Blocks"
+prev_topic: "03-activation-functions"
+next_topic: "05-network-architecture"
 ---
 
 # Linear Limitation (The XOR Problem)
-
-[Back to Home](../index.html)
 
 ---
 
@@ -128,5 +131,3 @@ This is exactly why neural networks (with hidden layers) are useful for financia
 - XOR is the classic example of a non-linearly separable problem
 - Most real-world problems (including financial prediction) are non-linear
 - Solution: Use multiple neurons in hidden layers with non-linear activation
-
-**Next Topic:** [05. Network Architecture](05-network-architecture.html) - Building multi-layer networks

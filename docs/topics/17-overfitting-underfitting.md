@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "17. Overfitting vs Underfitting"
+topic_num: 17
+part: 4
+part_name: "Learning Process"
+prev_topic: "16-feature-hierarchy"
+next_topic: "18-learning-rate-comparison"
 ---
 
 # Overfitting vs Underfitting
-
-[Back to Home](../index.html)
 
 ---
 
@@ -172,5 +175,3 @@ This automatically selects the model with best generalization.
 - Learning curves diagnose the problem visually
 - Solutions: Adjust complexity, regularization, data, early stopping
 - Goal: Low error on both training and test sets
-
-**Next Topic:** [18. Learning Rate Comparison](18-learning-rate-comparison.html) - Finding the right training speed

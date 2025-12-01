@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "08. Gradient Descent"
+topic_num: 8
+part: 4
+part_name: "Learning Process"
+prev_topic: "07-loss-landscape"
+next_topic: "09-market-prediction-data"
 ---
 
 # Gradient Descent
-
-[Back to Home](../index.html)
 
 ---
 
@@ -135,5 +138,3 @@ That's a massive jump from 2.5 to -5.5! Such violent oscillations prevent conver
 - Too high = divergence, too low = slow convergence
 - Small gradients indicate convergence (near minimum)
 - This is the "learning" in machine learning
-
-**Next Topic:** [09. Market Prediction Data](09-market-prediction-data.html) - Applying networks to real financial data

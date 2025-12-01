@@ -1,11 +1,13 @@
 ---
-layout: default
+layout: topic
 title: "01. Biological vs Artificial Neuron"
+topic_num: 1
+part: 1
+part_name: "Foundations"
+next_topic: "02-single-neuron-computation"
 ---
 
 # Biological vs Artificial Neuron
-
-[Back to Home](../index.html)
 
 ---
 
@@ -106,5 +108,3 @@ The neuron would be "deaf" to all inputs and produce a constant output.
 - Dendrites -> Inputs, Synapses -> Weights, Soma -> Summation, Axon -> Output
 - The weighted sum aggregates all inputs before the activation decision
 - Learning adjusts weights, similar to how synapses strengthen or weaken
-
-**Next Topic:** [02. Single Neuron Computation](02-single-neuron-computation.html) - See the calculation in action with real numbers

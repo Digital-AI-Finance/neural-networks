@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "02. Single Neuron Computation"
+topic_num: 2
+part: 1
+part_name: "Foundations"
+prev_topic: "01-biological-neuron"
+next_topic: "03-activation-functions"
 ---
 
 # Single Neuron Computation
-
-[Back to Home](../index.html)
 
 ---
 
@@ -116,5 +119,3 @@ When **z = 0**, the sigmoid output is exactly 0.5. This is the decision boundary
 - The weighted sum can be any real number (positive, negative, or zero)
 - Sigmoid squashes the weighted sum to a probability between 0 and 1
 - z = 0 corresponds to 50% probability (maximum uncertainty)
-
-**Next Topic:** [03. Activation Functions](03-activation-functions.html) - Explore different activation functions beyond sigmoid

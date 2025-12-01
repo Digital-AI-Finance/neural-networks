@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "05. Network Architecture"
+topic_num: 5
+part: 3
+part_name: "Architecture"
+prev_topic: "04-linear-limitation"
+next_topic: "06-forward-propagation"
 ---
 
 # Network Architecture
-
-[Back to Home](../index.html)
 
 ---
 
@@ -127,5 +130,3 @@ The hidden layers are where the "magic" happens - where raw features transform i
 - More neurons = more capacity, but also risk of overfitting
 - Architecture is a hyperparameter chosen before training
 - Rule of thumb: parameters should be less than training samples
-
-**Next Topic:** [06. Forward Propagation](06-forward-propagation.html) - How information flows through the network

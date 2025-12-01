@@ -1,11 +1,13 @@
 ---
-layout: default
+layout: topic
 title: "20. Trading Backtest"
+topic_num: 20
+part: 5
+part_name: "Application"
+prev_topic: "19-confusion-matrix"
 ---
 
 # Trading Backtest
-
-[Back to Home](../index.html)
 
 ---
 
@@ -171,5 +173,3 @@ Lower drawdown strategies often have lower total returns. But many investors pre
 - Realistic backtesting includes costs, slippage, and realistic assumptions
 
 **Congratulations!** You've completed all 20 topics in the Neural Networks course.
-
-[Back to Home](../index.html)

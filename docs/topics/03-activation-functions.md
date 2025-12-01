@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "03. Activation Functions"
+topic_num: 3
+part: 2
+part_name: "Building Blocks"
+prev_topic: "02-single-neuron-computation"
+next_topic: "04-linear-limitation"
 ---
 
 # Activation Functions
-
-[Back to Home](../index.html)
 
 ---
 
@@ -122,5 +125,3 @@ This is called the **dying ReLU problem**. Solutions include:
 - ReLU: Fast and effective, but can "die" with negative inputs
 - Tanh: Zero-centered, but also saturates at extremes
 - Modern networks typically use ReLU for hidden layers
-
-**Next Topic:** [04. Linear Limitation](04-linear-limitation.html) - Why we need non-linear activation

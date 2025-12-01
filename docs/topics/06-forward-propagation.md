@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: topic
 title: "06. Forward Propagation"
+topic_num: 6
+part: 3
+part_name: "Architecture"
+prev_topic: "05-network-architecture"
+next_topic: "07-loss-landscape"
 ---
 
 # Forward Propagation
-
-[Back to Home](../index.html)
 
 ---
 
@@ -128,5 +131,3 @@ The network predicts "BUY" (probability > 50%).
 - All neurons in a layer compute in parallel
 - The final output is the network's prediction
 - No learning happens during forward propagation - just computation
-
-**Next Topic:** [07. Loss Landscape](07-loss-landscape.html) - Measuring how wrong our predictions are
