@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neural Networks | From Brain to Business</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      background: white;
+      padding: 8px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+    .tagline {
+      font-size: 1.4rem;
+      opacity: 0.9;
+      margin-bottom: 25px;
+    }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: #1e3a5f;
+      padding: 16px 40px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 60px 20px;
+      background: white;
+    }
+    .features-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .feature-card {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+    }
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+    .feature-card h3 {
+      font-size: 1.3rem;
+      color: #1e3a5f;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      color: #64748b;
+    }
+
+    /* Journey Section */
+    .journey {
+      padding: 50px 20px;
+      background: #f1f5f9;
+    }
+    .journey h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #1e3a5f;
+      margin-bottom: 40px;
+    }
+    .journey-tracker {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    .journey-tracker::before {
+      content: '';
+      position: absolute;
+      top: 25px;
+      left: 50px;
+      right: 50px;
+      height: 4px;
+      background: #cbd5e1;
+      z-index: 0;
+    }
+    .journey-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s;
+    }
+    .journey-step:hover {
+      transform: scale(1.05);
+    }
+    .step-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      border: 3px solid #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #2563eb;
+      margin-bottom: 10px;
+    }
+    .step-label {
+      font-size: 0.85rem;
+      color: #64748b;
+      text-align: center;
+      max-width: 100px;
+    }
+
+    /* Topics Section */
+    .topics-section {
+      padding: 50px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .part-section {
+      margin-bottom: 50px;
+    }
+    .part-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .part-number {
+      background: #2563eb;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-right: 15px;
+    }
+    .part-title {
+      font-size: 1.4rem;
+      color: #1e3a5f;
+    }
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .topic-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .topic-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    }
+    .topic-thumb {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      background: #f1f5f9;
+    }
+    .topic-info {
+      padding: 15px;
+    }
+    .topic-num {
+      display: inline-block;
+      background: #e0e7ff;
+      color: #2563eb;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .topic-title {
+      display: block;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    /* Resources Section */
+    .resources {
+      padding: 50px 20px;
+      background: white;
+      text-align: center;
+    }
+    .resources h2 {
+      font-size: 1.8rem;
+      color: #1e3a5f;
+      margin-bottom: 30px;
+    }
+    .resource-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .resource-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: transform 0.2s;
+    }
+    .resource-btn:hover {
+      transform: translateY(-2px);
+    }
+    .resource-btn.primary {
+      background: #2563eb;
+      color: white;
+    }
+    .resource-btn.secondary {
+      background: #f1f5f9;
+      color: #1e3a5f;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 40px 20px;
+      background: #1e3a5f;
+      color: white;
+      text-align: center;
+    }
+    .footer a {
+      color: #93c5fd;
+    }
+    .footer p {
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .tagline {
+        font-size: 1.1rem;
+      }
+      .journey-tracker {
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+      .journey-tracker::before {
+        display: none;
+      }
+      .topic-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="{{ site.baseurl }}/assets/images/quantlet-logo.png" alt="QuantLet" class="hero-logo">
+      <h1>Neural Networks</h1>
+      <p class="tagline">From Brain to Business: How Machines Learn to Predict</p>
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-number">20</span>
+          <span class="stat-label">Topics</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Parts</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">60+</span>
+          <span class="stat-label">Practice Problems</span>
+        </div>
+      </div>
+      <a href="{{ site.baseurl }}/topics/01-biological-neuron.html" class="cta-button">Start Learning</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="features-container">
+      <div class="feature-card">
+        <div class="feature-icon">&#128202;</div>
+        <h3>Visual Learning</h3>
+        <p>Every concept illustrated with professional charts and diagrams</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128200;</div>
+        <h3>Business Focus</h3>
+        <p>Real market prediction application from data to trading backtest</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128736;</div>
+        <h3>Step-by-Step</h3>
+        <p>From biological neurons to complete trading strategies</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey Section -->
+  <section class="journey">
+    <h2>Your Learning Journey</h2>
+    <div class="journey-tracker">
+      <a href="#part1" class="journey-step">
+        <div class="step-circle">1</div>
+        <span class="step-label">Foundations</span>
+      </a>
+      <a href="#part2" class="journey-step">
+        <div class="step-circle">2</div>
+        <span class="step-label">Building Blocks</span>
+      </a>
+      <a href="#part3" class="journey-step">
+        <div class="step-circle">3</div>
+        <span class="step-label">Architecture</span>
+      </a>
+      <a href="#part4" class="journey-step">
+        <div class="step-circle">4</div>
+        <span class="step-label">Learning Process</span>
+      </a>
+      <a href="#part5" class="journey-step">
+        <div class="step-circle">5</div>
+        <span class="step-label">Application</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Topics Section -->
+  <section class="topics-section">
+
+    <!-- Part 1 -->
+    <div class="part-section" id="part1">
+      <div class="part-header">
+        <div class="part-number">1</div>
+        <h3 class="part-title">Foundations</h3>
+      </div>
+      <div class="topic-grid">
+        <a href="{{ site.baseurl }}/topics/01-biological-neuron.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/biological_vs_artificial.png" alt="Biological Neuron" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 01</span>
+            <span class="topic-title">Biological vs Artificial Neuron</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/02-single-neuron-computation.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/single_neuron_computation.png" alt="Single Neuron" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 02</span>
+            <span class="topic-title">Single Neuron Computation</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/11-problem-visualization.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/problem_visualization.png" alt="Problem Visualization" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 11</span>
+            <span class="topic-title">Problem Visualization</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/13-neuron-decision-maker.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/neuron_decision_maker.png" alt="Neuron Decision Maker" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 13</span>
+            <span class="topic-title">Neuron Decision Maker</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Part 2 -->
+    <div class="part-section" id="part2">
+      <div class="part-header">
+        <div class="part-number">2</div>
+        <h3 class="part-title">Building Blocks</h3>
+      </div>
+      <div class="topic-grid">
+        <a href="{{ site.baseurl }}/topics/03-activation-functions.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/activation_functions.png" alt="Activation Functions" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 03</span>
+            <span class="topic-title">Activation Functions</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/04-linear-limitation.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/linear_limitation.png" alt="Linear Limitation" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 04</span>
+            <span class="topic-title">Linear Limitation</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/14-sigmoid-saturation.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/sigmoid_saturation.png" alt="Sigmoid Saturation" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 14</span>
+            <span class="topic-title">Sigmoid Saturation</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/15-boundary-evolution.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/boundary_evolution.png" alt="Boundary Evolution" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 15</span>
+            <span class="topic-title">Boundary Evolution</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Part 3 -->
+    <div class="part-section" id="part3">
+      <div class="part-header">
+        <div class="part-number">3</div>
+        <h3 class="part-title">Architecture</h3>
+      </div>
+      <div class="topic-grid">
+        <a href="{{ site.baseurl }}/topics/05-network-architecture.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/network_architecture.png" alt="Network Architecture" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 05</span>
+            <span class="topic-title">Network Architecture</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/06-forward-propagation.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/forward_propagation.png" alt="Forward Propagation" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 06</span>
+            <span class="topic-title">Forward Propagation</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/12-decision-boundary-concept.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/decision_boundary_concept.png" alt="Decision Boundary" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 12</span>
+            <span class="topic-title">Decision Boundary Concept</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/16-feature-hierarchy.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/feature_hierarchy.png" alt="Feature Hierarchy" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 16</span>
+            <span class="topic-title">Feature Hierarchy</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Part 4 -->
+    <div class="part-section" id="part4">
+      <div class="part-header">
+        <div class="part-number">4</div>
+        <h3 class="part-title">Learning Process</h3>
+      </div>
+      <div class="topic-grid">
+        <a href="{{ site.baseurl }}/topics/07-loss-landscape.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/loss_landscape.png" alt="Loss Landscape" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 07</span>
+            <span class="topic-title">Loss Landscape</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/08-gradient-descent.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/gradient_descent.png" alt="Gradient Descent" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 08</span>
+            <span class="topic-title">Gradient Descent</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/17-overfitting-underfitting.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/overfitting_underfitting.png" alt="Overfitting Underfitting" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 17</span>
+            <span class="topic-title">Overfitting vs Underfitting</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/18-learning-rate-comparison.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/learning_rate_comparison.png" alt="Learning Rate" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 18</span>
+            <span class="topic-title">Learning Rate Comparison</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Part 5 -->
+    <div class="part-section" id="part5">
+      <div class="part-header">
+        <div class="part-number">5</div>
+        <h3 class="part-title">Application</h3>
+      </div>
+      <div class="topic-grid">
+        <a href="{{ site.baseurl }}/topics/09-market-prediction-data.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/market_prediction_data.png" alt="Market Prediction Data" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 09</span>
+            <span class="topic-title">Market Prediction Data</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/10-prediction-results.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/prediction_results.png" alt="Prediction Results" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 10</span>
+            <span class="topic-title">Prediction Results</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/19-confusion-matrix.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/confusion_matrix.png" alt="Confusion Matrix" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 19</span>
+            <span class="topic-title">Confusion Matrix</span>
+          </div>
+        </a>
+        <a href="{{ site.baseurl }}/topics/20-trading-backtest.html" class="topic-card">
+          <img src="{{ site.baseurl }}/assets/images/trading_backtest.png" alt="Trading Backtest" class="topic-thumb">
+          <div class="topic-info">
+            <span class="topic-num">Topic 20</span>
+            <span class="topic-title">Trading Backtest</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Resources Section -->
+  <section class="resources">
+    <h2>Resources</h2>
+    <div class="resource-buttons">
+      <a href="https://github.com/Digital-AI-Finance/neural-networks/raw/main/20251128_0825_quantlet_branding.pdf" class="resource-btn primary">
+        &#128196; Download PDF
+      </a>
+      <a href="{{ site.baseurl }}/syllabus.html" class="resource-btn secondary">
+        &#128218; Syllabus
+      </a>
+      <a href="{{ site.baseurl }}/exercises.html" class="resource-btn secondary">
+        &#9999; Exercises
+      </a>
+      <a href="{{ site.baseurl }}/resources.html" class="resource-btn secondary">
+        &#128279; More Resources
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Part of <a href="https://github.com/Digital-AI-Finance">Digital-AI-Finance</a> educational resources</p>
+    <p>Licensed under MIT License</p>
+  </footer>
+
+</body>
+</html>
