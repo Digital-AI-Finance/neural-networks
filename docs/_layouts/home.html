@@ -36,58 +36,156 @@
       border-radius: 4px;
     }
 
+    /* Main Layout */
+    .container {
+      display: flex;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: #ffffff;
+      border-right: 1px solid #e1e4e8;
+      height: calc(100vh - 42px);
+      overflow-y: auto;
+      position: sticky;
+      top: 0;
+      flex-shrink: 0;
+    }
+    .sidebar-header {
+      padding: 15px;
+      border-bottom: 1px solid #e1e4e8;
+      background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+    }
+    .sidebar-header a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+    }
+    .sidebar-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      margin-right: 10px;
+      background: white;
+      padding: 3px;
+    }
+    .course-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .search-container {
+      padding: 10px 15px;
+      border-bottom: 1px solid #e1e4e8;
+    }
+    .search-container input {
+      width: 100%;
+      padding: 6px 10px;
+      border: 1px solid #e1e4e8;
+      border-radius: 4px;
+      font-size: 12px;
+      outline: none;
+    }
+    .search-container input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+    }
+
+    /* Sidebar Nav */
+    .sidebar-nav { padding: 8px 0; }
+    .part-section { border-bottom: 1px solid #f0f0f0; }
+    .part-section summary {
+      padding: 10px 15px;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #24292e;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .part-section summary::-webkit-details-marker { display: none; }
+    .part-section summary::after { content: "+"; font-size: 12px; color: #586069; }
+    .part-section[open] summary::after { content: "-"; }
+    .part-section summary:hover { background: #f6f8fa; }
+    .part-section ul { list-style: none; padding: 0 0 6px 0; margin: 0; }
+    .part-section li { margin: 0; }
+    .part-section a {
+      display: block;
+      padding: 6px 15px 6px 25px;
+      color: #586069;
+      text-decoration: none;
+      font-size: 12px;
+      border-left: 2px solid transparent;
+    }
+    .part-section a:hover { background: #f6f8fa; color: #2563eb; }
+    .topic-count { font-size: 10px; color: #959da5; font-weight: normal; }
+    .hidden { display: none !important; }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      min-width: 0;
+    }
+
     /* Hero - Ultra Compact */
     .hero {
       background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
       color: white;
-      padding: 25px 15px;
+      padding: 20px 15px;
       text-align: center;
     }
-    .hero-content { max-width: 800px; margin: 0 auto; }
-    .hero-logo { width: 50px; height: 50px; border-radius: 10px; background: white; padding: 5px; margin-bottom: 10px; }
-    .hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 5px; }
-    .tagline { font-size: 1rem; opacity: 0.9; margin-bottom: 12px; }
-    .stats { display: flex; justify-content: center; gap: 20px; margin-bottom: 15px; }
+    .hero-content { max-width: 700px; margin: 0 auto; }
+    .hero-logo { width: 45px; height: 45px; border-radius: 8px; background: white; padding: 4px; margin-bottom: 8px; }
+    .hero h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 4px; }
+    .tagline { font-size: 0.95rem; opacity: 0.9; margin-bottom: 10px; }
+    .stats { display: flex; justify-content: center; gap: 18px; margin-bottom: 12px; }
     .stat-item { text-align: center; }
-    .stat-number { font-size: 1.4rem; font-weight: 700; display: block; }
-    .stat-label { font-size: 0.75rem; opacity: 0.8; }
+    .stat-number { font-size: 1.3rem; font-weight: 700; display: block; }
+    .stat-label { font-size: 0.7rem; opacity: 0.8; }
     .cta-button {
       display: inline-block;
       background: white;
       color: #1e3a5f;
-      padding: 10px 25px;
-      border-radius: 6px;
-      font-size: 0.95rem;
+      padding: 8px 20px;
+      border-radius: 5px;
+      font-size: 0.9rem;
       font-weight: 600;
       text-decoration: none;
     }
     .cta-button:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
 
     /* Features - Compact */
-    .features { padding: 20px 15px; background: white; }
+    .features { padding: 15px 12px; background: white; }
     .features-container {
-      max-width: 1000px;
+      max-width: 900px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
+      gap: 12px;
     }
     .feature-card {
       background: #f8fafc;
-      border-radius: 8px;
-      padding: 15px;
+      border-radius: 6px;
+      padding: 12px;
       text-align: center;
       border: 1px solid #e2e8f0;
     }
-    .feature-icon { font-size: 1.8rem; margin-bottom: 8px; }
-    .feature-card h3 { font-size: 1rem; color: #1e3a5f; margin-bottom: 4px; }
-    .feature-card p { color: #64748b; font-size: 0.8rem; }
+    .feature-icon { font-size: 1.5rem; margin-bottom: 6px; }
+    .feature-card h3 { font-size: 0.9rem; color: #1e3a5f; margin-bottom: 3px; }
+    .feature-card p { color: #64748b; font-size: 0.75rem; }
 
     /* Journey - Compact */
-    .journey { padding: 20px 15px; background: #f1f5f9; }
-    .journey h2 { text-align: center; font-size: 1.2rem; color: #1e3a5f; margin-bottom: 15px; }
+    .journey { padding: 15px 12px; background: #f1f5f9; }
+    .journey h2 { text-align: center; font-size: 1.1rem; color: #1e3a5f; margin-bottom: 12px; }
     .journey-tracker {
-      max-width: 700px;
+      max-width: 600px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -97,10 +195,10 @@
     .journey-tracker::before {
       content: '';
       position: absolute;
-      top: 18px;
-      left: 40px;
-      right: 40px;
-      height: 3px;
+      top: 16px;
+      left: 35px;
+      right: 35px;
+      height: 2px;
       background: #cbd5e1;
       z-index: 0;
     }
@@ -113,8 +211,8 @@
       color: inherit;
     }
     .step-circle {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: white;
       border: 2px solid #2563eb;
@@ -122,38 +220,38 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #2563eb;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
-    .step-label { font-size: 0.7rem; color: #64748b; text-align: center; }
+    .step-label { font-size: 0.65rem; color: #64748b; text-align: center; }
 
     /* Topics - Ultra Compact */
-    .topics-section { padding: 20px 15px; max-width: 1200px; margin: 0 auto; }
-    .part-section { margin-bottom: 20px; }
-    .part-header { display: flex; align-items: center; margin-bottom: 10px; }
+    .topics-section { padding: 15px 12px; }
+    .part-section-main { margin-bottom: 15px; }
+    .part-header { display: flex; align-items: center; margin-bottom: 8px; }
     .part-number {
       background: #2563eb;
       color: white;
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 0.85rem;
-      margin-right: 10px;
+      font-size: 0.8rem;
+      margin-right: 8px;
     }
-    .part-title { font-size: 1.1rem; color: #1e3a5f; }
+    .part-title { font-size: 1rem; color: #1e3a5f; }
     .topic-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
     .topic-card {
       background: white;
-      border-radius: 8px;
+      border-radius: 6px;
       overflow: hidden;
       border: 1px solid #e2e8f0;
       text-decoration: none;
@@ -161,77 +259,86 @@
       transition: box-shadow 0.2s;
     }
     .topic-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .topic-thumb { width: 100%; height: 80px; object-fit: cover; background: #f1f5f9; }
-    .topic-info { padding: 8px; }
+    .topic-thumb { width: 100%; height: 70px; object-fit: cover; background: #f1f5f9; }
+    .topic-info { padding: 6px; }
     .topic-num {
       display: inline-block;
       background: #e0e7ff;
       color: #2563eb;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 600;
-      padding: 2px 5px;
-      border-radius: 3px;
-      margin-bottom: 3px;
+      padding: 1px 4px;
+      border-radius: 2px;
+      margin-bottom: 2px;
     }
-    .topic-title { display: block; font-weight: 600; color: #1e293b; font-size: 0.8rem; }
+    .topic-title { display: block; font-weight: 600; color: #1e293b; font-size: 0.75rem; }
 
     /* Chart Gallery */
-    .chart-gallery { padding: 20px 15px; background: white; }
-    .chart-gallery h2 { text-align: center; font-size: 1.2rem; color: #1e3a5f; margin-bottom: 15px; }
+    .chart-gallery { padding: 15px 12px; background: white; }
+    .chart-gallery h2 { text-align: center; font-size: 1.1rem; color: #1e3a5f; margin-bottom: 12px; }
     .gallery-grid {
-      max-width: 1200px;
-      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
+      gap: 6px;
     }
     .gallery-item {
-      border-radius: 6px;
+      border-radius: 4px;
       overflow: hidden;
       border: 1px solid #e2e8f0;
     }
-    .gallery-item img { width: 100%; height: 100px; object-fit: cover; display: block; }
+    .gallery-item img { width: 100%; height: 80px; object-fit: cover; display: block; }
     .gallery-item span {
       display: block;
       text-align: center;
-      font-size: 0.7rem;
-      padding: 4px;
+      font-size: 0.65rem;
+      padding: 3px;
       background: #f8fafc;
       color: #64748b;
     }
 
     /* Resources - Compact */
-    .resources { padding: 20px 15px; background: #f1f5f9; text-align: center; }
-    .resources h2 { font-size: 1.2rem; color: #1e3a5f; margin-bottom: 12px; }
-    .resource-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .resources { padding: 15px 12px; background: #f1f5f9; text-align: center; }
+    .resources h2 { font-size: 1.1rem; color: #1e3a5f; margin-bottom: 10px; }
+    .resource-buttons { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
     .resource-btn {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      padding: 8px 16px;
-      border-radius: 6px;
+      gap: 4px;
+      padding: 6px 12px;
+      border-radius: 5px;
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
     .resource-btn.primary { background: #2563eb; color: white; }
     .resource-btn.secondary { background: white; color: #1e3a5f; border: 1px solid #e2e8f0; }
 
     /* Footer - Compact */
-    .footer { padding: 20px 15px; background: #1e3a5f; color: white; text-align: center; }
+    .footer { padding: 15px 12px; background: #1e3a5f; color: white; text-align: center; }
     .footer a { color: #93c5fd; }
-    .footer p { opacity: 0.8; font-size: 0.8rem; }
+    .footer p { opacity: 0.8; font-size: 0.75rem; }
 
     /* Responsive */
-    @media (max-width: 900px) {
-      .features-container { grid-template-columns: 1fr; }
+    @media (max-width: 1100px) {
       .topic-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .container { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #e1e4e8;
+        max-height: 40vh;
+      }
+      .features-container { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .topic-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .journey-tracker { flex-wrap: wrap; gap: 10px; justify-content: center; }
+      .journey-tracker { flex-wrap: wrap; gap: 8px; justify-content: center; }
       .journey-tracker::before { display: none; }
     }
   </style>
@@ -247,213 +354,314 @@
     <a href="https://github.com/Digital-AI-Finance/neural-networks/raw/main/20251128_0825_quantlet_branding.pdf" class="nav-pdf">PDF</a>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <img src="{{ site.baseurl }}/assets/images/quantlet-logo.png" alt="QuantLet" class="hero-logo">
-      <h1>Neural Networks</h1>
-      <p class="tagline">From Brain to Business: How Machines Learn to Predict</p>
-      <div class="stats">
-        <div class="stat-item"><span class="stat-number">20</span><span class="stat-label">Topics</span></div>
-        <div class="stat-item"><span class="stat-number">5</span><span class="stat-label">Parts</span></div>
-        <div class="stat-item"><span class="stat-number">60+</span><span class="stat-label">Problems</span></div>
-      </div>
-      <a href="{{ site.baseurl }}/topics/01-biological-neuron.html" class="cta-button">Start Learning</a>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section class="features">
-    <div class="features-container">
-      <div class="feature-card">
-        <div class="feature-icon">&#128202;</div>
-        <h3>Visual Learning</h3>
-        <p>Professional charts for every concept</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#128200;</div>
-        <h3>Business Focus</h3>
-        <p>Real market prediction application</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#128736;</div>
-        <h3>Step-by-Step</h3>
-        <p>From neurons to trading strategies</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Journey Section -->
-  <section class="journey">
-    <h2>Learning Journey</h2>
-    <div class="journey-tracker">
-      <a href="#part1" class="journey-step"><div class="step-circle">1</div><span class="step-label">Foundations</span></a>
-      <a href="#part2" class="journey-step"><div class="step-circle">2</div><span class="step-label">Building Blocks</span></a>
-      <a href="#part3" class="journey-step"><div class="step-circle">3</div><span class="step-label">Architecture</span></a>
-      <a href="#part4" class="journey-step"><div class="step-circle">4</div><span class="step-label">Learning</span></a>
-      <a href="#part5" class="journey-step"><div class="step-circle">5</div><span class="step-label">Application</span></a>
-    </div>
-  </section>
-
-  <!-- Topics Section -->
-  <section class="topics-section" id="topics">
-    <!-- Part 1 -->
-    <div class="part-section" id="part1">
-      <div class="part-header"><div class="part-number">1</div><h3 class="part-title">Foundations</h3></div>
-      <div class="topic-grid">
-        <a href="{{ site.baseurl }}/topics/01-biological-neuron.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/biological_vs_artificial.png" alt="01" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">01</span><span class="topic-title">Biological Neuron</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/02-single-neuron-computation.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/single_neuron_computation.png" alt="02" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">02</span><span class="topic-title">Single Neuron</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/11-problem-visualization.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/problem_visualization.png" alt="11" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">11</span><span class="topic-title">Problem Visualization</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/13-neuron-decision-maker.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/neuron_decision_maker.png" alt="13" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">13</span><span class="topic-title">Neuron Decisions</span></div>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="{{ site.baseurl }}/">
+          <img src="{{ site.baseurl }}/assets/images/quantlet-logo.png" alt="QuantLet" class="sidebar-logo">
+          <span class="course-title">Neural Networks</span>
         </a>
       </div>
-    </div>
 
-    <!-- Part 2 -->
-    <div class="part-section" id="part2">
-      <div class="part-header"><div class="part-number">2</div><h3 class="part-title">Building Blocks</h3></div>
-      <div class="topic-grid">
-        <a href="{{ site.baseurl }}/topics/03-activation-functions.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/activation_functions.png" alt="03" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">03</span><span class="topic-title">Activation Functions</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/04-linear-limitation.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/linear_limitation.png" alt="04" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">04</span><span class="topic-title">Linear Limitation</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/14-sigmoid-saturation.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/sigmoid_saturation.png" alt="14" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">14</span><span class="topic-title">Sigmoid Saturation</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/15-boundary-evolution.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/boundary_evolution.png" alt="15" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">15</span><span class="topic-title">Boundary Evolution</span></div>
-        </a>
+      <div class="search-container">
+        <input type="text" id="topic-search" placeholder="Search topics...">
       </div>
-    </div>
 
-    <!-- Part 3 -->
-    <div class="part-section" id="part3">
-      <div class="part-header"><div class="part-number">3</div><h3 class="part-title">Architecture</h3></div>
-      <div class="topic-grid">
-        <a href="{{ site.baseurl }}/topics/05-network-architecture.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/network_architecture.png" alt="05" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">05</span><span class="topic-title">Network Architecture</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/06-forward-propagation.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/forward_propagation.png" alt="06" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">06</span><span class="topic-title">Forward Propagation</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/12-decision-boundary-concept.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/decision_boundary_concept.png" alt="12" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">12</span><span class="topic-title">Decision Boundary</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/16-feature-hierarchy.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/feature_hierarchy.png" alt="16" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">16</span><span class="topic-title">Feature Hierarchy</span></div>
-        </a>
-      </div>
-    </div>
+      <nav class="sidebar-nav">
+        <details class="part-section" open>
+          <summary>Part 1: Foundations <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li><a href="{{ site.baseurl }}/topics/01-biological-neuron.html">01. Biological Neuron</a></li>
+            <li><a href="{{ site.baseurl }}/topics/02-single-neuron-computation.html">02. Single Neuron</a></li>
+            <li><a href="{{ site.baseurl }}/topics/11-problem-visualization.html">11. Problem Visualization</a></li>
+            <li><a href="{{ site.baseurl }}/topics/13-neuron-decision-maker.html">13. Neuron Decisions</a></li>
+          </ul>
+        </details>
 
-    <!-- Part 4 -->
-    <div class="part-section" id="part4">
-      <div class="part-header"><div class="part-number">4</div><h3 class="part-title">Learning Process</h3></div>
-      <div class="topic-grid">
-        <a href="{{ site.baseurl }}/topics/07-loss-landscape.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/loss_landscape.png" alt="07" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">07</span><span class="topic-title">Loss Landscape</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/08-gradient-descent.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/gradient_descent.png" alt="08" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">08</span><span class="topic-title">Gradient Descent</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/17-overfitting-underfitting.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/overfitting_underfitting.png" alt="17" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">17</span><span class="topic-title">Overfitting</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/18-learning-rate-comparison.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/learning_rate_comparison.png" alt="18" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">18</span><span class="topic-title">Learning Rate</span></div>
-        </a>
-      </div>
-    </div>
+        <details class="part-section">
+          <summary>Part 2: Building Blocks <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li><a href="{{ site.baseurl }}/topics/03-activation-functions.html">03. Activation Functions</a></li>
+            <li><a href="{{ site.baseurl }}/topics/04-linear-limitation.html">04. Linear Limitation</a></li>
+            <li><a href="{{ site.baseurl }}/topics/14-sigmoid-saturation.html">14. Sigmoid Saturation</a></li>
+            <li><a href="{{ site.baseurl }}/topics/15-boundary-evolution.html">15. Boundary Evolution</a></li>
+          </ul>
+        </details>
 
-    <!-- Part 5 -->
-    <div class="part-section" id="part5">
-      <div class="part-header"><div class="part-number">5</div><h3 class="part-title">Application</h3></div>
-      <div class="topic-grid">
-        <a href="{{ site.baseurl }}/topics/09-market-prediction-data.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/market_prediction_data.png" alt="09" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">09</span><span class="topic-title">Market Data</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/10-prediction-results.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/prediction_results.png" alt="10" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">10</span><span class="topic-title">Prediction Results</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/19-confusion-matrix.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/confusion_matrix.png" alt="19" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">19</span><span class="topic-title">Confusion Matrix</span></div>
-        </a>
-        <a href="{{ site.baseurl }}/topics/20-trading-backtest.html" class="topic-card">
-          <img src="{{ site.baseurl }}/assets/images/trading_backtest.png" alt="20" class="topic-thumb">
-          <div class="topic-info"><span class="topic-num">20</span><span class="topic-title">Trading Backtest</span></div>
-        </a>
-      </div>
-    </div>
-  </section>
+        <details class="part-section">
+          <summary>Part 3: Architecture <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li><a href="{{ site.baseurl }}/topics/05-network-architecture.html">05. Network Architecture</a></li>
+            <li><a href="{{ site.baseurl }}/topics/06-forward-propagation.html">06. Forward Propagation</a></li>
+            <li><a href="{{ site.baseurl }}/topics/12-decision-boundary-concept.html">12. Decision Boundary</a></li>
+            <li><a href="{{ site.baseurl }}/topics/16-feature-hierarchy.html">16. Feature Hierarchy</a></li>
+          </ul>
+        </details>
 
-  <!-- Chart Gallery -->
-  <section class="chart-gallery">
-    <h2>All Charts</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/biological_vs_artificial.png" alt="01"><span>01</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/single_neuron_computation.png" alt="02"><span>02</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/activation_functions.png" alt="03"><span>03</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/linear_limitation.png" alt="04"><span>04</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/network_architecture.png" alt="05"><span>05</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/forward_propagation.png" alt="06"><span>06</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/loss_landscape.png" alt="07"><span>07</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/gradient_descent.png" alt="08"><span>08</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/market_prediction_data.png" alt="09"><span>09</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/prediction_results.png" alt="10"><span>10</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/problem_visualization.png" alt="11"><span>11</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/decision_boundary_concept.png" alt="12"><span>12</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/neuron_decision_maker.png" alt="13"><span>13</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/sigmoid_saturation.png" alt="14"><span>14</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/boundary_evolution.png" alt="15"><span>15</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/feature_hierarchy.png" alt="16"><span>16</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/overfitting_underfitting.png" alt="17"><span>17</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/learning_rate_comparison.png" alt="18"><span>18</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/confusion_matrix.png" alt="19"><span>19</span></div>
-      <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/trading_backtest.png" alt="20"><span>20</span></div>
-    </div>
-  </section>
+        <details class="part-section">
+          <summary>Part 4: Learning Process <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li><a href="{{ site.baseurl }}/topics/07-loss-landscape.html">07. Loss Landscape</a></li>
+            <li><a href="{{ site.baseurl }}/topics/08-gradient-descent.html">08. Gradient Descent</a></li>
+            <li><a href="{{ site.baseurl }}/topics/17-overfitting-underfitting.html">17. Overfitting</a></li>
+            <li><a href="{{ site.baseurl }}/topics/18-learning-rate-comparison.html">18. Learning Rate</a></li>
+          </ul>
+        </details>
 
-  <!-- Resources Section -->
-  <section class="resources">
-    <h2>Resources</h2>
-    <div class="resource-buttons">
-      <a href="https://github.com/Digital-AI-Finance/neural-networks/raw/main/20251128_0825_quantlet_branding.pdf" class="resource-btn primary">&#128196; PDF</a>
-      <a href="{{ site.baseurl }}/syllabus.html" class="resource-btn secondary">&#128218; Syllabus</a>
-      <a href="{{ site.baseurl }}/exercises.html" class="resource-btn secondary">&#9999; Exercises</a>
-      <a href="{{ site.baseurl }}/resources.html" class="resource-btn secondary">&#128279; More</a>
-    </div>
-  </section>
+        <details class="part-section">
+          <summary>Part 5: Application <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li><a href="{{ site.baseurl }}/topics/09-market-prediction-data.html">09. Market Data</a></li>
+            <li><a href="{{ site.baseurl }}/topics/10-prediction-results.html">10. Prediction Results</a></li>
+            <li><a href="{{ site.baseurl }}/topics/19-confusion-matrix.html">19. Confusion Matrix</a></li>
+            <li><a href="{{ site.baseurl }}/topics/20-trading-backtest.html">20. Trading Backtest</a></li>
+          </ul>
+        </details>
+      </nav>
+    </aside>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p><a href="https://github.com/Digital-AI-Finance">Digital-AI-Finance</a> | MIT License</p>
-  </footer>
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <img src="{{ site.baseurl }}/assets/images/quantlet-logo.png" alt="QuantLet" class="hero-logo">
+          <h1>Neural Networks</h1>
+          <p class="tagline">From Brain to Business: How Machines Learn to Predict</p>
+          <div class="stats">
+            <div class="stat-item"><span class="stat-number">20</span><span class="stat-label">Topics</span></div>
+            <div class="stat-item"><span class="stat-number">5</span><span class="stat-label">Parts</span></div>
+            <div class="stat-item"><span class="stat-number">60+</span><span class="stat-label">Problems</span></div>
+          </div>
+          <a href="{{ site.baseurl }}/topics/01-biological-neuron.html" class="cta-button">Start Learning</a>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="features">
+        <div class="features-container">
+          <div class="feature-card">
+            <div class="feature-icon">&#128202;</div>
+            <h3>Visual Learning</h3>
+            <p>Professional charts for every concept</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#128200;</div>
+            <h3>Business Focus</h3>
+            <p>Real market prediction application</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#128736;</div>
+            <h3>Step-by-Step</h3>
+            <p>From neurons to trading strategies</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Journey Section -->
+      <section class="journey">
+        <h2>Learning Journey</h2>
+        <div class="journey-tracker">
+          <a href="#part1" class="journey-step"><div class="step-circle">1</div><span class="step-label">Foundations</span></a>
+          <a href="#part2" class="journey-step"><div class="step-circle">2</div><span class="step-label">Building Blocks</span></a>
+          <a href="#part3" class="journey-step"><div class="step-circle">3</div><span class="step-label">Architecture</span></a>
+          <a href="#part4" class="journey-step"><div class="step-circle">4</div><span class="step-label">Learning</span></a>
+          <a href="#part5" class="journey-step"><div class="step-circle">5</div><span class="step-label">Application</span></a>
+        </div>
+      </section>
+
+      <!-- Topics Section -->
+      <section class="topics-section" id="topics">
+        <!-- Part 1 -->
+        <div class="part-section-main" id="part1">
+          <div class="part-header"><div class="part-number">1</div><h3 class="part-title">Foundations</h3></div>
+          <div class="topic-grid">
+            <a href="{{ site.baseurl }}/topics/01-biological-neuron.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/biological_vs_artificial.png" alt="01" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">01</span><span class="topic-title">Biological Neuron</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/02-single-neuron-computation.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/single_neuron_computation.png" alt="02" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">02</span><span class="topic-title">Single Neuron</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/11-problem-visualization.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/problem_visualization.png" alt="11" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">11</span><span class="topic-title">Problem Visualization</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/13-neuron-decision-maker.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/neuron_decision_maker.png" alt="13" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">13</span><span class="topic-title">Neuron Decisions</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Part 2 -->
+        <div class="part-section-main" id="part2">
+          <div class="part-header"><div class="part-number">2</div><h3 class="part-title">Building Blocks</h3></div>
+          <div class="topic-grid">
+            <a href="{{ site.baseurl }}/topics/03-activation-functions.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/activation_functions.png" alt="03" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">03</span><span class="topic-title">Activation Functions</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/04-linear-limitation.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/linear_limitation.png" alt="04" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">04</span><span class="topic-title">Linear Limitation</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/14-sigmoid-saturation.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/sigmoid_saturation.png" alt="14" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">14</span><span class="topic-title">Sigmoid Saturation</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/15-boundary-evolution.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/boundary_evolution.png" alt="15" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">15</span><span class="topic-title">Boundary Evolution</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Part 3 -->
+        <div class="part-section-main" id="part3">
+          <div class="part-header"><div class="part-number">3</div><h3 class="part-title">Architecture</h3></div>
+          <div class="topic-grid">
+            <a href="{{ site.baseurl }}/topics/05-network-architecture.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/network_architecture.png" alt="05" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">05</span><span class="topic-title">Network Architecture</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/06-forward-propagation.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/forward_propagation.png" alt="06" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">06</span><span class="topic-title">Forward Propagation</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/12-decision-boundary-concept.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/decision_boundary_concept.png" alt="12" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">12</span><span class="topic-title">Decision Boundary</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/16-feature-hierarchy.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/feature_hierarchy.png" alt="16" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">16</span><span class="topic-title">Feature Hierarchy</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Part 4 -->
+        <div class="part-section-main" id="part4">
+          <div class="part-header"><div class="part-number">4</div><h3 class="part-title">Learning Process</h3></div>
+          <div class="topic-grid">
+            <a href="{{ site.baseurl }}/topics/07-loss-landscape.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/loss_landscape.png" alt="07" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">07</span><span class="topic-title">Loss Landscape</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/08-gradient-descent.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/gradient_descent.png" alt="08" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">08</span><span class="topic-title">Gradient Descent</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/17-overfitting-underfitting.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/overfitting_underfitting.png" alt="17" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">17</span><span class="topic-title">Overfitting</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/18-learning-rate-comparison.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/learning_rate_comparison.png" alt="18" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">18</span><span class="topic-title">Learning Rate</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Part 5 -->
+        <div class="part-section-main" id="part5">
+          <div class="part-header"><div class="part-number">5</div><h3 class="part-title">Application</h3></div>
+          <div class="topic-grid">
+            <a href="{{ site.baseurl }}/topics/09-market-prediction-data.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/market_prediction_data.png" alt="09" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">09</span><span class="topic-title">Market Data</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/10-prediction-results.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/prediction_results.png" alt="10" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">10</span><span class="topic-title">Prediction Results</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/19-confusion-matrix.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/confusion_matrix.png" alt="19" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">19</span><span class="topic-title">Confusion Matrix</span></div>
+            </a>
+            <a href="{{ site.baseurl }}/topics/20-trading-backtest.html" class="topic-card">
+              <img src="{{ site.baseurl }}/assets/images/trading_backtest.png" alt="20" class="topic-thumb">
+              <div class="topic-info"><span class="topic-num">20</span><span class="topic-title">Trading Backtest</span></div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chart Gallery -->
+      <section class="chart-gallery">
+        <h2>All Charts</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/biological_vs_artificial.png" alt="01"><span>01</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/single_neuron_computation.png" alt="02"><span>02</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/activation_functions.png" alt="03"><span>03</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/linear_limitation.png" alt="04"><span>04</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/network_architecture.png" alt="05"><span>05</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/forward_propagation.png" alt="06"><span>06</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/loss_landscape.png" alt="07"><span>07</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/gradient_descent.png" alt="08"><span>08</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/market_prediction_data.png" alt="09"><span>09</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/prediction_results.png" alt="10"><span>10</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/problem_visualization.png" alt="11"><span>11</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/decision_boundary_concept.png" alt="12"><span>12</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/neuron_decision_maker.png" alt="13"><span>13</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/sigmoid_saturation.png" alt="14"><span>14</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/boundary_evolution.png" alt="15"><span>15</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/feature_hierarchy.png" alt="16"><span>16</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/overfitting_underfitting.png" alt="17"><span>17</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/learning_rate_comparison.png" alt="18"><span>18</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/confusion_matrix.png" alt="19"><span>19</span></div>
+          <div class="gallery-item"><img src="{{ site.baseurl }}/assets/images/trading_backtest.png" alt="20"><span>20</span></div>
+        </div>
+      </section>
+
+      <!-- Resources Section -->
+      <section class="resources">
+        <h2>Resources</h2>
+        <div class="resource-buttons">
+          <a href="https://github.com/Digital-AI-Finance/neural-networks/raw/main/20251128_0825_quantlet_branding.pdf" class="resource-btn primary">&#128196; PDF</a>
+          <a href="{{ site.baseurl }}/syllabus.html" class="resource-btn secondary">&#128218; Syllabus</a>
+          <a href="{{ site.baseurl }}/exercises.html" class="resource-btn secondary">&#9999; Exercises</a>
+          <a href="{{ site.baseurl }}/resources.html" class="resource-btn secondary">&#128279; More</a>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p><a href="https://github.com/Digital-AI-Finance">Digital-AI-Finance</a> | MIT License</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Search functionality
+    document.getElementById('topic-search').addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase();
+      const links = document.querySelectorAll('.sidebar-nav .part-section li');
+      const sections = document.querySelectorAll('.sidebar-nav .part-section');
+
+      links.forEach(li => {
+        const text = li.textContent.toLowerCase();
+        if (query === '' || text.includes(query)) {
+          li.classList.remove('hidden');
+        } else {
+          li.classList.add('hidden');
+        }
+      });
+
+      sections.forEach(section => {
+        const visibleLinks = section.querySelectorAll('li:not(.hidden)');
+        if (visibleLinks.length === 0 && query !== '') {
+          section.classList.add('hidden');
+        } else {
+          section.classList.remove('hidden');
+          if (query !== '') {
+            section.setAttribute('open', '');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
