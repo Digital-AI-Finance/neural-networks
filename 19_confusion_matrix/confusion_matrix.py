@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Confusion Matrix
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/19_confusion_matrix/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-24
+# ==============================================================================
+
+"""
+Confusion Matrix
+
+Classification performance metrics visualization
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/19_confusion_matrix/
+"""
+
+CHART_METADATA = {
+    'name': 'Confusion Matrix',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/19_confusion_matrix/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-24',
+    'description': 'Classification performance metrics visualization'
+}
+
 """
 Chart 19: Confusion Matrix
 2x2 matrix showing precision/recall trade-off for trading decisions.
@@ -136,3 +161,5 @@ plt.savefig('confusion_matrix.pdf', dpi=300, bbox_inches='tight')
 plt.close()
 
 print("Saved: 19_confusion_matrix/confusion_matrix.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/19_confusion_matrix/

@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Decision Boundary Concept
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/12_decision_boundary_concept/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-24
+# ==============================================================================
+
+"""
+Decision Boundary Concept
+
+Linear vs curved decision boundaries comparison
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/12_decision_boundary_concept/
+"""
+
+CHART_METADATA = {
+    'name': 'Decision Boundary Concept',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/12_decision_boundary_concept/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-24',
+    'description': 'Linear vs curved decision boundaries comparison'
+}
+
 """
 Chart 12: Decision Boundary Concept
 Shows linear vs non-linear boundaries - what a learning system must achieve.
@@ -97,3 +122,5 @@ plt.savefig('decision_boundary_concept.pdf', dpi=300, bbox_inches='tight')
 plt.close()
 
 print("Saved: 12_decision_boundary_concept/decision_boundary_concept.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/12_decision_boundary_concept/

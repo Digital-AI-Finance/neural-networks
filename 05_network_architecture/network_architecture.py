@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Network Architecture
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/05_network_architecture/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-23
+# ==============================================================================
+
+"""
+Network Architecture
+
+Neural network visualization chart
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/05_network_architecture/
+"""
+
+CHART_METADATA = {
+    'name': 'Network Architecture',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/05_network_architecture/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-23',
+    'description': 'Neural network visualization chart'
+}
+
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.patches import Circle, FancyArrowPatch
@@ -113,3 +138,5 @@ ax.text(13.5, 2.5, summary_text, fontsize=8, ha='right', va='center',
 plt.tight_layout()
 plt.savefig('network_architecture.pdf', bbox_inches='tight', dpi=300)
 print("Chart saved: network_architecture.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/05_network_architecture/

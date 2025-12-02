@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Problem Visualization
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/11_problem_visualization/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-24
+# ==============================================================================
+
+"""
+Problem Visualization
+
+XOR problem demonstrating why simple rules fail
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/11_problem_visualization/
+"""
+
+CHART_METADATA = {
+    'name': 'Problem Visualization',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/11_problem_visualization/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-24',
+    'description': 'XOR problem demonstrating why simple rules fail'
+}
+
 """
 Chart 11: Problem Visualization
 Shows why simple rules fail - non-linear, overlapping clusters in market data.
@@ -85,3 +110,5 @@ plt.savefig('problem_visualization.pdf', dpi=300, bbox_inches='tight')
 plt.close()
 
 print("Saved: 11_problem_visualization/problem_visualization.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/11_problem_visualization/

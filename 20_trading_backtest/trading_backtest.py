@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Trading Backtest
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/20_trading_backtest/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-24
+# ==============================================================================
+
+"""
+Trading Backtest
+
+Cumulative returns comparison: neural network vs buy-and-hold
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/20_trading_backtest/
+"""
+
+CHART_METADATA = {
+    'name': 'Trading Backtest',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/20_trading_backtest/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-24',
+    'description': 'Cumulative returns comparison: neural network vs buy-and-hold'
+}
+
 """
 Chart 20: Trading Strategy Backtest
 Cumulative returns: Neural network strategy vs buy-and-hold.
@@ -142,3 +167,5 @@ plt.savefig('trading_backtest.pdf', dpi=300, bbox_inches='tight')
 plt.close()
 
 print("Saved: 20_trading_backtest/trading_backtest.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/20_trading_backtest/

@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Gradient Descent
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/08_gradient_descent/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-23
+# ==============================================================================
+
+"""
+Gradient Descent
+
+Neural network visualization chart
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/08_gradient_descent/
+"""
+
+CHART_METADATA = {
+    'name': 'Gradient Descent',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/08_gradient_descent/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-23',
+    'description': 'Neural network visualization chart'
+}
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -102,3 +127,5 @@ ax2.text(50, 5, formula_text, fontsize=10, ha='center',
 plt.tight_layout()
 plt.savefig('gradient_descent.pdf', bbox_inches='tight', dpi=300)
 print("Chart saved: gradient_descent.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/08_gradient_descent/

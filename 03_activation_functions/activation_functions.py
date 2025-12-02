@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Activation Functions
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/03_activation_functions/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-23
+# ==============================================================================
+
+"""
+Activation Functions
+
+Comparison of step function, sigmoid, ReLU, and tanh activations
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/03_activation_functions/
+"""
+
+CHART_METADATA = {
+    'name': 'Activation Functions',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/03_activation_functions/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-23',
+    'description': 'Comparison of step function, sigmoid, ReLU, and tanh activations'
+}
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -84,3 +109,5 @@ ax3.text(3, 0.3, char_text, fontsize=8, ha='left', va='center',
 plt.tight_layout()
 plt.savefig('activation_functions.pdf', bbox_inches='tight', dpi=300)
 print("Chart saved: activation_functions.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/03_activation_functions/

@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Boundary Evolution
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/15_boundary_evolution/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-24
+# ==============================================================================
+
+"""
+Boundary Evolution
+
+Real trained neural networks showing curved decision boundaries
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/15_boundary_evolution/
+"""
+
+CHART_METADATA = {
+    'name': 'Boundary Evolution',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/15_boundary_evolution/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-24',
+    'description': 'Real trained neural networks showing curved decision boundaries'
+}
+
 """
 Chart 15: Decision Boundary Evolution - REAL NEURAL NETWORKS
 Actually trains neural networks with different architectures and plots their learned boundaries.
@@ -165,3 +190,5 @@ print(f"  1 Neuron:  {acc1:.1f}%")
 print(f"  2 Neurons: {acc2:.1f}%")
 print(f"  4 Neurons: {acc3:.1f}%")
 print(f"  10 Neurons: {acc4:.1f}%")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/15_boundary_evolution/

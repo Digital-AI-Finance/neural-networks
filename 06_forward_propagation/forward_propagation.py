@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Forward Propagation
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/06_forward_propagation/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-23
+# ==============================================================================
+
+"""
+Forward Propagation
+
+Neural network visualization chart
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/06_forward_propagation/
+"""
+
+CHART_METADATA = {
+    'name': 'Forward Propagation',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/06_forward_propagation/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-23',
+    'description': 'Neural network visualization chart'
+}
+
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.patches import Circle, FancyBboxPatch, FancyArrowPatch
@@ -121,3 +146,5 @@ ax.text(7, 1.8, note_text, fontsize=8, ha='center', style='italic')
 plt.tight_layout()
 plt.savefig('forward_propagation.pdf', bbox_inches='tight', dpi=300)
 print("Chart saved: forward_propagation.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/06_forward_propagation/

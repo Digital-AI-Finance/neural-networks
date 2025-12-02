@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Sigmoid Saturation
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/14_sigmoid_saturation/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-24
+# ==============================================================================
+
+"""
+Sigmoid Saturation
+
+Vanishing gradient problem in sigmoid activation
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/14_sigmoid_saturation/
+"""
+
+CHART_METADATA = {
+    'name': 'Sigmoid Saturation',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/14_sigmoid_saturation/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-24',
+    'description': 'Vanishing gradient problem in sigmoid activation'
+}
+
 """
 Chart 14: Sigmoid Saturation Problem
 Shows vanishing gradient regions - why ReLU became popular.
@@ -101,3 +126,5 @@ plt.savefig('sigmoid_saturation.pdf', dpi=300, bbox_inches='tight')
 plt.close()
 
 print("Saved: 14_sigmoid_saturation/sigmoid_saturation.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/14_sigmoid_saturation/

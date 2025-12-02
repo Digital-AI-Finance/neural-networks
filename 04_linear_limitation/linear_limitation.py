@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Linear Limitation
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/04_linear_limitation/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-23
+# ==============================================================================
+
+"""
+Linear Limitation
+
+Neural network visualization chart
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/04_linear_limitation/
+"""
+
+CHART_METADATA = {
+    'name': 'Linear Limitation',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/04_linear_limitation/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-23',
+    'description': 'Neural network visualization chart'
+}
+
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Rectangle
@@ -89,3 +114,5 @@ fig.text(0.5, 0.02, 'Solution: Use Multiple Layers (Hidden Layers) to Create Non
 plt.tight_layout(rect=[0, 0.05, 1, 1])
 plt.savefig('linear_limitation.pdf', bbox_inches='tight', dpi=300)
 print("Chart saved: linear_limitation.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/04_linear_limitation/

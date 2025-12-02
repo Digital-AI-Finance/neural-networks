@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Overfitting Underfitting
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/17_overfitting_underfitting/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-24
+# ==============================================================================
+
+"""
+Overfitting Underfitting
+
+Training and validation loss curves for three scenarios
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/17_overfitting_underfitting/
+"""
+
+CHART_METADATA = {
+    'name': 'Overfitting Underfitting',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/17_overfitting_underfitting/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-24',
+    'description': 'Training and validation loss curves for three scenarios'
+}
+
 """
 Chart 17: Overfitting vs Underfitting
 Training vs validation loss curves - the key practical concept.
@@ -96,3 +121,5 @@ plt.savefig('overfitting_underfitting.pdf', dpi=300, bbox_inches='tight')
 plt.close()
 
 print("Saved: 17_overfitting_underfitting/overfitting_underfitting.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/17_overfitting_underfitting/

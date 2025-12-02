@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Learning Rate Comparison
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/18_learning_rate_comparison/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-24
+# ==============================================================================
+
+"""
+Learning Rate Comparison
+
+Effect of learning rate on convergence speed
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/18_learning_rate_comparison/
+"""
+
+CHART_METADATA = {
+    'name': 'Learning Rate Comparison',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/18_learning_rate_comparison/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-24',
+    'description': 'Effect of learning rate on convergence speed'
+}
+
 """
 Chart 18: Learning Rate Comparison
 Side-by-side: too small, just right, too large - actual loss curves.
@@ -102,3 +127,5 @@ plt.savefig('learning_rate_comparison.pdf', dpi=300, bbox_inches='tight')
 plt.close()
 
 print("Saved: 18_learning_rate_comparison/learning_rate_comparison.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/18_learning_rate_comparison/

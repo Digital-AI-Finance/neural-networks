@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Prediction Results
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/10_prediction_results/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-23
+# ==============================================================================
+
+"""
+Prediction Results
+
+Neural network visualization chart
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/10_prediction_results/
+"""
+
+CHART_METADATA = {
+    'name': 'Prediction Results',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/10_prediction_results/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-23',
+    'description': 'Neural network visualization chart'
+}
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -155,6 +180,7 @@ ax_metrics.text(0, arrow_y + 3, f'+{improvement:.1%}\nImprovement', ha='center',
 conclusion = 'Training transforms random guessing into intelligent prediction by learning patterns from data'
 fig.text(0.5, 0.01, conclusion, ha='center', fontsize=11, style='italic',
         bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.7))
-
 plt.savefig('prediction_results.pdf', bbox_inches='tight', dpi=300)
 print("Chart saved: prediction_results.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/10_prediction_results/

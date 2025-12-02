@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Single Neuron Function
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/02_single_neuron_function/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-23
+# ==============================================================================
+
+"""
+Single Neuron Function
+
+Mathematical computation inside a single artificial neuron
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/02_single_neuron_function/
+"""
+
+CHART_METADATA = {
+    'name': 'Single Neuron Function',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/02_single_neuron_function/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-23',
+    'description': 'Mathematical computation inside a single artificial neuron'
+}
+
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch, Circle, Rectangle
@@ -113,3 +138,5 @@ ax.text(11, 7.3, 'STEP 4:\nOutput', fontsize=10, ha='center', fontweight='bold',
 plt.tight_layout()
 plt.savefig('single_neuron_computation.pdf', bbox_inches='tight', dpi=300)
 print("Chart saved: single_neuron_computation.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/02_single_neuron_function/

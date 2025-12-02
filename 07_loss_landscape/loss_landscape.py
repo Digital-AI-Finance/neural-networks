@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Loss Landscape
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/07_loss_landscape/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-23
+# ==============================================================================
+
+"""
+Loss Landscape
+
+Neural network visualization chart
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/07_loss_landscape/
+"""
+
+CHART_METADATA = {
+    'name': 'Loss Landscape',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/07_loss_landscape/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-23',
+    'description': 'Neural network visualization chart'
+}
+
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
@@ -83,3 +108,5 @@ fig.text(0.5, 0.02, explanation, ha='center', fontsize=10, style='italic',
 plt.tight_layout(rect=[0, 0.05, 1, 1])
 plt.savefig('loss_landscape.pdf', bbox_inches='tight', dpi=300)
 print("Chart saved: loss_landscape.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/07_loss_landscape/

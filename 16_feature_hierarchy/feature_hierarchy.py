@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Feature Hierarchy
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/16_feature_hierarchy/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-24
+# ==============================================================================
+
+"""
+Feature Hierarchy
+
+Layer-by-layer data transformation visualization
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/16_feature_hierarchy/
+"""
+
+CHART_METADATA = {
+    'name': 'Feature Hierarchy',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/16_feature_hierarchy/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-24',
+    'description': 'Layer-by-layer data transformation visualization'
+}
+
 """
 Chart 16: Feature Hierarchy
 Shows what each layer "sees": raw price -> patterns -> strategy.
@@ -125,3 +150,5 @@ plt.savefig('feature_hierarchy.pdf', dpi=300, bbox_inches='tight')
 plt.close()
 
 print("Saved: 16_feature_hierarchy/feature_hierarchy.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/16_feature_hierarchy/

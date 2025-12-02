@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Market Prediction Data
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/09_market_prediction_data/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-23
+# ==============================================================================
+
+"""
+Market Prediction Data
+
+Neural network visualization chart
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/09_market_prediction_data/
+"""
+
+CHART_METADATA = {
+    'name': 'Market Prediction Data',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/09_market_prediction_data/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-23',
+    'description': 'Neural network visualization chart'
+}
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -106,3 +131,5 @@ fig.text(0.5, 0.02, explanation, ha='center', fontsize=11, fontweight='bold',
 plt.tight_layout(rect=[0, 0.04, 1, 0.97])
 plt.savefig('market_prediction_data.pdf', bbox_inches='tight', dpi=300)
 print("Chart saved: market_prediction_data.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/09_market_prediction_data/

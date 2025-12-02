@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Neuron Decision Maker
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/13_neuron_decision_maker/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-24
+# ==============================================================================
+
+"""
+Neuron Decision Maker
+
+Buy/sell threshold decision visualization
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/13_neuron_decision_maker/
+"""
+
+CHART_METADATA = {
+    'name': 'Neuron Decision Maker',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/13_neuron_decision_maker/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-24',
+    'description': 'Buy/sell threshold decision visualization'
+}
+
 """
 Chart 13: Neuron as Decision Maker
 Single neuron making buy/sell decision with threshold visualization.
@@ -103,3 +128,5 @@ plt.savefig('neuron_decision_maker.pdf', dpi=300, bbox_inches='tight')
 plt.close()
 
 print("Saved: 13_neuron_decision_maker/neuron_decision_maker.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/13_neuron_decision_maker/

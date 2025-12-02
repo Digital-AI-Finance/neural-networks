@@ -1,3 +1,28 @@
+# ==============================================================================
+# Chart: Biological Neuron
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/01_biological_neuron/
+# Author: Digital-AI-Finance
+# License: MIT License
+# Created: 2025-11-23
+# ==============================================================================
+
+"""
+Biological Neuron
+
+Side-by-side comparison of biological and artificial neurons
+
+Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/01_biological_neuron/
+"""
+
+CHART_METADATA = {
+    'name': 'Biological Neuron',
+    'url': 'https://github.com/Digital-AI-Finance/neural-networks/tree/main/01_biological_neuron/',
+    'author': 'Digital-AI-Finance',
+    'license': 'MIT License',
+    'created': '2025-11-23',
+    'description': 'Side-by-side comparison of biological and artificial neurons'
+}
+
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch, Circle, Ellipse
@@ -93,3 +118,5 @@ ax2.text(6.75, 7, 'Non-linear\nTransform', fontsize=8, ha='center', style='itali
 plt.tight_layout()
 plt.savefig('biological_vs_artificial.pdf', bbox_inches='tight', dpi=300)
 print("Chart saved: biological_vs_artificial.pdf")
+
+# Source: https://github.com/Digital-AI-Finance/neural-networks/tree/main/01_biological_neuron/
