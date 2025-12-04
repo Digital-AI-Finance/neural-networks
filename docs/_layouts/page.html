@@ -17,16 +17,16 @@
     /* Top Navigation */
     .top-nav {
       background: #1e3a5f;
-      padding: 8px 15px;
+      padding: 10px 20px;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 25px;
       flex-wrap: wrap;
     }
     .top-nav a {
       color: white;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 500;
       opacity: 0.9;
     }
@@ -34,30 +34,30 @@
     .top-nav a.active { opacity: 1; border-bottom: 2px solid white; }
     .top-nav .nav-pdf {
       background: #2563eb;
-      padding: 3px 10px;
+      padding: 4px 12px;
       border-radius: 4px;
     }
 
     /* Main Layout */
     .container {
       display: flex;
-      max-width: 1400px;
+      max-width: 1600px;
       margin: 0 auto;
     }
 
     /* Sidebar */
     .sidebar {
-      width: 220px;
+      width: 260px;
       background: #ffffff;
       border-right: 1px solid #e1e4e8;
-      height: calc(100vh - 36px);
+      height: calc(100vh - 42px);
       overflow-y: auto;
       position: sticky;
       top: 0;
       flex-shrink: 0;
     }
     .sidebar-header {
-      padding: 12px;
+      padding: 15px;
       border-bottom: 1px solid #e1e4e8;
       background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
     }
@@ -68,25 +68,25 @@
       color: white;
     }
     .sidebar-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 5px;
-      margin-right: 8px;
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      margin-right: 10px;
       background: white;
-      padding: 2px;
+      padding: 3px;
     }
     .course-title {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 700;
     }
 
     /* Sidebar Nav */
-    .sidebar-nav { padding: 6px 0; }
+    .sidebar-nav { padding: 8px 0; }
     .part-section { border-bottom: 1px solid #f0f0f0; }
     .part-section summary {
-      padding: 8px 12px;
+      padding: 10px 15px;
       font-weight: 600;
-      font-size: 10px;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       color: #24292e;
@@ -97,21 +97,21 @@
       justify-content: space-between;
     }
     .part-section summary::-webkit-details-marker { display: none; }
-    .part-section summary::after { content: "+"; font-size: 11px; color: #586069; }
+    .part-section summary::after { content: "+"; font-size: 12px; color: #586069; }
     .part-section[open] summary::after { content: "-"; }
     .part-section summary:hover { background: #f6f8fa; }
-    .part-section ul { list-style: none; padding: 0 0 4px 0; margin: 0; }
+    .part-section ul { list-style: none; padding: 0 0 6px 0; margin: 0; }
     .part-section li { margin: 0; }
     .part-section a {
       display: block;
-      padding: 4px 12px 4px 20px;
+      padding: 6px 15px 6px 25px;
       color: #586069;
       text-decoration: none;
-      font-size: 11px;
+      font-size: 12px;
       border-left: 2px solid transparent;
     }
     .part-section a:hover { background: #f6f8fa; color: #2563eb; }
-    .topic-count { font-size: 9px; color: #959da5; font-weight: normal; }
+    .topic-count { font-size: 10px; color: #959da5; font-weight: normal; }
 
     /* Main Content */
     .main-content {

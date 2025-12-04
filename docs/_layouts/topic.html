@@ -18,17 +18,17 @@
     }
     .container {
       display: flex;
-      max-width: 1400px;
+      max-width: 1600px;
       margin: 0 auto;
     }
 
     /* Sidebar */
     .sidebar {
-      width: 300px;
+      width: 260px;
       background: #ffffff;
       border-right: 1px solid #e1e4e8;
       padding: 0;
-      height: 100vh;
+      height: calc(100vh - 42px);
       overflow-y: auto;
       position: sticky;
       top: 0;
@@ -36,7 +36,7 @@
 
     /* Logo Header */
     .sidebar-header {
-      padding: 20px;
+      padding: 15px;
       border-bottom: 1px solid #e1e4e8;
       background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
     }
@@ -47,15 +47,15 @@
       color: white;
     }
     .sidebar-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      margin-right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      margin-right: 10px;
       background: white;
-      padding: 4px;
+      padding: 3px;
     }
     .course-title {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
       letter-spacing: -0.3px;
     }
@@ -104,7 +104,7 @@
 
     /* Nav Content */
     .sidebar-nav {
-      padding: 15px 0;
+      padding: 8px 0;
     }
 
     /* Collapsible Sections */
@@ -112,9 +112,9 @@
       border-bottom: 1px solid #f0f0f0;
     }
     .part-section summary {
-      padding: 12px 20px;
+      padding: 10px 15px;
       font-weight: 600;
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       color: #24292e;
@@ -148,11 +148,11 @@
     }
     .part-section a {
       display: block;
-      padding: 8px 20px 8px 30px;
+      padding: 6px 15px 6px 25px;
       color: #586069;
       text-decoration: none;
-      font-size: 13px;
-      border-left: 3px solid transparent;
+      font-size: 12px;
+      border-left: 2px solid transparent;
     }
     .part-section a:hover {
       background: #f6f8fa;
@@ -164,8 +164,8 @@
       border-left-color: #2563eb;
       font-weight: 600;
     }
-    .part-section .topic-count {
-      font-size: 11px;
+    .topic-count {
+      font-size: 10px;
       color: #959da5;
       font-weight: normal;
     }
