@@ -1,11 +1,7 @@
 ---
-layout: default
-title: Exercise Bank
+layout: page
+title: Exercises
 ---
-
-# Complete Exercise Bank
-
-[Back to Home](index.html)
 
 This page collects all practice problems from the course in one place for self-study and review.
 
@@ -252,6 +248,3 @@ Weight sequence: 5.0 -> 4.4 -> 3.92 -> 3.536 -> 3.229 -> 2.983
 Converging toward minimum at w = 2.
 </details>
 
----
-
-[Back to Home](index.html)

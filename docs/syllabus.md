@@ -1,12 +1,6 @@
 ---
-layout: default
+layout: page
 title: Syllabus
----
-
-# Course Syllabus
-
-[Back to Home](index.html)
-
 ---
 
 ## Course Information

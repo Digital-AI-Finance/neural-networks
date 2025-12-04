@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | Neural Networks</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      background: #1e3a5f;
+      padding: 8px 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+    .top-nav a:hover { opacity: 1; text-decoration: underline; }
+    .top-nav a.active { opacity: 1; border-bottom: 2px solid white; }
+    .top-nav .nav-pdf {
+      background: #2563eb;
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+
+    /* Main Layout */
+    .container {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #ffffff;
+      border-right: 1px solid #e1e4e8;
+      height: calc(100vh - 36px);
+      overflow-y: auto;
+      position: sticky;
+      top: 0;
+      flex-shrink: 0;
+    }
+    .sidebar-header {
+      padding: 12px;
+      border-bottom: 1px solid #e1e4e8;
+      background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+    }
+    .sidebar-header a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+    }
+    .sidebar-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 5px;
+      margin-right: 8px;
+      background: white;
+      padding: 2px;
+    }
+    .course-title {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* Sidebar Nav */
+    .sidebar-nav { padding: 6px 0; }
+    .part-section { border-bottom: 1px solid #f0f0f0; }
+    .part-section summary {
+      padding: 8px 12px;
+      font-weight: 600;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #24292e;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .part-section summary::-webkit-details-marker { display: none; }
+    .part-section summary::after { content: "+"; font-size: 11px; color: #586069; }
+    .part-section[open] summary::after { content: "-"; }
+    .part-section summary:hover { background: #f6f8fa; }
+    .part-section ul { list-style: none; padding: 0 0 4px 0; margin: 0; }
+    .part-section li { margin: 0; }
+    .part-section a {
+      display: block;
+      padding: 4px 12px 4px 20px;
+      color: #586069;
+      text-decoration: none;
+      font-size: 11px;
+      border-left: 2px solid transparent;
+    }
+    .part-section a:hover { background: #f6f8fa; color: #2563eb; }
+    .topic-count { font-size: 9px; color: #959da5; font-weight: normal; }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      min-width: 0;
+      padding: 15px 20px;
+      max-width: 900px;
+    }
+
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+    .page-header h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    /* Content Styling */
+    .content {
+      background: white;
+      border-radius: 6px;
+      padding: 15px;
+      border: 1px solid #e2e8f0;
+    }
+    .content h2 {
+      font-size: 1rem;
+      color: #1e3a5f;
+      margin: 12px 0 8px 0;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .content h2:first-child { margin-top: 0; }
+    .content h3 {
+      font-size: 0.9rem;
+      color: #2563eb;
+      margin: 10px 0 6px 0;
+    }
+    .content p {
+      font-size: 0.8rem;
+      margin: 6px 0;
+      color: #475569;
+    }
+    .content ul, .content ol {
+      font-size: 0.8rem;
+      margin: 6px 0;
+      padding-left: 20px;
+      color: #475569;
+    }
+    .content li { margin: 3px 0; }
+    .content a { color: #2563eb; }
+    .content a:hover { text-decoration: underline; }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.75rem;
+      margin: 8px 0;
+    }
+    .content th, .content td {
+      border: 1px solid #e2e8f0;
+      padding: 6px 8px;
+      text-align: left;
+    }
+    .content th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: #1e3a5f;
+    }
+    .content code {
+      background: #f1f5f9;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 0.75rem;
+    }
+    .content pre {
+      background: #f1f5f9;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 0.75rem;
+    }
+    .content hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 12px 0;
+    }
+    .content details {
+      margin: 6px 0;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+    }
+    .content summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #2563eb;
+    }
+    .content blockquote {
+      border-left: 3px solid #2563eb;
+      padding-left: 10px;
+      margin: 8px 0;
+      color: #64748b;
+      font-size: 0.8rem;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 12px;
+      background: #1e3a5f;
+      color: white;
+      text-align: center;
+      font-size: 0.7rem;
+    }
+    .footer a { color: #93c5fd; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #e1e4e8;
+        max-height: 35vh;
+      }
+      .main-content { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <a href="{{ site.baseurl }}/">Home</a>
+    <a href="{{ site.baseurl }}/topics/01-biological-neuron.html">Topics</a>
+    <a href="{{ site.baseurl }}/syllabus.html" {% if page.title == "Syllabus" %}class="active"{% endif %}>Syllabus</a>
+    <a href="{{ site.baseurl }}/exercises.html" {% if page.title == "Exercises" %}class="active"{% endif %}>Exercises</a>
+    <a href="{{ site.baseurl }}/resources.html" {% if page.title == "Resources" %}class="active"{% endif %}>Resources</a>
+    <a href="https://github.com/Digital-AI-Finance/neural-networks/raw/main/20251128_0825_quantlet_branding.pdf" class="nav-pdf">PDF</a>
+  </nav>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="{{ site.baseurl }}/">
+          <img src="{{ site.baseurl }}/assets/images/quantlet-logo.png" alt="QuantLet" class="sidebar-logo">
+          <span class="course-title">Neural Networks</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <details class="part-section">
+          <summary>Part 1: Foundations <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li><a href="{{ site.baseurl }}/topics/01-biological-neuron.html">01. Biological Neuron</a></li>
+            <li><a href="{{ site.baseurl }}/topics/02-single-neuron-computation.html">02. Single Neuron</a></li>
+            <li><a href="{{ site.baseurl }}/topics/11-problem-visualization.html">11. Problem Visualization</a></li>
+            <li><a href="{{ site.baseurl }}/topics/13-neuron-decision-maker.html">13. Neuron Decisions</a></li>
+          </ul>
+        </details>
+
+        <details class="part-section">
+          <summary>Part 2: Building Blocks <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li><a href="{{ site.baseurl }}/topics/03-activation-functions.html">03. Activation Functions</a></li>
+            <li><a href="{{ site.baseurl }}/topics/04-linear-limitation.html">04. Linear Limitation</a></li>
+            <li><a href="{{ site.baseurl }}/topics/14-sigmoid-saturation.html">14. Sigmoid Saturation</a></li>
+            <li><a href="{{ site.baseurl }}/topics/15-boundary-evolution.html">15. Boundary Evolution</a></li>
+          </ul>
+        </details>
+
+        <details class="part-section">
+          <summary>Part 3: Architecture <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li><a href="{{ site.baseurl }}/topics/05-network-architecture.html">05. Network Architecture</a></li>
+            <li><a href="{{ site.baseurl }}/topics/06-forward-propagation.html">06. Forward Propagation</a></li>
+            <li><a href="{{ site.baseurl }}/topics/12-decision-boundary-concept.html">12. Decision Boundary</a></li>
+            <li><a href="{{ site.baseurl }}/topics/16-feature-hierarchy.html">16. Feature Hierarchy</a></li>
+          </ul>
+        </details>
+
+        <details class="part-section">
+          <summary>Part 4: Learning Process <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li><a href="{{ site.baseurl }}/topics/07-loss-landscape.html">07. Loss Landscape</a></li>
+            <li><a href="{{ site.baseurl }}/topics/08-gradient-descent.html">08. Gradient Descent</a></li>
+            <li><a href="{{ site.baseurl }}/topics/17-overfitting-underfitting.html">17. Overfitting</a></li>
+            <li><a href="{{ site.baseurl }}/topics/18-learning-rate-comparison.html">18. Learning Rate</a></li>
+          </ul>
+        </details>
+
+        <details class="part-section">
+          <summary>Part 5: Application <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li><a href="{{ site.baseurl }}/topics/09-market-prediction-data.html">09. Market Data</a></li>
+            <li><a href="{{ site.baseurl }}/topics/10-prediction-results.html">10. Prediction Results</a></li>
+            <li><a href="{{ site.baseurl }}/topics/19-confusion-matrix.html">19. Confusion Matrix</a></li>
+            <li><a href="{{ site.baseurl }}/topics/20-trading-backtest.html">20. Trading Backtest</a></li>
+          </ul>
+        </details>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <h1>{{ page.title }}</h1>
+      </div>
+
+      <div class="content">
+        {{ content }}
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <a href="https://github.com/Digital-AI-Finance">Digital-AI-Finance</a> | MIT License
+  </footer>
+</body>
+</html>

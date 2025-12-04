@@ -1,12 +1,6 @@
 ---
-layout: default
+layout: page
 title: Resources
----
-
-# Additional Resources
-
-[Back to Home](index.html)
-
 ---
 
 ## Books
