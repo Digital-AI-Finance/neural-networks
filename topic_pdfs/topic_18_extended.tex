@@ -1,9 +1,11 @@
 \documentclass[8pt,aspectratio=169]{beamer}
 \usetheme{Madrid}
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{tikz}
 
 % Color definitions
 \definecolor{mlblue}{RGB}{0,102,204}
@@ -15,23 +17,45 @@
 \definecolor{mlorange}{RGB}{255, 127, 14}
 \definecolor{mlgreen}{RGB}{44, 160, 44}
 \definecolor{mlred}{RGB}{214, 39, 40}
+\definecolor{mlgray}{RGB}{127, 127, 127}
 
-% Apply custom colors
+% Additional colors for template compatibility
+\definecolor{lightgray}{RGB}{240, 240, 240}
+\definecolor{midgray}{RGB}{180, 180, 180}
+
+% Apply custom colors to Madrid theme
 \setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
 \setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
 \setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+
 \setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{section in toc}{fg=mlpurple}
+\setbeamercolor{subsection in toc}{fg=mlblue}
+\setbeamercolor{title}{fg=mlpurple}
 \setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
 \setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{block body}{bg=mllavender4,fg=black}
 
+% Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}
+
+% Clean itemize/enumerate
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+% Reduce margins for more content space
 \setbeamersize{text margin left=5mm,text margin right=5mm}
 
-\title{18. Prediction Results}
-\subtitle{Neural Networks - From Brain to Business}
-\date{}
+% Command for bottom annotation (Madrid-style)
+\newcommand{\bottomnote}[1]{%
+\vfill
+\vspace{-2mm}
+\textcolor{mllavender2}{\rule{\textwidth}{0.4pt}}
+\vspace{1mm}
+\footnotesize
+\textbf{#1}
+}
 
 \begin{document}
 
@@ -41,24 +65,32 @@
 
 \begin{frame}{Learning Goal}
 Compare network performance before and after training to understand the impact of learning.
+
+\bottomnote{This slide establishes the learning objective for this topic}
 \end{frame}
 
 \begin{frame}{Key Concept (1/2)}
 Before training, a neural network with random weights is essentially guessing. For binary classification (up/down), random guessing yields about \textbf{50\% accuracy} - no better than flipping a coin.
 
 After training on historical data, the network learns patterns that improve predictions. A well-trained network might achieve \textbf{70\% accuracy} on unseen test data - significantly better than chance.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Key Concept (2/2)}
 The improvement from 50\% to 70\% represents real predictive power extracted from the data. However, it's crucial to evaluate on \textbf{held-out test data} that wasn't used during training. Performance on training data is often inflated (the network may have memorized specifics rather than learning generalizable patterns).
 
 Even modest accuracy improvements can be valuable in finance, where small edges compound over many trades.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Visualization}
 \begin{center}
 \includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{18_prediction_results/prediction_results.pdf}
 \end{center}
+
+\bottomnote{Visual representations help solidify abstract concepts}
 \end{frame}
 
 \begin{frame}{Key Formula}
@@ -70,6 +102,8 @@ Even modest accuracy improvements can be valuable in finance, where small edges 
 
 For binary classification:
 \[\text{Random Baseline} = 50\%\]
+
+\bottomnote{Mathematical formalization provides precision}
 \end{frame}
 
 \begin{frame}{Intuitive Explanation}
@@ -82,6 +116,8 @@ Over 100 days:
 - Forecaster B: ~70 correct (learned patterns)
 
 Forecaster B adds real value by capturing patterns that random guessing misses. Similarly, a trained neural network extracts predictive information from data that raw chance cannot access.
+
+\bottomnote{Intuitive explanations bridge theory and practice}
 \end{frame}
 
 \begin{frame}{Practice Problem 1}
@@ -105,6 +141,8 @@ The network predicts \textbf{20 percentage points} better than random guessing -
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Practice Problem 2}
@@ -138,6 +176,8 @@ Network B's 68\% test accuracy represents real predictive power. Network A's 95\
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Key Takeaways}
@@ -148,6 +188,8 @@ Network B's 68\% test accuracy represents real predictive power. Network A's 95\
   \item Even modest improvements (55-70\%) can be valuable in finance
   \item Gap between training and test accuracy indicates overfitting
 \end{itemize}
+
+\bottomnote{These key points summarize the essential learnings}
 \end{frame}
 
 \end{document}

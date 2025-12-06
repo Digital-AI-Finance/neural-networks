@@ -1,9 +1,11 @@
 \documentclass[8pt,aspectratio=169]{beamer}
 \usetheme{Madrid}
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{tikz}
 
 % Color definitions
 \definecolor{mlblue}{RGB}{0,102,204}
@@ -15,23 +17,45 @@
 \definecolor{mlorange}{RGB}{255, 127, 14}
 \definecolor{mlgreen}{RGB}{44, 160, 44}
 \definecolor{mlred}{RGB}{214, 39, 40}
+\definecolor{mlgray}{RGB}{127, 127, 127}
 
-% Apply custom colors
+% Additional colors for template compatibility
+\definecolor{lightgray}{RGB}{240, 240, 240}
+\definecolor{midgray}{RGB}{180, 180, 180}
+
+% Apply custom colors to Madrid theme
 \setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
 \setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
 \setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+
 \setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{section in toc}{fg=mlpurple}
+\setbeamercolor{subsection in toc}{fg=mlblue}
+\setbeamercolor{title}{fg=mlpurple}
 \setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
 \setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{block body}{bg=mllavender4,fg=black}
 
+% Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}
+
+% Clean itemize/enumerate
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+% Reduce margins for more content space
 \setbeamersize{text margin left=5mm,text margin right=5mm}
 
-\title{12. Feature Hierarchy}
-\subtitle{Neural Networks - From Brain to Business}
-\date{}
+% Command for bottom annotation (Madrid-style)
+\newcommand{\bottomnote}[1]{%
+\vfill
+\vspace{-2mm}
+\textcolor{mllavender2}{\rule{\textwidth}{0.4pt}}
+\vspace{1mm}
+\footnotesize
+\textbf{#1}
+}
 
 \begin{document}
 
@@ -41,6 +65,8 @@
 
 \begin{frame}{Learning Goal}
 Understand how different layers learn increasingly abstract representations.
+
+\bottomnote{This slide establishes the learning objective for this topic}
 \end{frame}
 
 \begin{frame}{Key Concept (1/2)}
@@ -50,18 +76,24 @@ Neural networks learn \textbf{hierarchical representations}. Each layer transfor
 - \textbf{Hidden layer 1}: Simple patterns (uptrend, high volume, positive sentiment)
 - \textbf{Hidden layer 2}: Combinations (momentum + volume spike = strong signal)
 - \textbf{Output layer}: Final decision (BUY/SELL with confidence)
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Key Concept (2/2)}
 This hierarchy emerges automatically through training. The network learns what intermediate representations are useful for the final task. Early layers detect simple patterns; later layers combine these into complex concepts.
 
 In image recognition, this is visible: early layers detect edges, middle layers detect shapes, late layers detect objects. For financial data, the learned features are less visually interpretable but follow the same principle.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Visualization}
 \begin{center}
 \includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{12_feature_hierarchy/feature_hierarchy.pdf}
 \end{center}
+
+\bottomnote{Visual representations help solidify abstract concepts}
 \end{frame}
 
 \begin{frame}{Key Formula}
@@ -74,6 +106,8 @@ In image recognition, this is visible: early layers detect edges, middle layers 
 \[\hat{y} = \sigma(W^{[3]} h^{[2]} + b^{[3]}) \quad \text{(decision)}\]
 
 Each layer builds on the representations from the previous layer.
+
+\bottomnote{Mathematical formalization provides precision}
 \end{frame}
 
 \begin{frame}{Intuitive Explanation}
@@ -85,6 +119,8 @@ Think of a corporate decision-making process:
 4. \textbf{Executive (Output)}: Make final call - "Confidence: 68\% BUY"
 
 Each level adds interpretation and abstraction. The executive doesn't need raw numbers - they need the synthesized judgment of their team.
+
+\bottomnote{Intuitive explanations bridge theory and practice}
 \end{frame}
 
 \begin{frame}{Practice Problem 1}
@@ -122,6 +158,8 @@ Each layer abstracts further from raw data toward the final fraud determination.
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Practice Problem 2}
@@ -153,6 +191,8 @@ Why can't we interpret what middle layer neurons have learned as easily as input
 This is why neural networks are often called "black boxes" - they work well but are hard to interpret.
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Key Takeaways}
@@ -163,6 +203,8 @@ This is why neural networks are often called "black boxes" - they work well but 
   \item Hidden representations are often not human-interpretable
   \item More layers isn't always better - match complexity to problem
 \end{itemize}
+
+\bottomnote{These key points summarize the essential learnings}
 \end{frame}
 
 \end{document}

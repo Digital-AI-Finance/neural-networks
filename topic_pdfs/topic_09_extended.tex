@@ -1,9 +1,11 @@
 \documentclass[8pt,aspectratio=169]{beamer}
 \usetheme{Madrid}
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{tikz}
 
 % Color definitions
 \definecolor{mlblue}{RGB}{0,102,204}
@@ -15,23 +17,45 @@
 \definecolor{mlorange}{RGB}{255, 127, 14}
 \definecolor{mlgreen}{RGB}{44, 160, 44}
 \definecolor{mlred}{RGB}{214, 39, 40}
+\definecolor{mlgray}{RGB}{127, 127, 127}
 
-% Apply custom colors
+% Additional colors for template compatibility
+\definecolor{lightgray}{RGB}{240, 240, 240}
+\definecolor{midgray}{RGB}{180, 180, 180}
+
+% Apply custom colors to Madrid theme
 \setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
 \setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
 \setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+
 \setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{section in toc}{fg=mlpurple}
+\setbeamercolor{subsection in toc}{fg=mlblue}
+\setbeamercolor{title}{fg=mlpurple}
 \setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
 \setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{block body}{bg=mllavender4,fg=black}
 
+% Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}
+
+% Clean itemize/enumerate
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+% Reduce margins for more content space
 \setbeamersize{text margin left=5mm,text margin right=5mm}
 
-\title{09. Network Architecture}
-\subtitle{Neural Networks - From Brain to Business}
-\date{}
+% Command for bottom annotation (Madrid-style)
+\newcommand{\bottomnote}[1]{%
+\vfill
+\vspace{-2mm}
+\textcolor{mllavender2}{\rule{\textwidth}{0.4pt}}
+\vspace{1mm}
+\footnotesize
+\textbf{#1}
+}
 
 \begin{document}
 
@@ -41,12 +65,16 @@
 
 \begin{frame}{Learning Goal}
 Design and understand the structure of a multi-layer neural network.
+
+\bottomnote{This slide establishes the learning objective for this topic}
 \end{frame}
 
 \begin{frame}{Key Concept (1/2)}
 A neural network is organized into \textbf{layers} of neurons. The \textbf{input layer} receives raw features (like price, volume, sentiment). \textbf{Hidden layers} transform these features into increasingly abstract representations. The \textbf{output layer} produces the final prediction.
 
 Each connection between neurons has a \textbf{weight}, and each neuron (except inputs) has a \textbf{bias}. The total number of parameters (weights + biases) determines the network's capacity to learn complex patterns.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Key Concept (2/2)}
@@ -56,12 +84,16 @@ For a network predicting stock direction with 5 input features, 6 hidden neurons
 - \textbf{Total: 43 learnable parameters}
 
 The architecture choices (number of layers, neurons per layer) are \textbf{hyperparameters} that we set before training. Too few neurons = underfitting. Too many = overfitting or slow training.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Visualization}
 \begin{center}
 \includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{09_network_architecture/network_architecture.pdf}
 \end{center}
+
+\bottomnote{Visual representations help solidify abstract concepts}
 \end{frame}
 
 \begin{frame}{Key Formula}
@@ -75,6 +107,8 @@ Where:
 
 \textbf{For multiple layers:}
 \[\text{Total} = \sum_{\text{layer } l} (n_{l-1} \times n_l + n_l)\]
+
+\bottomnote{Mathematical formalization provides precision}
 \end{frame}
 
 \begin{frame}{Intuitive Explanation}
@@ -86,6 +120,8 @@ Think of a neural network as a factory assembly line:
 - \textbf{Output layer}: Manager makes final decision (BUY or SELL)
 
 Each worker (neuron) has different skills (weights) for evaluating the incoming information. During training, workers learn which signals matter most for making good predictions.
+
+\bottomnote{Intuitive explanations bridge theory and practice}
 \end{frame}
 
 \begin{frame}{Practice Problem 1}
@@ -108,6 +144,8 @@ Layer by layer:
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Practice Problem 2}
@@ -135,6 +173,8 @@ With only 1,000 training samples and 20,301 parameters, the network has \textbf{
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Key Takeaways}
@@ -145,6 +185,8 @@ With only 1,000 training samples and 20,301 parameters, the network has \textbf{
   \item Architecture is a hyperparameter chosen before training
   \item Rule of thumb: parameters should be less than training samples
 \end{itemize}
+
+\bottomnote{These key points summarize the essential learnings}
 \end{frame}
 
 \end{document}

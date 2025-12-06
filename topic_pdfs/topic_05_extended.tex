@@ -1,9 +1,11 @@
 \documentclass[8pt,aspectratio=169]{beamer}
 \usetheme{Madrid}
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{tikz}
 
 % Color definitions
 \definecolor{mlblue}{RGB}{0,102,204}
@@ -15,23 +17,45 @@
 \definecolor{mlorange}{RGB}{255, 127, 14}
 \definecolor{mlgreen}{RGB}{44, 160, 44}
 \definecolor{mlred}{RGB}{214, 39, 40}
+\definecolor{mlgray}{RGB}{127, 127, 127}
 
-% Apply custom colors
+% Additional colors for template compatibility
+\definecolor{lightgray}{RGB}{240, 240, 240}
+\definecolor{midgray}{RGB}{180, 180, 180}
+
+% Apply custom colors to Madrid theme
 \setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
 \setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
 \setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+
 \setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{section in toc}{fg=mlpurple}
+\setbeamercolor{subsection in toc}{fg=mlblue}
+\setbeamercolor{title}{fg=mlpurple}
 \setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
 \setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{block body}{bg=mllavender4,fg=black}
 
+% Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}
+
+% Clean itemize/enumerate
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+% Reduce margins for more content space
 \setbeamersize{text margin left=5mm,text margin right=5mm}
 
-\title{05. Activation Functions}
-\subtitle{Neural Networks - From Brain to Business}
-\date{}
+% Command for bottom annotation (Madrid-style)
+\newcommand{\bottomnote}[1]{%
+\vfill
+\vspace{-2mm}
+\textcolor{mllavender2}{\rule{\textwidth}{0.4pt}}
+\vspace{1mm}
+\footnotesize
+\textbf{#1}
+}
 
 \begin{document}
 
@@ -41,12 +65,16 @@
 
 \begin{frame}{Learning Goal}
 Compare different activation functions and understand when to use each one.
+
+\bottomnote{This slide establishes the learning objective for this topic}
 \end{frame}
 
 \begin{frame}{Key Concept (1/2)}
 Activation functions are the "decision makers" of neural networks. They take the weighted sum and transform it into an output. Without activation functions, neural networks would only compute linear combinations - no matter how many layers, the result would be equivalent to a single layer.
 
 \textbf{Sigmoid} outputs values between 0 and 1, making it ideal for probabilities. However, it suffers from the "vanishing gradient" problem in deep networks.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Key Concept (2/2)}
@@ -55,12 +83,16 @@ Activation functions are the "decision makers" of neural networks. They take the
 \textbf{Tanh} outputs values between -1 and 1, making it zero-centered. This can help with optimization in some cases.
 
 The choice of activation function significantly impacts training speed and network performance. Modern networks typically use ReLU for hidden layers and sigmoid or softmax for output layers.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Visualization}
 \begin{center}
 \includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{05_activation_functions/activation_functions.pdf}
 \end{center}
+
+\bottomnote{Visual representations help solidify abstract concepts}
 \end{frame}
 
 \begin{frame}{Key Formula}
@@ -72,6 +104,8 @@ The choice of activation function significantly impacts training speed and netwo
 
 \textbf{Tanh:}
 \[\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}} \quad \text{Range: } (-1, 1)\]
+
+\bottomnote{Mathematical formalization provides precision}
 \end{frame}
 
 \begin{frame}{Intuitive Explanation}
@@ -82,6 +116,8 @@ Think of activation functions as different voting rules:
 - \textbf{Tanh}: "Express enthusiasm (+1) or skepticism (-1), with neutrality at 0."
 
 ReLU's simplicity (just check if positive) makes it computationally efficient. Sigmoid and tanh are smooth but can "saturate" - when inputs are very large or very small, the output barely changes, making learning slow.
+
+\bottomnote{Intuitive explanations bridge theory and practice}
 \end{frame}
 
 \begin{frame}{Practice Problem 1}
@@ -106,6 +142,8 @@ Calculate the output of each activation function for z = 2.0.
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Practice Problem 2}
@@ -130,6 +168,8 @@ Calculate the output of each activation function for z = -1.5.
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Key Takeaways}
@@ -140,6 +180,8 @@ Calculate the output of each activation function for z = -1.5.
   \item Tanh: Zero-centered, but also saturates at extremes
   \item Modern networks typically use ReLU for hidden layers
 \end{itemize}
+
+\bottomnote{These key points summarize the essential learnings}
 \end{frame}
 
 \end{document}

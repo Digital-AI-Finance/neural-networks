@@ -1,9 +1,11 @@
 \documentclass[8pt,aspectratio=169]{beamer}
 \usetheme{Madrid}
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{tikz}
 
 % Color definitions
 \definecolor{mlblue}{RGB}{0,102,204}
@@ -15,23 +17,45 @@
 \definecolor{mlorange}{RGB}{255, 127, 14}
 \definecolor{mlgreen}{RGB}{44, 160, 44}
 \definecolor{mlred}{RGB}{214, 39, 40}
+\definecolor{mlgray}{RGB}{127, 127, 127}
 
-% Apply custom colors
+% Additional colors for template compatibility
+\definecolor{lightgray}{RGB}{240, 240, 240}
+\definecolor{midgray}{RGB}{180, 180, 180}
+
+% Apply custom colors to Madrid theme
 \setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
 \setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
 \setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+
 \setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{section in toc}{fg=mlpurple}
+\setbeamercolor{subsection in toc}{fg=mlblue}
+\setbeamercolor{title}{fg=mlpurple}
 \setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
 \setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{block body}{bg=mllavender4,fg=black}
 
+% Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}
+
+% Clean itemize/enumerate
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+% Reduce margins for more content space
 \setbeamersize{text margin left=5mm,text margin right=5mm}
 
-\title{15. Overfitting and Underfitting}
-\subtitle{Neural Networks - From Brain to Business}
-\date{}
+% Command for bottom annotation (Madrid-style)
+\newcommand{\bottomnote}[1]{%
+\vfill
+\vspace{-2mm}
+\textcolor{mllavender2}{\rule{\textwidth}{0.4pt}}
+\vspace{1mm}
+\footnotesize
+\textbf{#1}
+}
 
 \begin{document}
 
@@ -41,12 +65,16 @@
 
 \begin{frame}{Learning Goal}
 Diagnose and prevent common training problems using learning curves.
+
+\bottomnote{This slide establishes the learning objective for this topic}
 \end{frame}
 
 \begin{frame}{Key Concept (1/2)}
 \textbf{Underfitting} occurs when a model is too simple to capture patterns in the data. Both training and test error remain high. The solution: increase model complexity.
 
 \textbf{Overfitting} occurs when a model is too complex, memorizing training data rather than learning generalizable patterns. Training error is low but test error is high. The solution: reduce complexity, get more data, or use regularization.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Key Concept (2/2)}
@@ -56,12 +84,16 @@ The \textbf{ideal model} captures genuine patterns without memorizing noise. Bot
 - Both high, not improving: Underfitting
 - Training drops, validation rises: Overfitting
 - Both converge to similar low values: Good fit
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Visualization}
 \begin{center}
 \includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{15_overfitting_underfitting/overfitting_underfitting.pdf}
 \end{center}
+
+\bottomnote{Visual representations help solidify abstract concepts}
 \end{frame}
 
 \begin{frame}{Key Formula}
@@ -72,6 +104,8 @@ The \textbf{ideal model} captures genuine patterns without memorizing noise. Bot
 - \textbf{High bias (underfitting)}: Model too simple, misses patterns
 - \textbf{High variance (overfitting)}: Model too sensitive to training data
 - \textbf{Goal}: Minimize both bias and variance
+
+\bottomnote{Mathematical formalization provides precision}
 \end{frame}
 
 \begin{frame}{Intuitive Explanation}
@@ -84,6 +118,8 @@ Imagine memorizing vs understanding:
 - \textbf{Good fit}: A student who understands the concepts. They perform well on both homework and exams because they've learned generalizable knowledge.
 
 The goal is understanding (generalization), not memorization.
+
+\bottomnote{Intuitive explanations bridge theory and practice}
 \end{frame}
 
 \begin{frame}{Practice Problem 1}
@@ -120,6 +156,8 @@ Evidence:
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Practice Problem 2}
@@ -156,6 +194,8 @@ Evidence:
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Key Takeaways}
@@ -166,6 +206,8 @@ Evidence:
   \item Solutions: Adjust complexity, regularization, data, early stopping
   \item Goal: Low error on both training and test sets
 \end{itemize}
+
+\bottomnote{These key points summarize the essential learnings}
 \end{frame}
 
 \end{document}

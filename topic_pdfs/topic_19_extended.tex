@@ -1,9 +1,11 @@
 \documentclass[8pt,aspectratio=169]{beamer}
 \usetheme{Madrid}
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{tikz}
 
 % Color definitions
 \definecolor{mlblue}{RGB}{0,102,204}
@@ -15,23 +17,45 @@
 \definecolor{mlorange}{RGB}{255, 127, 14}
 \definecolor{mlgreen}{RGB}{44, 160, 44}
 \definecolor{mlred}{RGB}{214, 39, 40}
+\definecolor{mlgray}{RGB}{127, 127, 127}
 
-% Apply custom colors
+% Additional colors for template compatibility
+\definecolor{lightgray}{RGB}{240, 240, 240}
+\definecolor{midgray}{RGB}{180, 180, 180}
+
+% Apply custom colors to Madrid theme
 \setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
 \setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
 \setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+
 \setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{section in toc}{fg=mlpurple}
+\setbeamercolor{subsection in toc}{fg=mlblue}
+\setbeamercolor{title}{fg=mlpurple}
 \setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
 \setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{block body}{bg=mllavender4,fg=black}
 
+% Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}
+
+% Clean itemize/enumerate
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+% Reduce margins for more content space
 \setbeamersize{text margin left=5mm,text margin right=5mm}
 
-\title{19. Confusion Matrix}
-\subtitle{Neural Networks - From Brain to Business}
-\date{}
+% Command for bottom annotation (Madrid-style)
+\newcommand{\bottomnote}[1]{%
+\vfill
+\vspace{-2mm}
+\textcolor{mllavender2}{\rule{\textwidth}{0.4pt}}
+\vspace{1mm}
+\footnotesize
+\textbf{#1}
+}
 
 \begin{document}
 
@@ -41,6 +65,8 @@
 
 \begin{frame}{Learning Goal}
 Evaluate classifier performance beyond simple accuracy using precision, recall, and F1 score.
+
+\bottomnote{This slide establishes the learning objective for this topic}
 \end{frame}
 
 \begin{frame}{Key Concept (1/2)}
@@ -49,6 +75,8 @@ A \textbf{confusion matrix} breaks down predictions into four categories:
 - \textbf{False Positive (FP)}: Predicted UP, actually DOWN (Type I error)
 - \textbf{True Negative (TN)}: Predicted DOWN, actually DOWN
 - \textbf{False Negative (FN)}: Predicted DOWN, actually UP (Type II error)
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Key Concept (2/2)}
@@ -58,12 +86,16 @@ This granular view reveals important patterns that overall accuracy hides:
 - \textbf{F1 Score}: Harmonic mean of precision and recall
 
 In trading, these distinctions matter: a false BUY signal (FP) costs money on a losing trade, while a missed opportunity (FN) is a foregone profit. Different strategies prioritize different metrics.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Visualization}
 \begin{center}
 \includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{19_confusion_matrix/confusion_matrix.pdf}
 \end{center}
+
+\bottomnote{Visual representations help solidify abstract concepts}
 \end{frame}
 
 \begin{frame}{Key Formula}
@@ -78,6 +110,8 @@ In trading, these distinctions matter: a false BUY signal (FP) costs money on a 
 
 \textbf{Accuracy}:
 \[\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}\]
+
+\bottomnote{Mathematical formalization provides precision}
 \end{frame}
 
 \begin{frame}{Intuitive Explanation}
@@ -93,6 +127,8 @@ You can't maximize both simultaneously:
 In trading:
 - High precision strategy: Trade rarely, but when you trade, usually win
 - High recall strategy: Capture most winning opportunities, but also some losers
+
+\bottomnote{Intuitive explanations bridge theory and practice}
 \end{frame}
 
 \begin{frame}{Practice Problem 1}
@@ -120,6 +156,8 @@ Given: TP = 40, FP = 15, TN = 35, FN = 10. Calculate precision, recall, and F1 s
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Practice Problem 2}
@@ -159,6 +197,8 @@ By F1, Model B is "better" overall. But for conservative trading that prioritize
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Key Takeaways}
@@ -170,6 +210,8 @@ By F1, Model B is "better" overall. But for conservative trading that prioritize
   \item F1 balances precision and recall
   \item Choose metrics based on business costs of different errors
 \end{itemize}
+
+\bottomnote{These key points summarize the essential learnings}
 \end{frame}
 
 \end{document}

@@ -1,9 +1,11 @@
 \documentclass[8pt,aspectratio=169]{beamer}
 \usetheme{Madrid}
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{tikz}
 
 % Color definitions
 \definecolor{mlblue}{RGB}{0,102,204}
@@ -15,23 +17,45 @@
 \definecolor{mlorange}{RGB}{255, 127, 14}
 \definecolor{mlgreen}{RGB}{44, 160, 44}
 \definecolor{mlred}{RGB}{214, 39, 40}
+\definecolor{mlgray}{RGB}{127, 127, 127}
 
-% Apply custom colors
+% Additional colors for template compatibility
+\definecolor{lightgray}{RGB}{240, 240, 240}
+\definecolor{midgray}{RGB}{180, 180, 180}
+
+% Apply custom colors to Madrid theme
 \setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
 \setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
 \setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+
 \setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{section in toc}{fg=mlpurple}
+\setbeamercolor{subsection in toc}{fg=mlblue}
+\setbeamercolor{title}{fg=mlpurple}
 \setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
 \setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{block body}{bg=mllavender4,fg=black}
 
+% Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}
+
+% Clean itemize/enumerate
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+% Reduce margins for more content space
 \setbeamersize{text margin left=5mm,text margin right=5mm}
 
-\title{06. Linear Limitation}
-\subtitle{Neural Networks - From Brain to Business}
-\date{}
+% Command for bottom annotation (Madrid-style)
+\newcommand{\bottomnote}[1]{%
+\vfill
+\vspace{-2mm}
+\textcolor{mllavender2}{\rule{\textwidth}{0.4pt}}
+\vspace{1mm}
+\footnotesize
+\textbf{#1}
+}
 
 \begin{document}
 
@@ -41,24 +65,32 @@
 
 \begin{frame}{Learning Goal}
 Understand why a single neuron cannot solve non-linearly separable problems like XOR.
+
+\bottomnote{This slide establishes the learning objective for this topic}
 \end{frame}
 
 \begin{frame}{Key Concept (1/2)}
 A single neuron with linear activation can only create a \textbf{straight line} (or hyperplane) to separate data into two categories. This works perfectly when data can be divided by a straight line - called "linearly separable" problems.
 
 However, many real-world problems are \textbf{non-linearly separable}. The classic example is XOR (exclusive or): output is 1 when exactly one input is 1, but 0 when both inputs are the same. No single straight line can separate XOR's four points correctly.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Key Concept (2/2)}
 This fundamental limitation motivated the development of \textbf{multi-layer networks}. By stacking neurons in layers, each with non-linear activation functions, networks can learn curved decision boundaries that separate complex patterns.
 
 The XOR problem was historically important - in 1969, Minsky and Papert showed that single-layer perceptrons couldn't solve XOR, which temporarily dampened enthusiasm for neural networks. The solution came with backpropagation and hidden layers in the 1980s.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Visualization}
 \begin{center}
 \includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{06_linear_limitation/linear_limitation.pdf}
 \end{center}
+
+\bottomnote{Visual representations help solidify abstract concepts}
 \end{frame}
 
 \begin{frame}{Key Formula}
@@ -71,6 +103,8 @@ Points are classified as:
 - \textbf{Class 0} if \(w_1 x_1 + w_2 x_2 + b < 0\)
 
 This equation describes a straight line in 2D (or hyperplane in higher dimensions).
+
+\bottomnote{Mathematical formalization provides precision}
 \end{frame}
 
 \begin{frame}{Intuitive Explanation}
@@ -79,6 +113,8 @@ Imagine trying to separate red and blue marbles on a table using only a straight
 Now imagine four marbles arranged in a square: two diagonal marbles are red, two are blue. No matter how you place a single ruler, you'll always have at least one marble on the wrong side. This is the XOR pattern.
 
 The solution? Use \textbf{two rulers} (two neurons in a hidden layer) to create a more complex boundary. Together, they can isolate the diagonal patterns that one ruler cannot.
+
+\bottomnote{Intuitive explanations bridge theory and practice}
 \end{frame}
 
 \begin{frame}{Practice Problem 1}
@@ -108,6 +144,8 @@ A single neuron can solve AND.
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Practice Problem 2}
@@ -135,6 +173,8 @@ This is why XOR requires at least 2 neurons in a hidden layer.
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Key Takeaways}
@@ -144,6 +184,8 @@ This is why XOR requires at least 2 neurons in a hidden layer.
   \item Most real-world problems (including financial prediction) are non-linear
   \item Solution: Use multiple neurons in hidden layers with non-linear activation
 \end{itemize}
+
+\bottomnote{These key points summarize the essential learnings}
 \end{frame}
 
 \end{document}

@@ -1,9 +1,11 @@
 \documentclass[8pt,aspectratio=169]{beamer}
 \usetheme{Madrid}
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{tikz}
 
 % Color definitions
 \definecolor{mlblue}{RGB}{0,102,204}
@@ -15,23 +17,45 @@
 \definecolor{mlorange}{RGB}{255, 127, 14}
 \definecolor{mlgreen}{RGB}{44, 160, 44}
 \definecolor{mlred}{RGB}{214, 39, 40}
+\definecolor{mlgray}{RGB}{127, 127, 127}
 
-% Apply custom colors
+% Additional colors for template compatibility
+\definecolor{lightgray}{RGB}{240, 240, 240}
+\definecolor{midgray}{RGB}{180, 180, 180}
+
+% Apply custom colors to Madrid theme
 \setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
 \setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
 \setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+
 \setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{section in toc}{fg=mlpurple}
+\setbeamercolor{subsection in toc}{fg=mlblue}
+\setbeamercolor{title}{fg=mlpurple}
 \setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
 \setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{block body}{bg=mllavender4,fg=black}
 
+% Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}
+
+% Clean itemize/enumerate
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+% Reduce margins for more content space
 \setbeamersize{text margin left=5mm,text margin right=5mm}
 
-\title{02. Single Neuron Computation}
-\subtitle{Neural Networks - From Brain to Business}
-\date{}
+% Command for bottom annotation (Madrid-style)
+\newcommand{\bottomnote}[1]{%
+\vfill
+\vspace{-2mm}
+\textcolor{mllavender2}{\rule{\textwidth}{0.4pt}}
+\vspace{1mm}
+\footnotesize
+\textbf{#1}
+}
 
 \begin{document}
 
@@ -41,26 +65,36 @@
 
 \begin{frame}{Learning Goal}
 Calculate the output of an artificial neuron step by step using concrete numbers.
+
+\bottomnote{This slide establishes the learning objective for this topic}
 \end{frame}
 
 \begin{frame}{Key Concept (1/3)}
 A single neuron performs two operations in sequence: first a \textbf{weighted sum}, then an \textbf{activation function}. Understanding this two-step process is essential for grasping how neural networks work.
 
 \textbf{Step 1: Weighted Sum} - The neuron multiplies each input by its corresponding weight, sums all these products, and adds the bias. This produces a single number called the "pre-activation" value (often denoted z).
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Key Concept (2/3)}
 \textbf{Step 2: Activation} - The pre-activation value passes through an activation function (like sigmoid) that squashes it into a useful range. For the sigmoid function, any input is transformed to a value between 0 and 1, which we can interpret as a probability.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Key Concept (3/3)}
 In business applications, we might use this to predict whether a stock price will rise. The inputs could be yesterday's price change, trading volume, and market sentiment. The output probability tells us the network's confidence in a price increase.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Visualization}
 \begin{center}
 \includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{02_single_neuron_function/single_neuron_computation.pdf}
 \end{center}
+
+\bottomnote{Visual representations help solidify abstract concepts}
 \end{frame}
 
 \begin{frame}{Key Formula}
@@ -74,12 +108,16 @@ Where:
 - \textbf{z} = pre-activation (weighted sum)
 - \textbf{y} = output probability (between 0 and 1)
 - \textbf{e} = Euler's number (approximately 2.718)
+
+\bottomnote{Mathematical formalization provides precision}
 \end{frame}
 
 \begin{frame}{Intuitive Explanation}
 Think of the weighted sum as a "score" that combines all available information. A high positive score suggests the answer is likely "yes" (price will rise), while a negative score suggests "no."
 
 The sigmoid function converts this unbounded score into a probability. No matter how extreme the score, the output stays between 0 and 1. A score of 0 gives exactly 0.5 (50-50 chance). Positive scores give probabilities above 0.5, negative scores below.
+
+\bottomnote{Intuitive explanations bridge theory and practice}
 \end{frame}
 
 \begin{frame}{Practice Problem 1}
@@ -100,6 +138,8 @@ Given inputs Price = 1.2, Volume = 0.8, Sentiment = 0.6, with weights w1 = 0.5, 
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Practice Problem 2}
@@ -127,6 +167,8 @@ Since 0.641 > 0.5, the prediction would be "BUY" (price likely to rise).
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Key Takeaways}
@@ -136,6 +178,8 @@ Since 0.641 > 0.5, the prediction would be "BUY" (price likely to rise).
   \item Sigmoid squashes the weighted sum to a probability between 0 and 1
   \item z = 0 corresponds to 50\% probability (maximum uncertainty)
 \end{itemize}
+
+\bottomnote{These key points summarize the essential learnings}
 \end{frame}
 
 \end{document}

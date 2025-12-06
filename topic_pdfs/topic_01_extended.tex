@@ -1,9 +1,11 @@
 \documentclass[8pt,aspectratio=169]{beamer}
 \usetheme{Madrid}
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{tikz}
 
 % Color definitions
 \definecolor{mlblue}{RGB}{0,102,204}
@@ -15,23 +17,45 @@
 \definecolor{mlorange}{RGB}{255, 127, 14}
 \definecolor{mlgreen}{RGB}{44, 160, 44}
 \definecolor{mlred}{RGB}{214, 39, 40}
+\definecolor{mlgray}{RGB}{127, 127, 127}
 
-% Apply custom colors
+% Additional colors for template compatibility
+\definecolor{lightgray}{RGB}{240, 240, 240}
+\definecolor{midgray}{RGB}{180, 180, 180}
+
+% Apply custom colors to Madrid theme
 \setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
 \setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
 \setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+
 \setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{section in toc}{fg=mlpurple}
+\setbeamercolor{subsection in toc}{fg=mlblue}
+\setbeamercolor{title}{fg=mlpurple}
 \setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
 \setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
 \setbeamercolor{block body}{bg=mllavender4,fg=black}
 
+% Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}
+
+% Clean itemize/enumerate
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+% Reduce margins for more content space
 \setbeamersize{text margin left=5mm,text margin right=5mm}
 
-\title{01. Biological Neuron}
-\subtitle{Neural Networks - From Brain to Business}
-\date{}
+% Command for bottom annotation (Madrid-style)
+\newcommand{\bottomnote}[1]{%
+\vfill
+\vspace{-2mm}
+\textcolor{mllavender2}{\rule{\textwidth}{0.4pt}}
+\vspace{1mm}
+\footnotesize
+\textbf{#1}
+}
 
 \begin{document}
 
@@ -41,24 +65,34 @@
 
 \begin{frame}{Learning Goal}
 Understand how biological neurons inspire the mathematical structure of artificial neurons.
+
+\bottomnote{This slide establishes the learning objective for this topic}
 \end{frame}
 
 \begin{frame}{Key Concept (1/3)}
 The human brain contains approximately 86 billion neurons, each connected to thousands of others. These biological neurons receive signals through tree-like structures called \textbf{dendrites}, process them in the cell body (\textbf{soma}), and transmit outputs through a long fiber called the \textbf{axon} to other neurons via \textbf{synapses}.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Key Concept (2/3)}
 Artificial neurons mimic this process mathematically. Instead of electrical signals traveling through dendrites, we have numerical inputs. Instead of synaptic strengths that change with learning, we have \textbf{weights} that adjust during training. The soma's signal integration becomes a \textbf{weighted sum}, and the axon's firing decision becomes an \textbf{activation function}.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Key Concept (3/3)}
 This biological analogy is not just poetic - it guided the development of neural networks and helps us understand why they work. Just as biological neurons strengthen connections that lead to successful outcomes, artificial neurons adjust their weights to minimize prediction errors.
+
+\bottomnote{Understanding this concept is crucial for neural network fundamentals}
 \end{frame}
 
 \begin{frame}{Visualization}
 \begin{center}
 \includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{01_biological_neuron/biological_vs_artificial.pdf}
 \end{center}
+
+\bottomnote{Visual representations help solidify abstract concepts}
 \end{frame}
 
 \begin{frame}{Key Formula}
@@ -72,12 +106,16 @@ Where:
 - \textbf{b} = bias (baseline activation threshold)
 - \textbf{f} = activation function (like the firing decision)
 - \textbf{y} = output (like the axon signal)
+
+\bottomnote{Mathematical formalization provides precision}
 \end{frame}
 
 \begin{frame}{Intuitive Explanation}
 Think of a neuron as a voting system. Each input casts a vote (x\_i), but not all votes are equal - some have more influence (w\_i). The neuron tallies the weighted votes, adds a baseline preference (b), and then decides whether to "fire" based on the total.
 
 If the weighted sum exceeds a threshold, the neuron produces a strong output. If it falls below, the output is weak. This simple mechanism, repeated across millions of neurons, creates the complex behaviors we see in neural networks.
+
+\bottomnote{Intuitive explanations bridge theory and practice}
 \end{frame}
 
 \begin{frame}{Practice Problem 1}
@@ -98,6 +136,8 @@ A neuron receives three inputs: x1 = 0.5, x2 = 0.8, x3 = 0.2. The weights are w1
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Practice Problem 2}
@@ -119,6 +159,8 @@ The \textbf{synaptic strengths} are analogous to weights. This makes sense becau
 
 
 \end{block}
+
+\bottomnote{Practice problems reinforce understanding}
 \end{frame}
 
 \begin{frame}{Key Takeaways}
@@ -128,6 +170,8 @@ The \textbf{synaptic strengths} are analogous to weights. This makes sense becau
   \item The weighted sum aggregates all inputs before the activation decision
   \item Learning adjusts weights, similar to how synapses strengthen or weaken
 \end{itemize}
+
+\bottomnote{These key points summarize the essential learnings}
 \end{frame}
 
 \end{document}
