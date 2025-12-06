@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "16. Feature Hierarchy"
+title: "12. Feature Hierarchy"
 topic_num: 12
 part: 3
 part_name: "Architecture"

@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "01. Biological vs Artificial Neuron"
+title: "01. Biological Neuron"
 topic_num: 1
 part: 1
 part_name: "Foundations"

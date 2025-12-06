@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "03. Activation Functions"
+title: "05. Activation Functions"
 topic_num: 5
 part: 2
 part_name: "Building Blocks"

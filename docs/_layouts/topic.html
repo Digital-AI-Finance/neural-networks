@@ -4,18 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | Neural Networks</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f6f8fa;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.4;
     }
+
+    /* Top Navigation */
+    .top-nav {
+      background: #1e3a5f;
+      padding: 8px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+    .top-nav a:hover { opacity: 1; text-decoration: underline; }
+    .top-nav a.active { opacity: 1; border-bottom: 2px solid white; }
+    .top-nav .nav-pdf {
+      background: #2563eb;
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+
+    /* Main Layout */
     .container {
       display: flex;
       max-width: 1600px;
@@ -24,19 +47,17 @@
 
     /* Sidebar */
     .sidebar {
-      width: 260px;
+      width: 240px;
       background: #ffffff;
       border-right: 1px solid #e1e4e8;
-      padding: 0;
-      height: calc(100vh - 42px);
+      height: calc(100vh - 38px);
       overflow-y: auto;
       position: sticky;
       top: 0;
+      flex-shrink: 0;
     }
-
-    /* Logo Header */
     .sidebar-header {
-      padding: 15px;
+      padding: 10px;
       border-bottom: 1px solid #e1e4e8;
       background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
     }
@@ -47,74 +68,48 @@
       color: white;
     }
     .sidebar-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 6px;
-      margin-right: 10px;
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      margin-right: 8px;
       background: white;
-      padding: 3px;
+      padding: 2px;
     }
     .course-title {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
-      letter-spacing: -0.3px;
-    }
-
-    /* Search */
-    .search-container {
-      padding: 15px 20px;
-      border-bottom: 1px solid #e1e4e8;
-    }
-    .search-container input {
-      width: 100%;
-      padding: 8px 12px;
-      border: 1px solid #e1e4e8;
-      border-radius: 6px;
-      font-size: 13px;
-      outline: none;
-    }
-    .search-container input:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.1);
     }
 
     /* Progress */
     .progress-container {
-      padding: 12px 20px;
+      padding: 6px 10px;
       border-bottom: 1px solid #e1e4e8;
       background: #f6f8fa;
     }
     .progress-text {
-      font-size: 12px;
+      font-size: 10px;
       color: #586069;
-      margin-bottom: 6px;
+      margin-bottom: 3px;
     }
     .progress-bar {
-      height: 6px;
+      height: 4px;
       background: #e1e4e8;
-      border-radius: 3px;
+      border-radius: 2px;
       overflow: hidden;
     }
     .progress-fill {
       height: 100%;
       background: linear-gradient(90deg, #1e3a5f, #2563eb);
-      border-radius: 3px;
-      transition: width 0.3s ease;
+      border-radius: 2px;
     }
 
-    /* Nav Content */
-    .sidebar-nav {
-      padding: 8px 0;
-    }
-
-    /* Collapsible Sections */
-    .part-section {
-      border-bottom: 1px solid #f0f0f0;
-    }
+    /* Sidebar Nav */
+    .sidebar-nav { padding: 4px 0; }
+    .part-section { border-bottom: 1px solid #f0f0f0; }
     .part-section summary {
-      padding: 10px 15px;
+      padding: 6px 10px;
       font-weight: 600;
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       color: #24292e;
@@ -124,147 +119,230 @@
       align-items: center;
       justify-content: space-between;
     }
-    .part-section summary::-webkit-details-marker {
-      display: none;
-    }
-    .part-section summary::after {
-      content: "+";
-      font-size: 14px;
-      color: #586069;
-    }
-    .part-section[open] summary::after {
-      content: "-";
-    }
-    .part-section summary:hover {
-      background: #f6f8fa;
-    }
-    .part-section ul {
-      list-style: none;
-      padding: 0 0 8px 0;
-      margin: 0;
-    }
-    .part-section li {
-      margin: 0;
-    }
+    .part-section summary::-webkit-details-marker { display: none; }
+    .part-section summary::after { content: "+"; font-size: 11px; color: #586069; }
+    .part-section[open] summary::after { content: "-"; }
+    .part-section summary:hover { background: #f6f8fa; }
+    .part-section ul { list-style: none; padding: 0 0 4px 0; margin: 0; }
+    .part-section li { margin: 0; }
     .part-section a {
       display: block;
-      padding: 6px 15px 6px 25px;
+      padding: 4px 10px 4px 20px;
       color: #586069;
       text-decoration: none;
-      font-size: 12px;
+      font-size: 11px;
       border-left: 2px solid transparent;
     }
-    .part-section a:hover {
-      background: #f6f8fa;
-      color: #2563eb;
-    }
+    .part-section a:hover { background: #f6f8fa; color: #2563eb; }
     .part-section li.current a {
       background: rgba(3, 102, 214, 0.1);
       color: #2563eb;
       border-left-color: #2563eb;
       font-weight: 600;
     }
-    .topic-count {
-      font-size: 10px;
-      color: #959da5;
-      font-weight: normal;
-    }
-
-    /* Hidden by search */
-    .hidden {
-      display: none !important;
-    }
+    .topic-count { font-size: 9px; color: #959da5; font-weight: normal; }
 
     /* Main Content */
     .main-content {
       flex: 1;
-      padding: 30px 50px;
+      min-width: 0;
+      padding: 8px 12px;
       max-width: 900px;
-      min-height: 100vh;
     }
-    .breadcrumb {
-      font-size: 14px;
-      color: #586069;
-      margin-bottom: 20px;
+
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .breadcrumb a {
-      color: #2563eb;
+    .page-header h1 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .page-header .pdf-link {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      padding: 3px 8px;
+      border-radius: 3px;
       text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 500;
     }
-    .breadcrumb a:hover {
-      text-decoration: underline;
+    .page-header .pdf-link:hover {
+      background: rgba(255,255,255,0.3);
     }
-    .markdown-body {
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.7rem;
+      color: #586069;
+      margin-bottom: 6px;
+    }
+    .breadcrumb a { color: #2563eb; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* Content Styling */
+    .content {
       background: white;
-      padding: 40px;
-      border-radius: 6px;
-      border: 1px solid #e1e4e8;
+      border-radius: 4px;
+      padding: 10px;
+      border: 1px solid #e2e8f0;
     }
+    .content h1 {
+      font-size: 0.95rem;
+      color: #1e3a5f;
+      margin: 0 0 6px 0;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .content h2 {
+      font-size: 0.8rem;
+      color: #1e3a5f;
+      margin: 8px 0 4px 0;
+      padding-bottom: 2px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .content h2:first-child { margin-top: 0; }
+    .content h3 {
+      font-size: 0.75rem;
+      color: #2563eb;
+      margin: 6px 0 3px 0;
+    }
+    .content p {
+      font-size: 0.7rem;
+      margin: 3px 0;
+      color: #475569;
+    }
+    .content ul, .content ol {
+      font-size: 0.7rem;
+      margin: 3px 0;
+      padding-left: 16px;
+      color: #475569;
+    }
+    .content li { margin: 1px 0; }
+    .content a { color: #2563eb; }
+    .content a:hover { text-decoration: underline; }
+    .content img {
+      max-width: 100%;
+      height: auto;
+      margin: 6px 0;
+      border-radius: 3px;
+    }
+    .content code {
+      background: #f1f5f9;
+      padding: 1px 3px;
+      border-radius: 2px;
+      font-size: 0.65rem;
+    }
+    .content pre {
+      background: #f1f5f9;
+      padding: 6px;
+      border-radius: 3px;
+      overflow-x: auto;
+      font-size: 0.65rem;
+    }
+    .content hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 6px 0;
+    }
+    .content details {
+      margin: 3px 0;
+      border: 1px solid #e2e8f0;
+      border-radius: 3px;
+      padding: 4px 6px;
+      font-size: 0.7rem;
+    }
+    .content summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #2563eb;
+    }
+    .content blockquote {
+      border-left: 2px solid #2563eb;
+      padding-left: 8px;
+      margin: 4px 0;
+      color: #64748b;
+      font-size: 0.7rem;
+    }
+
+    /* Topic Navigation */
     .topic-nav {
       display: flex;
       justify-content: space-between;
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #e1e4e8;
+      margin-top: 8px;
+      padding-top: 6px;
+      border-top: 1px solid #e2e8f0;
     }
     .topic-nav a {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 4px 10px;
       background: #2563eb;
       color: white;
       text-decoration: none;
-      border-radius: 6px;
-      font-size: 14px;
+      border-radius: 3px;
+      font-size: 0.7rem;
     }
-    .topic-nav a:hover {
-      background: #0256c7;
-    }
-    .topic-nav .prev {
-      background: #6a737d;
-    }
-    .topic-nav .prev:hover {
-      background: #586069;
-    }
+    .topic-nav a:hover { background: #1d4ed8; }
+    .topic-nav .prev { background: #6a737d; }
+    .topic-nav .prev:hover { background: #586069; }
     .topic-nav .disabled {
       background: #e1e4e8;
       color: #959da5;
       cursor: not-allowed;
     }
 
-    /* Mobile */
+    /* Footer */
+    .footer {
+      padding: 8px;
+      background: #1e3a5f;
+      color: white;
+      text-align: center;
+      font-size: 0.65rem;
+    }
+    .footer a { color: #93c5fd; }
+
+    /* Responsive */
     @media (max-width: 900px) {
-      .container {
-        flex-direction: column;
-      }
+      .container { flex-direction: column; }
       .sidebar {
         width: 100%;
         height: auto;
         position: relative;
         border-right: none;
         border-bottom: 1px solid #e1e4e8;
-        max-height: 50vh;
+        max-height: 30vh;
       }
-      .main-content {
-        padding: 20px;
-      }
-      .markdown-body {
-        padding: 20px;
-      }
+      .main-content { padding: 8px; }
     }
   </style>
 </head>
 <body>
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <a href="{{ site.baseurl }}/">Home</a>
+    <a href="{{ site.baseurl }}/topics/01-biological-neuron.html" class="active">Topics</a>
+    <a href="{{ site.baseurl }}/syllabus.html">Syllabus</a>
+    <a href="{{ site.baseurl }}/exercises.html">Exercises</a>
+    <a href="{{ site.baseurl }}/resources.html">Resources</a>
+    <a href="https://github.com/Digital-AI-Finance/neural-networks/raw/main/20251128_0825_quantlet_branding.pdf" class="nav-pdf">PDF</a>
+  </nav>
+
   <div class="container">
+    <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-header">
         <a href="{{ site.baseurl }}/">
           <img src="{{ site.baseurl }}/assets/images/quantlet-logo.png" alt="QuantLet" class="sidebar-logo">
           <span class="course-title">Neural Networks</span>
         </a>
-      </div>
-
-      <div class="search-container">
-        <input type="text" id="topic-search" placeholder="Search topics...">
       </div>
 
       <div class="progress-container">
@@ -275,10 +353,59 @@
       </div>
 
       <nav class="sidebar-nav">
-        {% include sidebar.html %}
+        <details class="part-section" {% if page.part == 1 %}open{% endif %}>
+          <summary>Part 1: Foundations <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li {% if page.topic_num == 1 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/01-biological-neuron.html">01. Biological Neuron</a></li>
+            <li {% if page.topic_num == 2 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/02-single-neuron-computation.html">02. Single Neuron</a></li>
+            <li {% if page.topic_num == 3 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/03-problem-visualization.html">03. Problem Visualization</a></li>
+            <li {% if page.topic_num == 4 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/04-neuron-decision-maker.html">04. Neuron Decisions</a></li>
+          </ul>
+        </details>
+
+        <details class="part-section" {% if page.part == 2 %}open{% endif %}>
+          <summary>Part 2: Building Blocks <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li {% if page.topic_num == 5 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/05-activation-functions.html">05. Activation Functions</a></li>
+            <li {% if page.topic_num == 6 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/06-linear-limitation.html">06. Linear Limitation</a></li>
+            <li {% if page.topic_num == 7 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/07-sigmoid-saturation.html">07. Sigmoid Saturation</a></li>
+            <li {% if page.topic_num == 8 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/08-boundary-evolution.html">08. Boundary Evolution</a></li>
+          </ul>
+        </details>
+
+        <details class="part-section" {% if page.part == 3 %}open{% endif %}>
+          <summary>Part 3: Architecture <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li {% if page.topic_num == 9 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/09-network-architecture.html">09. Network Architecture</a></li>
+            <li {% if page.topic_num == 10 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/10-forward-propagation.html">10. Forward Propagation</a></li>
+            <li {% if page.topic_num == 11 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/11-decision-boundary-concept.html">11. Decision Boundary</a></li>
+            <li {% if page.topic_num == 12 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/12-feature-hierarchy.html">12. Feature Hierarchy</a></li>
+          </ul>
+        </details>
+
+        <details class="part-section" {% if page.part == 4 %}open{% endif %}>
+          <summary>Part 4: Learning Process <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li {% if page.topic_num == 13 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/13-loss-landscape.html">13. Loss Landscape</a></li>
+            <li {% if page.topic_num == 14 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/14-gradient-descent.html">14. Gradient Descent</a></li>
+            <li {% if page.topic_num == 15 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/15-overfitting-underfitting.html">15. Overfitting</a></li>
+            <li {% if page.topic_num == 16 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/16-learning-rate-comparison.html">16. Learning Rate</a></li>
+          </ul>
+        </details>
+
+        <details class="part-section" {% if page.part == 5 %}open{% endif %}>
+          <summary>Part 5: Application <span class="topic-count">(4)</span></summary>
+          <ul>
+            <li {% if page.topic_num == 17 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/17-market-prediction-data.html">17. Market Data</a></li>
+            <li {% if page.topic_num == 18 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/18-prediction-results.html">18. Prediction Results</a></li>
+            <li {% if page.topic_num == 19 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/19-confusion-matrix.html">19. Confusion Matrix</a></li>
+            <li {% if page.topic_num == 20 %}class="current"{% endif %}><a href="{{ site.baseurl }}/topics/20-trading-backtest.html">20. Trading Backtest</a></li>
+          </ul>
+        </details>
       </nav>
     </aside>
 
+    <!-- Main Content -->
     <main class="main-content">
       <nav class="breadcrumb">
         <a href="{{ site.baseurl }}/">Home</a> &rsaquo;
@@ -286,66 +413,33 @@
         <span>{{ page.title }}</span>
       </nav>
 
-      <article class="markdown-body">
+      <div class="page-header">
+        <h1>{{ page.title }}</h1>
+        <a href="https://github.com/Digital-AI-Finance/neural-networks/raw/main/topic_pdfs/topic_{% if page.topic_num < 10 %}0{% endif %}{{ page.topic_num }}.pdf" class="pdf-link">Download PDF</a>
+      </div>
+
+      <div class="content">
         {{ content }}
-      </article>
+      </div>
 
       <nav class="topic-nav">
         {% if page.prev_topic %}
-        <a href="{{ page.prev_topic }}.html" class="prev">&larr; Previous</a>
+        <a href="{{ page.prev_topic }}.html" class="prev">Previous</a>
         {% else %}
-        <span class="prev disabled">&larr; Previous</span>
+        <span class="prev disabled">Previous</span>
         {% endif %}
 
         {% if page.next_topic %}
-        <a href="{{ page.next_topic }}.html" class="next">Next &rarr;</a>
+        <a href="{{ page.next_topic }}.html" class="next">Next</a>
         {% else %}
-        <span class="next disabled">Next &rarr;</span>
+        <span class="next disabled">Next</span>
         {% endif %}
       </nav>
     </main>
   </div>
 
-  <script>
-    // Search functionality
-    document.getElementById('topic-search').addEventListener('input', function(e) {
-      const query = e.target.value.toLowerCase();
-      const links = document.querySelectorAll('.part-section li');
-      const sections = document.querySelectorAll('.part-section');
-
-      links.forEach(li => {
-        const text = li.textContent.toLowerCase();
-        if (query === '' || text.includes(query)) {
-          li.classList.remove('hidden');
-        } else {
-          li.classList.add('hidden');
-        }
-      });
-
-      // Show/hide sections based on visible links
-      sections.forEach(section => {
-        const visibleLinks = section.querySelectorAll('li:not(.hidden)');
-        if (visibleLinks.length === 0 && query !== '') {
-          section.classList.add('hidden');
-        } else {
-          section.classList.remove('hidden');
-          if (query !== '') {
-            section.setAttribute('open', '');
-          }
-        }
-      });
-    });
-
-    // Open current section by default
-    document.addEventListener('DOMContentLoaded', function() {
-      const currentItem = document.querySelector('.part-section li.current');
-      if (currentItem) {
-        const section = currentItem.closest('.part-section');
-        if (section) {
-          section.setAttribute('open', '');
-        }
-      }
-    });
-  </script>
+  <footer class="footer">
+    <a href="https://github.com/Digital-AI-Finance">Digital-AI-Finance</a> | MIT License
+  </footer>
 </body>
 </html>

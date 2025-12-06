@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "13. Neuron Decision Maker"
+title: "04. Neuron Decision Maker"
 topic_num: 4
 part: 1
 part_name: "Foundations"

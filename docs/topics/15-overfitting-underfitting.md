@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "17. Overfitting vs Underfitting"
+title: "15. Overfitting and Underfitting"
 topic_num: 15
 part: 4
 part_name: "Learning Process"

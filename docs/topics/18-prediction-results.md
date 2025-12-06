@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "10. Prediction Results"
+title: "18. Prediction Results"
 topic_num: 18
 part: 5
 part_name: "Application"

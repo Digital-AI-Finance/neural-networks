@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "15. Boundary Evolution"
+title: "08. Boundary Evolution"
 topic_num: 8
 part: 2
 part_name: "Building Blocks"

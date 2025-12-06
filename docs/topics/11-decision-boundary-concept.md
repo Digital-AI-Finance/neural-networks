@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "12. Decision Boundary Concept"
+title: "11. Decision Boundary Concept"
 topic_num: 11
 part: 3
 part_name: "Architecture"

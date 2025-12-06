@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "05. Network Architecture"
+title: "09. Network Architecture"
 topic_num: 9
 part: 3
 part_name: "Architecture"

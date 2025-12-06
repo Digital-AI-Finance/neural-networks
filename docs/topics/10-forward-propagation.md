@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "06. Forward Propagation"
+title: "10. Forward Propagation"
 topic_num: 10
 part: 3
 part_name: "Architecture"

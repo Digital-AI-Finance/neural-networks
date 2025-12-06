@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "11. Problem Visualization"
+title: "03. Problem Visualization"
 topic_num: 3
 part: 1
 part_name: "Foundations"

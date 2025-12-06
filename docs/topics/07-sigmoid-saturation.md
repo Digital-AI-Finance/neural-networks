@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "14. Sigmoid Saturation"
+title: "07. Sigmoid Saturation"
 topic_num: 7
 part: 2
 part_name: "Building Blocks"

@@ -1,10 +1,10 @@
 ---
 layout: topic
-title: "18. Learning Rate Comparison"
+title: "16. Learning Rate Comparison"
 topic_num: 16
 part: 4
 part_name: "Learning Process"
-prev_topic: 15-overfitting-underfitting
+prev_topic: 15-overfitting-and-underfitting
 next_topic: 17-market-prediction-data
 ---
 

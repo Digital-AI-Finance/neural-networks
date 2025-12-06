@@ -1,11 +1,11 @@
 ---
 layout: topic
-title: "08. Gradient Descent"
+title: "14. Gradient Descent"
 topic_num: 14
 part: 4
 part_name: "Learning Process"
 prev_topic: 13-loss-landscape
-next_topic: 15-overfitting-underfitting
+next_topic: 15-overfitting-and-underfitting
 ---
 
 # Gradient Descent

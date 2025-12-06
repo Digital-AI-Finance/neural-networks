@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "07. Loss Landscape"
+title: "13. Loss Landscape"
 topic_num: 13
 part: 4
 part_name: "Learning Process"

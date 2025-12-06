@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "04. Linear Limitation"
+title: "06. Linear Limitation"
 topic_num: 6
 part: 2
 part_name: "Building Blocks"
