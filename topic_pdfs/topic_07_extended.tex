@@ -1,0 +1,153 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{07. Sigmoid Saturation}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Understand the vanishing gradient problem caused by sigmoid saturation.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+The sigmoid function \textbf{saturates} at extreme values. When z is very large (e.g., z > 3) or very small (z < -3), the sigmoid output is nearly 1 or 0, and barely changes regardless of input changes.
+
+This creates the \textbf{vanishing gradient problem}. During backpropagation, gradients flow backward through the network. In saturated regions, gradients become extremely small (near zero), so weights barely update. The network stops learning.
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+The \textbf{maximum gradient} of sigmoid is only 0.25 (at z = 0). In deep networks, multiplying many small gradients results in effectively zero gradient for early layers - they learn very slowly or not at all.
+
+\textbf{ReLU} solves this by having a constant gradient of 1 for positive inputs. However, ReLU has its own issue: neurons can "die" if z is always negative (gradient = 0).
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{07_sigmoid_saturation/sigmoid_saturation.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Sigmoid and its derivative:}
+\[\sigma(z) = \frac{1}{1 + e^{-z}}\]
+
+\[\sigma'(z) = \sigma(z)(1 - \sigma(z))\]
+
+\textbf{Maximum derivative:}
+\[\max(\sigma'(z)) = \sigma(0)(1 - \sigma(0)) = 0.5 \times 0.5 = 0.25\]
+
+\textbf{ReLU and its derivative:}
+\[\text{ReLU}(z) = \max(0, z)\]
+
+\[\text{ReLU}'(z) = \begin{cases} 1 & z > 0 \\ 0 & z \leq 0 \end{cases}\]
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Imagine pushing a ball on different surfaces:
+- \textbf{Sigmoid at extremes}: Like pushing a ball on a flat plateau. No matter how hard you push, it barely moves. (Small gradient = little learning)
+- \textbf{Sigmoid at center}: Gentle slope, ball rolls smoothly. (Gradient = 0.25)
+- \textbf{ReLU positive region}: Constant slope, ball rolls consistently. (Gradient = 1)
+- \textbf{ReLU negative region}: Another flat plateau, ball doesn't move.
+
+For efficient learning, we want consistent, non-vanishing gradients throughout.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+Calculate the sigmoid derivative at z = 5. How does it compare to the maximum derivative?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+First, calculate sigmoid:
+\[\sigma(5) = \frac{1}{1 + e^{-5}} = \frac{1}{1 + 0.0067} = 0.9933\]
+
+Then, calculate derivative:
+\[\sigma'(5) = \sigma(5)(1 - \sigma(5)) = 0.9933 \times 0.0067 = 0.0067\]
+
+\textbf{Comparison to maximum:}
+\[\frac{0.0067}{0.25} = 0.027 = 2.7\%\]
+
+At z = 5, the gradient is only \textbf{2.7\% of maximum}. Learning is extremely slow in this saturated region.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+A network has 5 layers, each with sigmoid activation. If each layer's gradient is 0.2, what is the total gradient that reaches the first layer?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+Gradients multiply through layers (chain rule):
+\[\text{Total gradient} = 0.2 \times 0.2 \times 0.2 \times 0.2 \times 0.2 = 0.2^5\]
+\[= 0.00032\]
+
+The first layer receives a gradient of only \textbf{0.00032} - practically zero!
+
+With learning rate 0.1:
+\[\Delta w = 0.1 \times 0.00032 = 0.000032\]
+
+Weight updates are negligible. The first layer cannot learn effectively.
+
+\textbf{This is the vanishing gradient problem.}
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item Sigmoid saturates at extreme values (gradient near 0)
+  \item Maximum sigmoid gradient is only 0.25
+  \item Vanishing gradients prevent learning in deep networks
+  \item ReLU has constant gradient = 1 for positive inputs
+  \item Modern networks use ReLU (or variants) for hidden layers
+\end{itemize}
+\end{frame}
+
+\end{document}

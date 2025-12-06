@@ -1,0 +1,155 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{14. Gradient Descent}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Understand how neural networks learn by iteratively adjusting weights to reduce error.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+\textbf{Gradient descent} is the algorithm that trains neural networks. The core idea is simple: calculate which direction reduces the error, then take a small step in that direction. Repeat until you reach a minimum.
+
+The \textbf{gradient} tells us the slope of the loss landscape at our current position. It points "uphill" toward higher error. By stepping in the opposite direction (downhill), we reduce the loss.
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+The \textbf{learning rate} controls how big each step is. Too large, and we might overshoot the minimum. Too small, and training takes forever. Finding the right learning rate is crucial for effective training.
+
+Each update follows:
+\[w_{new} = w_{old} - \eta \cdot \frac{\partial L}{\partial w}\]
+
+This simple rule, applied to all weights simultaneously, enables networks to learn complex patterns from data.
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{14_gradient_descent/gradient_descent.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Weight update rule:}
+\[w := w - \eta \cdot \nabla_w L\]
+
+Expanded for a single weight:
+\[w_{new} = w_{old} - \eta \cdot \frac{\partial L}{\partial w}\]
+
+Where:
+- \textbf{w} = weight value
+- \textbf{eta} = learning rate (typically 0.001 to 0.1)
+- \textbf{dL/dw} = gradient (partial derivative of loss with respect to weight)
+- \textbf{:=} means "update to"
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Imagine rolling a ball down a hill to find the lowest point:
+
+1. \textbf{Calculate slope}: Which way is downhill? (gradient)
+2. \textbf{Take a step}: Move in that direction (weight update)
+3. \textbf{Repeat}: Keep going until you stop descending (convergence)
+
+The learning rate is like the ball's momentum:
+- \textbf{Too high}: Ball bounces over valleys, never settling
+- \textbf{Too low}: Ball creeps slowly, taking ages to reach bottom
+- \textbf{Just right}: Ball rolls smoothly into the lowest valley
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+Current weight w = 2.5, learning rate eta = 0.1, gradient dL/dw = 0.8. Calculate the new weight after one update.
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\[w_{new} = w_{old} - \eta \cdot \frac{\partial L}{\partial w}\]
+\[w_{new} = 2.5 - 0.1 \cdot 0.8\]
+\[w_{new} = 2.5 - 0.08 = 2.42\]
+
+The weight decreased from 2.5 to \textbf{2.42}. The positive gradient meant we were on an uphill slope (with respect to w), so we moved w downward.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+After many iterations, the gradient becomes very small (dL/dw = 0.001). What does this indicate about the training?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+A very small gradient indicates:
+
+1. \textbf{Near a minimum}: The loss landscape is nearly flat, suggesting we're close to a minimum (either local or global)
+
+2. \textbf{Convergence}: The weights are stabilizing; further updates will be tiny
+
+3. \textbf{Possible plateau}: The network may have reached its best performance given the architecture and data
+
+4. \textbf{Training completion}: This is often used as a stopping criterion
+
+With eta = 0.1 and gradient = 0.001:
+\[\Delta w = 0.1 \times 0.001 = 0.0001\]
+
+Each update changes weights by only 0.01\% - training is essentially complete.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item Gradient descent iteratively reduces loss by following downhill direction
+  \item Learning rate controls step size - crucial hyperparameter
+  \item Too high = divergence, too low = slow convergence
+  \item Small gradients indicate convergence (near minimum)
+  \item This is the "learning" in machine learning
+\end{itemize}
+\end{frame}
+
+\end{document}

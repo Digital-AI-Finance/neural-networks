@@ -1,0 +1,153 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{18. Prediction Results}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Compare network performance before and after training to understand the impact of learning.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+Before training, a neural network with random weights is essentially guessing. For binary classification (up/down), random guessing yields about \textbf{50\% accuracy} - no better than flipping a coin.
+
+After training on historical data, the network learns patterns that improve predictions. A well-trained network might achieve \textbf{70\% accuracy} on unseen test data - significantly better than chance.
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+The improvement from 50\% to 70\% represents real predictive power extracted from the data. However, it's crucial to evaluate on \textbf{held-out test data} that wasn't used during training. Performance on training data is often inflated (the network may have memorized specifics rather than learning generalizable patterns).
+
+Even modest accuracy improvements can be valuable in finance, where small edges compound over many trades.
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{18_prediction_results/prediction_results.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Accuracy:}
+\[\text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Predictions}} \times 100\%\]
+
+\textbf{Improvement over baseline:}
+\[\text{Improvement} = \text{Trained Accuracy} - \text{Random Baseline}\]
+
+For binary classification:
+\[\text{Random Baseline} = 50\%\]
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Imagine two weather forecasters:
+- \textbf{Forecaster A} (random): Flips a coin to predict rain or shine
+- \textbf{Forecaster B} (trained): Studies historical weather patterns
+
+Over 100 days:
+- Forecaster A: ~50 correct (coin flip)
+- Forecaster B: ~70 correct (learned patterns)
+
+Forecaster B adds real value by capturing patterns that random guessing misses. Similarly, a trained neural network extracts predictive information from data that raw chance cannot access.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+A trained network makes 140 correct predictions out of 200 test samples. Calculate: (a) accuracy, (b) improvement over random baseline.
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{(a) Accuracy:}
+\[\text{Accuracy} = \frac{140}{200} \times 100\% = 70\%\]
+
+\textbf{(b) Improvement over baseline:}
+\[\text{Improvement} = 70\% - 50\% = 20\%\]
+
+The network predicts \textbf{20 percentage points} better than random guessing - a substantial improvement that could translate to profitable trading.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+Network A achieves 95\% accuracy on training data but 52\% on test data. Network B achieves 72\% on training data and 68\% on test data. Which network is better?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Network B is better}, despite lower training accuracy.
+
+Analysis:
+
+\textbf{Network A:}
+- Training: 95\%, Test: 52\%
+- Gap: 43 percentage points
+- Severe \textbf{overfitting} - memorized training data
+- Test accuracy barely better than chance (52\% vs 50\%)
+
+\textbf{Network B:}
+- Training: 72\%, Test: 68\%
+- Gap: 4 percentage points
+- Good \textbf{generalization} - learned transferable patterns
+- Test accuracy significantly better than chance
+
+Network B's 68\% test accuracy represents real predictive power. Network A's 95\% training accuracy is misleading - it fails on new data.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item Random guessing yields ~50\% accuracy on binary classification
+  \item Training extracts patterns that improve beyond baseline
+  \item Always evaluate on held-out test data, not training data
+  \item Even modest improvements (55-70\%) can be valuable in finance
+  \item Gap between training and test accuracy indicates overfitting
+\end{itemize}
+\end{frame}
+
+\end{document}

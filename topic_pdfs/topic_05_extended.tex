@@ -1,0 +1,145 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{05. Activation Functions}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Compare different activation functions and understand when to use each one.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+Activation functions are the "decision makers" of neural networks. They take the weighted sum and transform it into an output. Without activation functions, neural networks would only compute linear combinations - no matter how many layers, the result would be equivalent to a single layer.
+
+\textbf{Sigmoid} outputs values between 0 and 1, making it ideal for probabilities. However, it suffers from the "vanishing gradient" problem in deep networks.
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+\textbf{ReLU (Rectified Linear Unit)} is the most popular choice for hidden layers. It outputs zero for negative inputs and passes positive inputs unchanged. Simple, fast, and effective.
+
+\textbf{Tanh} outputs values between -1 and 1, making it zero-centered. This can help with optimization in some cases.
+
+The choice of activation function significantly impacts training speed and network performance. Modern networks typically use ReLU for hidden layers and sigmoid or softmax for output layers.
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{05_activation_functions/activation_functions.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Sigmoid:}
+\[\sigma(z) = \frac{1}{1 + e^{-z}} \quad \text{Range: } (0, 1)\]
+
+\textbf{ReLU:}
+\[\text{ReLU}(z) = \max(0, z) \quad \text{Range: } [0, \infty)\]
+
+\textbf{Tanh:}
+\[\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}} \quad \text{Range: } (-1, 1)\]
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Think of activation functions as different voting rules:
+
+- \textbf{Sigmoid}: "How confident are you on a scale of 0\% to 100\%?"
+- \textbf{ReLU}: "If negative, stay silent. If positive, speak up proportionally."
+- \textbf{Tanh}: "Express enthusiasm (+1) or skepticism (-1), with neutrality at 0."
+
+ReLU's simplicity (just check if positive) makes it computationally efficient. Sigmoid and tanh are smooth but can "saturate" - when inputs are very large or very small, the output barely changes, making learning slow.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+Calculate the output of each activation function for z = 2.0.
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Sigmoid:}
+\[\sigma(2.0) = \frac{1}{1 + e^{-2}} = \frac{1}{1 + 0.135} = \frac{1}{1.135} \approx 0.881\]
+
+\textbf{ReLU:}
+\[\text{ReLU}(2.0) = \max(0, 2.0) = 2.0\]
+
+\textbf{Tanh:}
+\[\tanh(2.0) = \frac{e^2 - e^{-2}}{e^2 + e^{-2}} = \frac{7.389 - 0.135}{7.389 + 0.135} = \frac{7.254}{7.524} \approx 0.964\]
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+Calculate the output of each activation function for z = -1.5.
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Sigmoid:}
+\[\sigma(-1.5) = \frac{1}{1 + e^{1.5}} = \frac{1}{1 + 4.482} = \frac{1}{5.482} \approx 0.182\]
+
+\textbf{ReLU:}
+\[\text{ReLU}(-1.5) = \max(0, -1.5) = 0\]
+
+\textbf{Tanh:}
+\[\tanh(-1.5) = \frac{e^{-1.5} - e^{1.5}}{e^{-1.5} + e^{1.5}} = \frac{0.223 - 4.482}{0.223 + 4.482} = \frac{-4.259}{4.705} \approx -0.905\]
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item Activation functions add non-linearity, enabling complex pattern learning
+  \item Sigmoid: Good for output probabilities, but can saturate
+  \item ReLU: Fast and effective, but can "die" with negative inputs
+  \item Tanh: Zero-centered, but also saturates at extremes
+  \item Modern networks typically use ReLU for hidden layers
+\end{itemize}
+\end{frame}
+
+\end{document}

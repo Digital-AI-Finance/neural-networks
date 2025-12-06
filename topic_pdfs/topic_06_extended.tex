@@ -1,0 +1,149 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{06. Linear Limitation}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Understand why a single neuron cannot solve non-linearly separable problems like XOR.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+A single neuron with linear activation can only create a \textbf{straight line} (or hyperplane) to separate data into two categories. This works perfectly when data can be divided by a straight line - called "linearly separable" problems.
+
+However, many real-world problems are \textbf{non-linearly separable}. The classic example is XOR (exclusive or): output is 1 when exactly one input is 1, but 0 when both inputs are the same. No single straight line can separate XOR's four points correctly.
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+This fundamental limitation motivated the development of \textbf{multi-layer networks}. By stacking neurons in layers, each with non-linear activation functions, networks can learn curved decision boundaries that separate complex patterns.
+
+The XOR problem was historically important - in 1969, Minsky and Papert showed that single-layer perceptrons couldn't solve XOR, which temporarily dampened enthusiasm for neural networks. The solution came with backpropagation and hidden layers in the 1980s.
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{06_linear_limitation/linear_limitation.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+A single neuron defines a linear decision boundary:
+
+\[w_1 x_1 + w_2 x_2 + b = 0\]
+
+Points are classified as:
+- \textbf{Class 1} if \(w_1 x_1 + w_2 x_2 + b > 0\)
+- \textbf{Class 0} if \(w_1 x_1 + w_2 x_2 + b < 0\)
+
+This equation describes a straight line in 2D (or hyperplane in higher dimensions).
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Imagine trying to separate red and blue marbles on a table using only a straight ruler. If you can place the ruler so all red marbles are on one side and all blue on the other, the problem is linearly separable.
+
+Now imagine four marbles arranged in a square: two diagonal marbles are red, two are blue. No matter how you place a single ruler, you'll always have at least one marble on the wrong side. This is the XOR pattern.
+
+The solution? Use \textbf{two rulers} (two neurons in a hidden layer) to create a more complex boundary. Together, they can isolate the diagonal patterns that one ruler cannot.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+Consider the AND function: output is 1 only if both inputs are 1. The four input combinations are (0,0)->0, (0,1)->0, (1,0)->0, (1,1)->1. Is this linearly separable? Can you find weights and bias that work?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Yes, AND is linearly separable.}
+
+The point (1,1) must be on one side, and (0,0), (0,1), (1,0) on the other.
+
+One solution: w1 = 1, w2 = 1, b = -1.5
+
+Check:
+- (0,0): 1(0) + 1(0) - 1.5 = -1.5 < 0 -> Class 0 (correct)
+- (0,1): 1(0) + 1(1) - 1.5 = -0.5 < 0 -> Class 0 (correct)
+- (1,0): 1(1) + 1(0) - 1.5 = -0.5 < 0 -> Class 0 (correct)
+- (1,1): 1(1) + 1(1) - 1.5 = 0.5 > 0 -> Class 1 (correct)
+
+A single neuron can solve AND.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+Now consider XOR: (0,0)->0, (0,1)->1, (1,0)->1, (1,1)->0. Try to find weights and bias that separate the classes. Why is this impossible?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{XOR is NOT linearly separable.}
+
+We need:
+- (0,0) and (1,1) on one side (Class 0)
+- (0,1) and (1,0) on the other side (Class 1)
+
+The Class 1 points are diagonally opposite! Any line separating (0,1) from (0,0) would also separate (1,0) from (1,1), but (0,0) and (1,1) should be together.
+
+No single straight line can achieve this - the classes are "interleaved" diagonally.
+
+This is why XOR requires at least 2 neurons in a hidden layer.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item A single neuron can only create linear (straight) decision boundaries
+  \item XOR is the classic example of a non-linearly separable problem
+  \item Most real-world problems (including financial prediction) are non-linear
+  \item Solution: Use multiple neurons in hidden layers with non-linear activation
+\end{itemize}
+\end{frame}
+
+\end{document}

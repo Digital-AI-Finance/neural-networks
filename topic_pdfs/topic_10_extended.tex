@@ -1,0 +1,154 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{10. Forward Propagation}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Trace how input data flows through a neural network to produce a prediction.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+\textbf{Forward propagation} is the process of computing a network's output given an input. Data flows forward from input layer through hidden layers to the output layer - hence the name.
+
+At each layer, we perform two operations:
+1. \textbf{Linear transformation}: Multiply inputs by weights and add bias (z = Wx + b)
+2. \textbf{Non-linear activation}: Apply activation function (a = f(z))
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+The output of one layer becomes the input to the next. When data reaches the output layer, we have our prediction. During training, we compare this prediction to the true value to calculate error.
+
+For a trading application, forward propagation answers: "Given today's market data, what does the network predict about tomorrow's price?"
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{10_forward_propagation/forward_propagation.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Hidden layer computation:}
+\[z^{[1]} = W^{[1]} x + b^{[1]}\]
+\[a^{[1]} = \sigma(z^{[1]})\]
+
+\textbf{Output layer computation:}
+\[z^{[2]} = W^{[2]} a^{[1]} + b^{[2]}\]
+\[\hat{y} = \sigma(z^{[2]})\]
+
+Where:
+- \textbf{x} = input features
+- \(\mathbf{W^[l]}\) = weight matrix for layer l
+- \(\mathbf{b^[l]}\) = bias vector for layer l
+- \(\mathbf{z^[l]}\) = pre-activation values
+- \(\mathbf{a^[l]}\) = activation values (layer output)
+- \textbf{y-hat} = predicted output
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Imagine a relay race where each runner transforms the baton before passing it:
+
+1. \textbf{Start}: Raw market data (price = 105.2, volume = 0.75, sentiment = 0.62)
+2. \textbf{Hidden layer}: Each neuron "weighs" this data, adds its perspective, and outputs a transformed signal
+3. \textbf{Output layer}: The final neuron combines all hidden signals into a single prediction
+4. \textbf{Finish}: Probability of price increase (e.g., 74.2\%)
+
+The weights determine how much each neuron "listens" to each input. Training adjusts these weights to improve predictions.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+A network has 2 inputs, 2 hidden neurons, and 1 output. Given:
+- Input: x = [1.0, 0.5]
+- Hidden weights: W1 = [[0.2, 0.4], [0.6, 0.3]]
+- Hidden bias: b1 = [0.1, -0.1]
+
+Calculate z1 (pre-activation for hidden layer).
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+For hidden neuron 1:
+\[z_1^{[1]} = 0.2(1.0) + 0.4(0.5) + 0.1 = 0.2 + 0.2 + 0.1 = 0.5\]
+
+For hidden neuron 2:
+\[z_2^{[1]} = 0.6(1.0) + 0.3(0.5) + (-0.1) = 0.6 + 0.15 - 0.1 = 0.65\]
+
+\textbf{z1 = [0.5, 0.65]}
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+Continuing from Problem 1, apply sigmoid activation to get a1 (hidden layer output).
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\[a_1^{[1]} = \sigma(0.5) = \frac{1}{1+e^{-0.5}} = \frac{1}{1+0.607} = 0.622\]
+
+\[a_2^{[1]} = \sigma(0.65) = \frac{1}{1+e^{-0.65}} = \frac{1}{1+0.522} = 0.657\]
+
+\textbf{a1 = [0.622, 0.657]}
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item Forward propagation computes output from input layer to output layer
+  \item Each layer: linear transformation (Wx + b) then activation (f)
+  \item All neurons in a layer compute in parallel
+  \item The final output is the network's prediction
+  \item No learning happens during forward propagation - just computation
+\end{itemize}
+\end{frame}
+
+\end{document}

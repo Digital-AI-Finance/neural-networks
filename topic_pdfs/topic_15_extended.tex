@@ -1,0 +1,171 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{15. Overfitting and Underfitting}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Diagnose and prevent common training problems using learning curves.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+\textbf{Underfitting} occurs when a model is too simple to capture patterns in the data. Both training and test error remain high. The solution: increase model complexity.
+
+\textbf{Overfitting} occurs when a model is too complex, memorizing training data rather than learning generalizable patterns. Training error is low but test error is high. The solution: reduce complexity, get more data, or use regularization.
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+The \textbf{ideal model} captures genuine patterns without memorizing noise. Both training and test error converge to similarly low values.
+
+\textbf{Learning curves} plot training and validation loss over training epochs. The shape reveals the problem:
+- Both high, not improving: Underfitting
+- Training drops, validation rises: Overfitting
+- Both converge to similar low values: Good fit
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{15_overfitting_underfitting/overfitting_underfitting.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Bias-Variance Tradeoff:}
+
+\[\text{Total Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Noise}\]
+
+- \textbf{High bias (underfitting)}: Model too simple, misses patterns
+- \textbf{High variance (overfitting)}: Model too sensitive to training data
+- \textbf{Goal}: Minimize both bias and variance
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Imagine memorizing vs understanding:
+
+- \textbf{Underfitting}: A student who barely studies. They don't understand the material and fail both homework and exams.
+
+- \textbf{Overfitting}: A student who memorizes answers verbatim. They ace homework but fail exams with new questions they've never seen.
+
+- \textbf{Good fit}: A student who understands the concepts. They perform well on both homework and exams because they've learned generalizable knowledge.
+
+The goal is understanding (generalization), not memorization.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+Training loss = 0.15, Validation loss = 0.65. What is the diagnosis, and what should you try?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Diagnosis: Overfitting}
+
+Evidence:
+- Training loss is low (0.15) - model fits training data well
+- Validation loss is high (0.65) - model fails on new data
+- Gap: 0.65 - 0.15 = 0.50 (large gap indicates overfitting)
+
+\textbf{Solutions to try:}
+
+1. \textbf{More data}: If possible, collect more training examples
+
+2. \textbf{Regularization}: Add L2 (weight decay) or dropout
+
+3. \textbf{Simpler model}: Fewer layers or neurons
+
+4. \textbf{Early stopping}: Stop training when validation loss starts rising
+
+5. \textbf{Data augmentation}: Create variations of existing data
+
+6. \textbf{Cross-validation}: Ensure result isn't due to unlucky train/validation split
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+Training loss = 0.55, Validation loss = 0.58. What is the diagnosis, and what should you try?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Diagnosis: Underfitting}
+
+Evidence:
+- Training loss is high (0.55) - model doesn't fit training data well
+- Validation loss is similar (0.58)
+- Small gap (0.03) but both values are high
+
+\textbf{Solutions to try:}
+
+1. \textbf{More complex model}: Add layers or neurons
+
+2. \textbf{Train longer}: More epochs might help
+
+3. \textbf{Better features}: Engineer more informative inputs
+
+4. \textbf{Reduce regularization}: If using dropout/L2, reduce it
+
+5. \textbf{Lower learning rate}: Current rate might be preventing convergence
+
+6. \textbf{Check data quality}: Ensure labels are correct and features are meaningful
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item Underfitting: Model too simple, high train and test error
+  \item Overfitting: Model memorizes, low train error but high test error
+  \item Learning curves diagnose the problem visually
+  \item Solutions: Adjust complexity, regularization, data, early stopping
+  \item Goal: Low error on both training and test sets
+\end{itemize}
+\end{frame}
+
+\end{document}

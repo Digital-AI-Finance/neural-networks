@@ -1,0 +1,168 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{12. Feature Hierarchy}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Understand how different layers learn increasingly abstract representations.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+Neural networks learn \textbf{hierarchical representations}. Each layer transforms the data into a more abstract form:
+
+- \textbf{Input layer}: Raw features (price, volume, sentiment)
+- \textbf{Hidden layer 1}: Simple patterns (uptrend, high volume, positive sentiment)
+- \textbf{Hidden layer 2}: Combinations (momentum + volume spike = strong signal)
+- \textbf{Output layer}: Final decision (BUY/SELL with confidence)
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+This hierarchy emerges automatically through training. The network learns what intermediate representations are useful for the final task. Early layers detect simple patterns; later layers combine these into complex concepts.
+
+In image recognition, this is visible: early layers detect edges, middle layers detect shapes, late layers detect objects. For financial data, the learned features are less visually interpretable but follow the same principle.
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{12_feature_hierarchy/feature_hierarchy.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Layer-by-layer transformation:}
+
+\[h^{[1]} = f(W^{[1]} x + b^{[1]}) \quad \text{(simple patterns)}\]
+
+\[h^{[2]} = f(W^{[2]} h^{[1]} + b^{[2]}) \quad \text{(complex patterns)}\]
+
+\[\hat{y} = \sigma(W^{[3]} h^{[2]} + b^{[3]}) \quad \text{(decision)}\]
+
+Each layer builds on the representations from the previous layer.
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Think of a corporate decision-making process:
+
+1. \textbf{Analysts (Input)}: Collect raw data - stock prices, trading volumes
+2. \textbf{Junior managers (Hidden 1)}: Identify simple patterns - "prices rising," "unusual volume"
+3. \textbf{Senior managers (Hidden 2)}: Combine patterns - "rising prices + high volume = momentum"
+4. \textbf{Executive (Output)}: Make final call - "Confidence: 68\% BUY"
+
+Each level adds interpretation and abstraction. The executive doesn't need raw numbers - they need the synthesized judgment of their team.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+A network for fraud detection has 3 hidden layers. What might each layer learn?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Layer 1 - Simple anomalies:}
+- Transaction amount unusually high
+- Time of transaction (late night)
+- Location different from usual
+- Transaction frequency spike
+
+\textbf{Layer 2 - Pattern combinations:}
+- High amount + unusual time = suspicious
+- New location + high frequency = potential card theft
+- Normal amount + normal patterns = likely legitimate
+
+\textbf{Layer 3 - Complex fraud signatures:}
+- Combination of multiple suspicious patterns
+- Sequential transaction patterns (testing then big purchase)
+- Network of related suspicious accounts
+
+\textbf{Output - Fraud score:}
+- Probability of fraud (0-100\%)
+- Decision threshold (e.g., flag if > 80\%)
+
+Each layer abstracts further from raw data toward the final fraud determination.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+Why can't we interpret what middle layer neurons have learned as easily as input features?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Reasons for difficulty:}
+
+1. \textbf{Distributed representations}: Information is spread across many neurons, not localized in one
+
+2. \textbf{Non-linear transformations}: Multiple activation functions make the relationship to inputs complex and non-obvious
+
+3. \textbf{Abstract representations}: Middle layers don't correspond to concepts humans naturally think about - they optimize for the task, not human understanding
+
+4. \textbf{Lack of semantic meaning}: Unlike "price" or "volume," a hidden neuron might activate for a combination that has no simple label
+
+5. \textbf{Entangled features}: Multiple concepts are mixed together in the same neuron activations
+
+\textbf{Contrast with input features:}
+- Input features have clear meaning: "closing price = \$150"
+- Hidden features are abstract: "neuron 7 in layer 2 = 0.83" - what does that mean?
+
+This is why neural networks are often called "black boxes" - they work well but are hard to interpret.
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item Networks learn hierarchical representations automatically
+  \item Early layers: simple patterns; Later layers: complex combinations
+  \item Deeper networks can represent more abstract concepts
+  \item Hidden representations are often not human-interpretable
+  \item More layers isn't always better - match complexity to problem
+\end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,150 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{09. Network Architecture}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Design and understand the structure of a multi-layer neural network.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+A neural network is organized into \textbf{layers} of neurons. The \textbf{input layer} receives raw features (like price, volume, sentiment). \textbf{Hidden layers} transform these features into increasingly abstract representations. The \textbf{output layer} produces the final prediction.
+
+Each connection between neurons has a \textbf{weight}, and each neuron (except inputs) has a \textbf{bias}. The total number of parameters (weights + biases) determines the network's capacity to learn complex patterns.
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+For a network predicting stock direction with 5 input features, 6 hidden neurons, and 1 output neuron:
+- Input to hidden: 5 x 6 = 30 weights + 6 biases = 36 parameters
+- Hidden to output: 6 x 1 = 6 weights + 1 bias = 7 parameters
+- \textbf{Total: 43 learnable parameters}
+
+The architecture choices (number of layers, neurons per layer) are \textbf{hyperparameters} that we set before training. Too few neurons = underfitting. Too many = overfitting or slow training.
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{09_network_architecture/network_architecture.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Parameter counting for a fully connected layer:}
+
+\[\text{Parameters} = (\text{inputs} \times \text{outputs}) + \text{outputs}\]
+
+Where:
+- inputs x outputs = number of weights
+- outputs = number of biases (one per neuron)
+
+\textbf{For multiple layers:}
+\[\text{Total} = \sum_{\text{layer } l} (n_{l-1} \times n_l + n_l)\]
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Think of a neural network as a factory assembly line:
+
+- \textbf{Input layer}: Raw materials arrive (stock price, volume, etc.)
+- \textbf{Hidden layer 1}: Workers detect simple patterns (is price rising? is volume high?)
+- \textbf{Hidden layer 2}: Supervisors combine simple patterns (rising price + high volume = momentum)
+- \textbf{Output layer}: Manager makes final decision (BUY or SELL)
+
+Each worker (neuron) has different skills (weights) for evaluating the incoming information. During training, workers learn which signals matter most for making good predictions.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+A network has architecture [10, 8, 6, 1]. How many total parameters does it have?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+Layer by layer:
+- Input (10) to Hidden1 (8): 10 x 8 + 8 = 80 + 8 = 88
+- Hidden1 (8) to Hidden2 (6): 8 x 6 + 6 = 48 + 6 = 54
+- Hidden2 (6) to Output (1): 6 x 1 + 1 = 6 + 1 = 7
+
+\textbf{Total: 88 + 54 + 7 = 149 parameters}
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+You have 1,000 training samples. A colleague suggests a network with architecture [50, 100, 100, 50, 1]. Calculate the number of parameters. Is this a good idea?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+Parameter count:
+- 50 to 100: 50 x 100 + 100 = 5,100
+- 100 to 100: 100 x 100 + 100 = 10,100
+- 100 to 50: 100 x 50 + 50 = 5,050
+- 50 to 1: 50 x 1 + 1 = 51
+
+\textbf{Total: 20,301 parameters}
+
+With only 1,000 training samples and 20,301 parameters, the network has \textbf{20x more parameters than data points}. This will almost certainly overfit - the network will memorize training data rather than learn generalizable patterns.
+
+\textbf{Recommendation:} Use a much smaller network, like [50, 20, 1] with 1,041 parameters, or get more training data.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item Networks have input, hidden, and output layers
+  \item Each connection has a weight; each neuron has a bias
+  \item More neurons = more capacity, but also risk of overfitting
+  \item Architecture is a hyperparameter chosen before training
+  \item Rule of thumb: parameters should be less than training samples
+\end{itemize}
+\end{frame}
+
+\end{document}

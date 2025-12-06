@@ -1,0 +1,145 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{11. Decision Boundary Concept}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Understand the difference between linear and curved decision boundaries.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+A \textbf{decision boundary} is the surface in feature space where the classifier's prediction changes from one class to another. On one side, the model predicts "UP"; on the other side, "DOWN."
+
+\textbf{Linear boundaries} are straight lines (in 2D) or flat planes (in higher dimensions). A single neuron creates a linear boundary. These work well when classes are cleanly separated by a straight line.
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+\textbf{Curved boundaries} bend and flex through feature space. Multiple neurons in hidden layers create curved boundaries by combining multiple linear boundaries. These are essential for non-linearly separable problems like XOR.
+
+The goal of training is to position the decision boundary where it best separates the classes. More flexible boundaries (from deeper networks) can fit more complex patterns but risk overfitting.
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{11_decision_boundary_concept/decision_boundary_concept.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Linear boundary equation:}
+\[w_1 x_1 + w_2 x_2 + b = 0\]
+
+This is a line in 2D space. Points satisfying this equation lie exactly on the boundary.
+
+\textbf{Neural network boundary:}
+With hidden layers, the effective boundary becomes a composition of functions, creating curves that cannot be expressed as a single linear equation.
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Imagine dividing a park into "dog zone" and "cat zone":
+
+- \textbf{Linear boundary}: A straight fence across the park. Easy to build, but dogs and cats might not naturally separate along a straight line.
+
+- \textbf{Curved boundary}: A winding fence that follows the natural clusters where each species gathers. More complex to build, but better separation.
+
+Neural networks learn to build curved fences (decision boundaries) that wrap around the natural clusters in data.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+A linear decision boundary is defined by: 2x1 - 3x2 + 1 = 0. Classify the point (2, 1).
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+Substitute into the equation:
+\[2(2) - 3(1) + 1 = 4 - 3 + 1 = 2\]
+
+Since 2 > 0, the point (2, 1) is on the \textbf{positive side} of the boundary.
+
+If positive = "UP" class:
+The model predicts \textbf{UP} for this point.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+The same boundary: 2x1 - 3x2 + 1 = 0. Find a point that lies exactly on the boundary.
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+We need 2x1 - 3x2 + 1 = 0.
+
+Let x2 = 1:
+\[2x_1 - 3(1) + 1 = 0\]
+\[2x_1 - 2 = 0\]
+\[x_1 = 1\]
+
+The point \textbf{(1, 1)} lies exactly on the boundary.
+
+Verification: 2(1) - 3(1) + 1 = 2 - 3 + 1 = 0 [checkmark]
+
+At this point, the model is maximally uncertain - 50\% confidence in either class.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item Decision boundaries separate classes in feature space
+  \item Linear boundaries: straight lines, created by single neurons
+  \item Curved boundaries: flexible shapes, require hidden layers
+  \item More layers = more complex boundaries possible
+  \item Balance complexity: enough to capture patterns, not so much as to overfit
+\end{itemize}
+\end{frame}
+
+\end{document}

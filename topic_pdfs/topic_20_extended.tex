@@ -1,0 +1,181 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{20. Trading Backtest}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Evaluate a neural network trading strategy against a buy-and-hold benchmark.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+A \textbf{backtest} simulates how a trading strategy would have performed on historical data. For neural network strategies, we compare:
+- \textbf{Buy-and-hold}: Simply buy at start, hold throughout (benchmark)
+- \textbf{NN strategy}: Trade based on model predictions (BUY when confidence > threshold)
+
+The backtest reveals whether the model's predictions translate into actual profits. A 70\% accurate model doesn't guarantee outperformance - transaction costs, timing, and magnitude of wins vs losses all matter.
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+Key metrics:
+- \textbf{Cumulative returns}: Total profit over the period
+- \textbf{Sharpe ratio}: Risk-adjusted returns
+- \textbf{Maximum drawdown}: Largest peak-to-trough decline
+
+The ultimate test: Does the strategy beat the benchmark after accounting for realistic trading costs?
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{20_trading_backtest/trading_backtest.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Cumulative return:}
+\[R_{total} = \prod_{t=1}^{T} (1 + r_t) - 1\]
+
+\textbf{Sharpe ratio:}
+\[\text{Sharpe} = \frac{\bar{r} - r_f}{\sigma_r}\]
+
+Where:
+- r-bar = mean return
+- r\_f = risk-free rate
+- sigma\_r = standard deviation of returns
+
+\textbf{Maximum drawdown:}
+\[\text{MDD} = \max_t \left( \frac{\text{Peak}_t - \text{Value}_t}{\text{Peak}_t} \right)\]
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Imagine two investors:
+
+\textbf{Investor A (Buy-and-hold):} Buys stock on day 1 and holds for a year. No effort, no trading costs, captures all ups and downs.
+
+\textbf{Investor B (NN strategy):} Uses a neural network to decide daily whether to be invested. Aims to be invested on "up" days and out on "down" days.
+
+If Investor B has 70\% accuracy:
+- Captures 70\% of "up" days (gains)
+- Avoids 70\% of "down" days (losses avoided)
+
+But: Each trade costs money (commissions, spread). And perfect timing is impossible - predictions have some error.
+
+The backtest answers: Does the accuracy advantage overcome the trading costs?
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+Over 100 days: Buy-and-hold returns +15\%. NN strategy has 60\% accuracy with average daily return of +0.2\% on correct UP predictions and -0.15\% on incorrect predictions. Estimate NN strategy returns (ignoring costs).
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Expected daily return:}
+
+Assume 50\% of days are actually UP:
+- 30 days: Predict UP, actually UP (60\% of 50 UP days) -> +0.2\% each
+- 20 days: Predict UP, actually DOWN (40\% of 50 DOWN days) -> -0.15\% each
+- 20 days: Predict DOWN, actually UP (40\% of 50 UP days) -> 0\% (not invested)
+- 30 days: Predict DOWN, actually DOWN (60\% of 50 DOWN days) -> 0\% (not invested)
+
+\textbf{Total return:}
+\[R = 30 \times 0.2\% + 20 \times (-0.15\%) + 0 + 0\]
+\[R = 6.0\% - 3.0\% = 3.0\%\]
+
+Wait - this is worse than buy-and-hold's 15\%!
+
+\textbf{Why?} With only 60\% accuracy, the strategy misses too many up days (20 missed) and still catches some down days (20 losses). The edge isn't strong enough.
+
+\textbf{Lesson:} Accuracy alone doesn't guarantee profitability.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+Transaction cost is 0.1\% per trade. The NN strategy trades 200 times over the year. How much do costs reduce returns?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Transaction cost calculation:}
+
+Total trades: 200
+Cost per trade: 0.1\%
+
+\textbf{Total cost:}
+\[\text{Costs} = 200 \times 0.1\% = 20\%\]
+
+This is \textbf{20 percentage points} of returns lost to trading costs!
+
+\textbf{Impact:}
+- If strategy gross return = 25\%, net return = 25\% - 20\% = 5\%
+- If strategy gross return = 15\%, net return = 15\% - 20\% = -5\% (loss!)
+
+\textbf{Lesson:} High-frequency strategies need either very high accuracy or very low costs to be profitable.
+
+\textbf{Solutions:}
+- Trade less frequently (e.g., weekly signals)
+- Use lower-cost brokers
+- Only trade on high-confidence signals (threshold > 0.7)
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item Backtests simulate strategy performance on historical data
+  \item Compare against buy-and-hold benchmark
+  \item Transaction costs can eliminate prediction edge
+  \item Accuracy doesn't guarantee profitability
+  \item Consider risk metrics (drawdown, Sharpe) not just returns
+  \item Realistic backtesting includes costs, slippage, and realistic assumptions
+\end{itemize}
+\end{frame}
+
+\end{document}

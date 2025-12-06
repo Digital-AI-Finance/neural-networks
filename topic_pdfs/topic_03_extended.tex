@@ -1,0 +1,154 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{03. Problem Visualization}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Visualize why complex market data cannot be separated by simple linear rules.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+When we plot market features against each other (returns vs volume, sentiment vs volatility), we often see \textbf{overlapping clusters} rather than clean separations. Days when the market went up (one class) are scattered throughout the same regions as days when it went down (other class).
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+This overlap explains why simple rules fail. "Buy when volume is high" doesn't work because high volume days include both winners and losers. The relationship between features and outcomes is \textbf{non-linear} - success depends on complex combinations of factors, not single thresholds.
+
+Neural networks excel at finding these complex, non-linear patterns. They can learn decision boundaries that curve through the data, separating classes that no straight line could divide.
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{03_problem_visualization/problem_visualization.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Linear decision boundary attempt:}
+\[w_1 \cdot \text{returns} + w_2 \cdot \text{volume} + b = 0\]
+
+This defines a straight line in feature space, but for overlapping data, no such line achieves good separation.
+
+\textbf{Classification error:}
+\[\text{Error} = \frac{\text{Misclassified Points}}{\text{Total Points}}\]
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Imagine sorting marbles by color when red and blue marbles are thoroughly mixed together in a pile. You can't draw a single straight line through the pile to separate them - wherever you draw the line, some marbles of each color end up on the wrong side.
+
+Market data is similar: "up" days and "down" days are interspersed throughout feature space. Simple rules (like "buy when sentiment is positive") misclassify many examples because the relationship is more complex.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+You plot 100 trading days: 50 "up" days and 50 "down" days. When Volume > 0.6, you find 30 up days and 25 down days. Is "Volume > 0.6 predicts up" a good rule?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+Above threshold (Volume > 0.6):
+- Up days: 30
+- Down days: 25
+- Total: 55
+
+Accuracy of "predict UP when Volume > 0.6":
+\[\text{Accuracy} = \frac{30}{55} = 54.5\%\]
+
+Below threshold (Volume <= 0.6):
+- Up days: 50 - 30 = 20
+- Down days: 50 - 25 = 25
+- Total: 45
+
+If we predict DOWN below threshold:
+\[\text{Accuracy} = \frac{25}{45} = 55.6\%\]
+
+\textbf{Overall accuracy: (30 + 25) / 100 = 55\%}
+
+This is only slightly better than chance (50\%). The rule captures some signal but leaves much unexplained. \textbf{Not a good rule} - the overlap is too significant.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+Why might the combination of volume AND sentiment predict better than either alone?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Interaction effects} between features can be more predictive than individual features:
+
+1. \textbf{High volume + positive sentiment}: Strong buying pressure, likely UP
+
+2. \textbf{High volume + negative sentiment}: Strong selling pressure, likely DOWN
+
+3. \textbf{Low volume + positive sentiment}: Weak signal, uncertain
+
+4. \textbf{Low volume + negative sentiment}: Weak signal, uncertain
+
+Neither feature alone captures this pattern:
+- High volume alone? Could be buying OR selling
+- Positive sentiment alone? Could be acted upon OR ignored
+
+The \textbf{combination} reveals the true signal. This is exactly what neural networks learn - complex interactions between features that simple rules miss.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item Market data often shows overlapping classes in feature space
+  \item Simple linear rules fail when data is non-linearly separable
+  \item Plotting features reveals the complexity of the classification problem
+  \item Neural networks can learn non-linear boundaries through overlapping regions
+  \item Complete overlap = unpredictable; partial overlap = opportunity for learning
+\end{itemize}
+\end{frame}
+
+\end{document}

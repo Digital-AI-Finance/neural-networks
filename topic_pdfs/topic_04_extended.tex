@@ -1,0 +1,155 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{04. Neuron Decision Maker}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+See how a single neuron makes buy/sell decisions using a threshold.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+A single neuron acts as a \textbf{decision maker} by comparing its output to a \textbf{threshold}. For binary classification with sigmoid activation:
+- Output > 0.5: Predict Class 1 (BUY)
+- Output <= 0.5: Predict Class 0 (SELL)
+
+The neuron computes a weighted combination of inputs, transforms it through the sigmoid function, and produces a probability. The threshold converts this probability into a discrete decision.
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+In trading terms: if the neuron outputs 0.67 (67\% confidence in price increase), the decision is BUY. If it outputs 0.33 (33\% confidence), the decision is SELL.
+
+The position of the decision boundary in feature space corresponds to where the neuron output equals exactly 0.5 - the point of maximum uncertainty.
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{04_neuron_decision_maker/neuron_decision_maker.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Neuron computation:}
+\[z = w_1 x_1 + w_2 x_2 + b\]
+\[\hat{y} = \sigma(z) = \frac{1}{1 + e^{-z}}\]
+
+\textbf{Decision rule:}
+\[\text{Decision} = \begin{cases} \text{BUY} & \text{if } \hat{y} > 0.5 \\ \text{SELL} & \text{if } \hat{y} \leq 0.5 \end{cases}\]
+
+\textbf{Boundary condition (y-hat = 0.5):}
+\[z = 0 \implies w_1 x_1 + w_2 x_2 + b = 0\]
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Think of the neuron as a judge weighing evidence:
+
+1. \textbf{Gather evidence}: Each input (price, volume) provides information
+2. \textbf{Weight importance}: Some evidence matters more (larger weights)
+3. \textbf{Combine and evaluate}: Sum weighted evidence, adjust by bias
+4. \textbf{Confidence level}: Sigmoid converts to 0-100\% confidence
+5. \textbf{Make decision}: If confidence > 50\%, rule in favor (BUY)
+
+The weights encode what the neuron has learned about which inputs matter and how much.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+A neuron has weights w1 = 0.6 (for price), w2 = 0.4 (for volume), and bias b = -0.3. Given price = 0.8 and volume = 0.5, what is the decision?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Step 1: Weighted sum}
+\[z = 0.6(0.8) + 0.4(0.5) + (-0.3)\]
+\[z = 0.48 + 0.20 - 0.30 = 0.38\]
+
+\textbf{Step 2: Sigmoid activation}
+\[\hat{y} = \frac{1}{1 + e^{-0.38}} = \frac{1}{1 + 0.684} = 0.594\]
+
+\textbf{Step 3: Decision}
+Since 0.594 > 0.5:
+\textbf{Decision: BUY} (59.4\% confidence in price increase)
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+Using the same neuron, what values of (price, volume) lie exactly on the decision boundary?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+On the boundary, z = 0:
+\[0.6 \cdot \text{price} + 0.4 \cdot \text{volume} - 0.3 = 0\]
+
+Solving for volume:
+\[\text{volume} = \frac{0.3 - 0.6 \cdot \text{price}}{0.4}\]
+\[\text{volume} = 0.75 - 1.5 \cdot \text{price}\]
+
+Example points on the boundary:
+- price = 0.0: volume = 0.75
+- price = 0.5: volume = 0.0
+- price = 0.3: volume = 0.3
+
+These points all yield 50\% confidence (maximum uncertainty).
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item A neuron outputs a probability via sigmoid activation
+  \item Default threshold of 0.5 converts probability to binary decision
+  \item The decision boundary is where output = 0.5 (z = 0)
+  \item Threshold can be adjusted based on risk tolerance
+  \item Single neuron = single linear decision boundary
+\end{itemize}
+\end{frame}
+
+\end{document}

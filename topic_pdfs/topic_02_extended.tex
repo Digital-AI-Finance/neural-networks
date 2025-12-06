@@ -1,0 +1,141 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{02. Single Neuron Computation}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Calculate the output of an artificial neuron step by step using concrete numbers.
+\end{frame}
+
+\begin{frame}{Key Concept (1/3)}
+A single neuron performs two operations in sequence: first a \textbf{weighted sum}, then an \textbf{activation function}. Understanding this two-step process is essential for grasping how neural networks work.
+
+\textbf{Step 1: Weighted Sum} - The neuron multiplies each input by its corresponding weight, sums all these products, and adds the bias. This produces a single number called the "pre-activation" value (often denoted z).
+\end{frame}
+
+\begin{frame}{Key Concept (2/3)}
+\textbf{Step 2: Activation} - The pre-activation value passes through an activation function (like sigmoid) that squashes it into a useful range. For the sigmoid function, any input is transformed to a value between 0 and 1, which we can interpret as a probability.
+\end{frame}
+
+\begin{frame}{Key Concept (3/3)}
+In business applications, we might use this to predict whether a stock price will rise. The inputs could be yesterday's price change, trading volume, and market sentiment. The output probability tells us the network's confidence in a price increase.
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{02_single_neuron_function/single_neuron_computation.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Step 1: Weighted Sum}
+\[z = w_1 x_1 + w_2 x_2 + w_3 x_3 + b\]
+
+\textbf{Step 2: Sigmoid Activation}
+\[y = \sigma(z) = \frac{1}{1 + e^{-z}}\]
+
+Where:
+- \textbf{z} = pre-activation (weighted sum)
+- \textbf{y} = output probability (between 0 and 1)
+- \textbf{e} = Euler's number (approximately 2.718)
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Think of the weighted sum as a "score" that combines all available information. A high positive score suggests the answer is likely "yes" (price will rise), while a negative score suggests "no."
+
+The sigmoid function converts this unbounded score into a probability. No matter how extreme the score, the output stays between 0 and 1. A score of 0 gives exactly 0.5 (50-50 chance). Positive scores give probabilities above 0.5, negative scores below.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+Given inputs Price = 1.2, Volume = 0.8, Sentiment = 0.6, with weights w1 = 0.5, w2 = 0.3, w3 = 0.4 and bias b = -0.5, calculate the weighted sum z.
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\[z = w_1 \cdot \text{Price} + w_2 \cdot \text{Volume} + w_3 \cdot \text{Sentiment} + b\]
+\[z = (0.5)(1.2) + (0.3)(0.8) + (0.4)(0.6) + (-0.5)\]
+\[z = 0.60 + 0.24 + 0.24 - 0.50\]
+\[z = 0.58\]
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+Using z = 0.58 from Problem 1, calculate the sigmoid output. What is the predicted probability of price increase?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\[y = \frac{1}{1 + e^{-0.58}}\]
+
+First calculate e\^{}(-0.58):
+\[e^{-0.58} \approx 0.560\]
+
+Then:
+\[y = \frac{1}{1 + 0.560} = \frac{1}{1.560} \approx 0.641\]
+
+The neuron predicts a \textbf{64.1\% probability} of price increase.
+
+Since 0.641 > 0.5, the prediction would be "BUY" (price likely to rise).
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item Neuron computation has two steps: weighted sum, then activation
+  \item The weighted sum can be any real number (positive, negative, or zero)
+  \item Sigmoid squashes the weighted sum to a probability between 0 and 1
+  \item z = 0 corresponds to 50\% probability (maximum uncertainty)
+\end{itemize}
+\end{frame}
+
+\end{document}

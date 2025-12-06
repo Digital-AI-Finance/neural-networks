@@ -1,0 +1,159 @@
+\documentclass[8pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{mlblue}{RGB}{0,102,204}
+\definecolor{mlpurple}{RGB}{51,51,178}
+\definecolor{mllavender}{RGB}{173,173,224}
+\definecolor{mllavender2}{RGB}{193,193,232}
+\definecolor{mllavender3}{RGB}{204,204,235}
+\definecolor{mllavender4}{RGB}{214,214,239}
+\definecolor{mlorange}{RGB}{255, 127, 14}
+\definecolor{mlgreen}{RGB}{44, 160, 44}
+\definecolor{mlred}{RGB}{214, 39, 40}
+
+% Apply custom colors
+\setbeamercolor{palette primary}{bg=mllavender3,fg=mlpurple}
+\setbeamercolor{palette secondary}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{palette tertiary}{bg=mllavender,fg=white}
+\setbeamercolor{palette quaternary}{bg=mlpurple,fg=white}
+\setbeamercolor{structure}{fg=mlpurple}
+\setbeamercolor{frametitle}{fg=mlpurple,bg=mllavender3}
+\setbeamercolor{block title}{bg=mllavender2,fg=mlpurple}
+\setbeamercolor{block body}{bg=mllavender4,fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\title{08. Boundary Evolution}
+\subtitle{Neural Networks - From Brain to Business}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Learning Goal}
+Observe how increasing the number of neurons improves decision boundaries.
+\end{frame}
+
+\begin{frame}{Key Concept (1/2)}
+The \textbf{expressivity} of a neural network - its ability to represent complex functions - increases with more neurons. This manifests as more flexible decision boundaries.
+
+- \textbf{1 neuron}: Can only create a straight line boundary. Fails on XOR-like patterns.
+- \textbf{2-4 neurons}: Can create piecewise linear boundaries with some curvature
+- \textbf{10+ neurons}: Can create smooth, curved boundaries that wrap around complex clusters
+\end{frame}
+
+\begin{frame}{Key Concept (2/2)}
+With enough neurons, a single hidden layer can theoretically approximate any continuous function (Universal Approximation Theorem). However, practical considerations (training time, overfitting) limit network size.
+
+The key insight: \textbf{more neurons = more capacity to represent complex patterns}. But this capacity must be balanced against available training data to avoid overfitting.
+\end{frame}
+
+\begin{frame}{Visualization}
+\begin{center}
+\includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{08_boundary_evolution/boundary_evolution.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Key Formula}
+\textbf{Network capacity (approximate):}
+
+A single hidden layer with n neurons can represent boundaries with approximately n "bends" or segments.
+
+\textbf{Universal Approximation Theorem} (informal):
+A feedforward network with one hidden layer containing a finite number of neurons can approximate any continuous function to arbitrary accuracy, given sufficient neurons.
+\end{frame}
+
+\begin{frame}{Intuitive Explanation}
+Imagine drawing with different tools:
+- \textbf{1 neuron}: A single ruler - can only draw straight lines
+- \textbf{2 neurons}: Two rulers - can make an angle (V-shape)
+- \textbf{4 neurons}: A flexible curve with several bends
+- \textbf{10 neurons}: A smooth, complex curve that can wrap around clusters
+
+Each neuron contributes one "bend" to the decision boundary. The more bends available, the more precisely the boundary can separate complex patterns.
+\end{frame}
+
+\begin{frame}{Practice Problem 1}
+\textbf{Problem 1}
+
+A dataset has an XOR pattern (like a checkerboard). What is the minimum number of hidden neurons needed to solve it with a single hidden layer?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Minimum: 2 hidden neurons}
+
+XOR requires separating diagonal corners. With 2 neurons:
+- Neuron 1: Creates one linear boundary
+- Neuron 2: Creates another linear boundary
+- Combined: The intersection creates an XOR-compatible separation
+
+With 1 neuron: Only one straight line = cannot solve XOR
+
+Visualization:
+```
+Neuron 1: /       Neuron 2: \       Combined: X
+```
+
+The two boundaries intersect, creating four regions that match XOR's four quadrants.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Practice Problem 2}
+\textbf{Problem 2}
+
+You have 500 training samples. Would you use 10 neurons or 500 neurons in the hidden layer? Why?
+
+
+\vspace{1em}
+\begin{block}{Solution}
+\small
+
+\textbf{Use 10 neurons}, not 500.
+
+\textbf{Reasoning:}
+
+With 500 neurons:
+- Parameters (assuming 10 inputs): 10 x 500 + 500 + 500 x 1 + 1 = 6,001
+- Parameters exceed training samples (6,001 > 500)
+- High risk of \textbf{overfitting} - network can memorize each training point
+- Poor generalization to new data
+
+With 10 neurons:
+- Parameters: 10 x 10 + 10 + 10 x 1 + 1 = 121
+- Parameters much less than training samples (121 << 500)
+- Forces network to find \textbf{generalizable patterns}
+- Better expected test performance
+
+\textbf{Rule of thumb}: Keep parameters well below training samples.
+
+
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\begin{itemize}
+  \item More neurons = more flexible decision boundaries
+  \item 1 neuron creates linear boundary; many neurons create curved boundaries
+  \item Universal Approximation: enough neurons can fit any pattern
+  \item But more neurons also increases overfitting risk
+  \item Balance capacity with available data
+\end{itemize}
+\end{frame}
+
+\end{document}
