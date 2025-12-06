@@ -275,7 +275,7 @@ Value increases non-linearly with users
 \begin{frame}[t]{Activation Functions: Visual Comparison}
 \begin{center}
 \vspace{0.3em}
-\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{03_activation_functions/activation_functions.pdf}
+\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{05_activation_functions/activation_functions.pdf}
 \end{center}
 
 \bottomnote{Each activation function has different properties: Sigmoid for probabilities, ReLU for speed, Tanh for zero-centered outputs}
@@ -328,7 +328,7 @@ Multiple interacting factors, non-linear relationships, conditional dependencies
 \begin{frame}[t]{Visual Proof: The XOR Problem}
 \begin{center}
 \vspace{0.3em}
-\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{04_linear_limitation/linear_limitation.pdf}
+\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{06_linear_limitation/linear_limitation.pdf}
 \end{center}
 
 \bottomnote{Left: Linearly separable (one neuron works). Right: XOR pattern (one neuron fails, need hidden layers)}
@@ -376,7 +376,7 @@ Each layer builds on previous layer's abstractions
 \begin{frame}[t]{Neural Network Architecture Diagram}
 \begin{center}
 \vspace{0.3em}
-\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{05_network_architecture/network_architecture.pdf}
+\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{09_network_architecture/network_architecture.pdf}
 \end{center}
 
 \bottomnote{5 inputs $\rightarrow$ 6 hidden neurons $\rightarrow$ 1 output. Total: 36 weights to learn from data}
@@ -425,7 +425,7 @@ All neurons in layer compute in parallel!
 \begin{frame}[t]{Forward Propagation: Detailed Example}
 \begin{center}
 \vspace{0.3em}
-\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{06_forward_propagation/forward_propagation.pdf}
+\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{10_forward_propagation/forward_propagation.pdf}
 \end{center}
 
 \bottomnote{Data flows left to right: inputs (105.2, 0.75, 0.62) $\rightarrow$ hidden activations $\rightarrow$ output (0.742) = 74\% buy confidence}
@@ -475,7 +475,7 @@ $\eta$ = learning rate (how fast we learn)
 \begin{frame}[t]{Loss Landscape: The Error Surface}
 \begin{center}
 \vspace{0.3em}
-\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{07_loss_landscape/loss_landscape.pdf}
+\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{13_loss_landscape/loss_landscape.pdf}
 \end{center}
 
 \bottomnote{Goal: Find weights (red star) that minimize loss. Different starting points converge to same optimum through gradient descent}
@@ -528,7 +528,7 @@ Gradient tells us which direction reduces error fastest
 \begin{frame}[t]{Gradient Descent: Optimization in Action}
 \begin{center}
 \vspace{0.3em}
-\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{08_gradient_descent/gradient_descent.pdf}
+\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{14_gradient_descent/gradient_descent.pdf}
 \end{center}
 
 \bottomnote{Left: 1D visualization showing steps toward minimum. Right: Loss decreasing over 100 training iterations}
@@ -580,7 +580,7 @@ Network outputs: $p(\text{price rise})$
 \begin{frame}[t]{Market Data: Input Features for Neural Network}
 \begin{center}
 \vspace{0.3em}
-\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{09_market_prediction_data/market_prediction_data.pdf}
+\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{17_market_prediction_data/market_prediction_data.pdf}
 \end{center}
 
 \bottomnote{60 days of market data: price trend (up/down markers), volume bars, sentiment score, volatility index}
@@ -633,7 +633,7 @@ Learned weights $\rightarrow$ intelligent predictions
 \begin{frame}[t]{Prediction Results: Before vs After Training}
 \begin{center}
 \vspace{0.3em}
-\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{10_prediction_results/prediction_results.pdf}
+\includegraphics[width=0.95\textwidth,height=0.80\textheight,keepaspectratio]{18_prediction_results/prediction_results.pdf}
 \end{center}
 
 \bottomnote{Top: Actual prices. Middle: Before training (random, 50\% accuracy). After training (learned patterns, 70\% accuracy)}

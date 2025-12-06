@@ -5,11 +5,13 @@ title: Exercises
 
 This page collects all practice problems from the course in one place for self-study and review.
 
+![Activation Functions]({{ site.baseurl }}/assets/images/activation_functions.png){: style="float: right; max-width: 180px; margin-left: 15px;"}
+
 ---
 
-## Part 1: Foundations
+## Part 1: Foundations (Topics 01-04)
 
-### Topic 01: Biological vs Artificial Neuron
+### Topic 01: Biological Neuron
 
 **Problem 1.1:** A neuron receives three inputs: x1 = 0.5, x2 = 0.8, x3 = 0.2. The weights are w1 = 0.4, w2 = 0.3, w3 = 0.5, and the bias is b = -0.1. Calculate the weighted sum z.
 
@@ -39,9 +41,9 @@ y = 1/(1 + e^-0.58) = 1/(1 + 0.560) = 0.641 = 64.1% probability of price increas
 
 ---
 
-## Part 2: Building Blocks
+## Part 2: Building Blocks (Topics 05-08)
 
-### Topic 03: Activation Functions
+### Topic 05: Activation Functions
 
 **Problem 3.1:** Calculate the output of sigmoid, ReLU, and tanh for z = 2.0.
 
@@ -59,7 +61,7 @@ y = 1/(1 + e^-0.58) = 1/(1 + 0.560) = 0.641 = 64.1% probability of price increas
 - Tanh: (e^-1.5 - e^1.5)/(e^-1.5 + e^1.5) = -0.905
 </details>
 
-### Topic 04: Linear Limitation
+### Topic 06: Linear Limitation
 
 **Problem 4.1:** Consider the AND function. Is it linearly separable? Find weights and bias that work.
 
@@ -79,9 +81,9 @@ XOR requires (0,0)->0, (0,1)->1, (1,0)->1, (1,1)->0. The Class 1 points (0,1) an
 
 ---
 
-## Part 3: Network Architecture
+## Part 3: Architecture (Topics 09-12)
 
-### Topic 05: Network Architecture
+### Topic 09: Network Architecture
 
 **Problem 5.1:** A network has architecture [10, 8, 6, 1]. How many total parameters?
 
@@ -98,7 +100,7 @@ XOR requires (0,0)->0, (0,1)->1, (1,0)->1, (1,1)->0. The Class 1 points (0,1) an
 No. Parameters = 5,100 + 10,100 + 5,050 + 51 = 20,301. With 20x more parameters than samples, severe overfitting is likely. Use a smaller network like [50, 20, 1] with ~1,041 parameters.
 </details>
 
-### Topic 06: Forward Propagation
+### Topic 10: Forward Propagation
 
 **Problem 6.1:** Network with 2 inputs, 2 hidden neurons. Input x = [1.0, 0.5], weights W1 = [[0.2, 0.4], [0.6, 0.3]], bias b1 = [0.1, -0.1]. Calculate z1.
 
@@ -114,9 +116,11 @@ a1 = [sigmoid(0.5), sigmoid(0.65)] = [0.622, 0.657]
 
 ---
 
-## Part 4: Learning Process
+## Part 4: Learning Process (Topics 13-16)
 
-### Topic 07: Loss Landscape
+![Gradient Descent]({{ site.baseurl }}/assets/images/gradient_descent.png){: style="float: right; max-width: 180px; margin-left: 15px;"}
+
+### Topic 13: Loss Landscape
 
 **Problem 7.1:** Calculate cross-entropy loss for y = 1, y-hat = 0.9.
 
@@ -130,7 +134,7 @@ L = -[1*log(0.9) + 0*log(0.1)] = -log(0.9) = 0.105
 L = -log(0.1) = 2.303 (22x worse than good prediction)
 </details>
 
-### Topic 08: Gradient Descent
+### Topic 14: Gradient Descent
 
 **Problem 8.1:** Current weight w = 2.5, learning rate = 0.1, gradient = 0.8. Calculate new weight.
 
@@ -146,9 +150,9 @@ Near convergence - we're close to a minimum. Weight updates are tiny (0.1 * 0.00
 
 ---
 
-## Part 5: Application
+## Part 5: Application (Topics 17-20)
 
-### Topic 09: Market Prediction Data
+### Topic 17: Market Prediction Data
 
 **Problem 9.1:** Price min=95, max=105, current=102. Calculate min-max normalized value.
 
@@ -162,7 +166,7 @@ x_norm = (102 - 95)/(105 - 95) = 7/10 = 0.70
 z = (1,500,000 - 1,000,000)/250,000 = 2.0 standard deviations above average
 </details>
 
-### Topic 10: Prediction Results
+### Topic 18: Prediction Results
 
 **Problem 10.1:** Network makes 140 correct predictions out of 200. Calculate accuracy and improvement over random baseline.
 
@@ -170,7 +174,7 @@ z = (1,500,000 - 1,000,000)/250,000 = 2.0 standard deviations above average
 Accuracy = 140/200 = 70%. Improvement = 70% - 50% = 20 percentage points
 </details>
 
-### Topic 17: Overfitting vs Underfitting
+### Topic 15: Overfitting vs Underfitting
 
 **Problem 17.1:** Training loss = 0.15, validation loss = 0.65. Diagnosis?
 
@@ -184,7 +188,7 @@ Overfitting. Low training loss but high validation loss indicates memorization. 
 Underfitting. Both losses are high with small gap. Solutions: more complex model, train longer, better features, reduce regularization.
 </details>
 
-### Topic 19: Confusion Matrix
+### Topic 19: Confusion Matrix (NEW)
 
 **Problem 19.1:** TP=40, FP=15, TN=35, FN=10. Calculate precision, recall, F1.
 
@@ -194,7 +198,7 @@ Underfitting. Both losses are high with small gap. Solutions: more complex model
 - F1 = 2*(0.727*0.800)/(0.727+0.800) = 76.2%
 </details>
 
-### Topic 20: Trading Backtest
+### Topic 20: Trading Backtest (NEW)
 
 **Problem 20.1:** Transaction cost is 0.1% per trade. Strategy trades 200 times per year. Total cost impact?
 

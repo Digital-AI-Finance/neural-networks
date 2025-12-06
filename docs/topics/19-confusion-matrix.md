@@ -4,8 +4,8 @@ title: "19. Confusion Matrix"
 topic_num: 19
 part: 5
 part_name: "Application"
-prev_topic: "18-learning-rate-comparison"
-next_topic: "20-trading-backtest"
+prev_topic: 18-prediction-results
+next_topic: 20-trading-backtest
 ---
 
 # Confusion Matrix

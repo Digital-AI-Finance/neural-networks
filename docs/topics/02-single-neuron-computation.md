@@ -4,8 +4,8 @@ title: "02. Single Neuron Computation"
 topic_num: 2
 part: 1
 part_name: "Foundations"
-prev_topic: "01-biological-neuron"
-next_topic: "03-activation-functions"
+prev_topic: 01-biological-neuron
+next_topic: 03-problem-visualization
 ---
 
 # Single Neuron Computation

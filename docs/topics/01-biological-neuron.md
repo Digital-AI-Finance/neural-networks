@@ -4,7 +4,7 @@ title: "01. Biological vs Artificial Neuron"
 topic_num: 1
 part: 1
 part_name: "Foundations"
-next_topic: "02-single-neuron-computation"
+next_topic: 02-single-neuron-computation
 ---
 
 # Biological vs Artificial Neuron

@@ -4,7 +4,7 @@ title: "20. Trading Backtest"
 topic_num: 20
 part: 5
 part_name: "Application"
-prev_topic: "19-confusion-matrix"
+prev_topic: 19-confusion-matrix
 ---
 
 # Trading Backtest

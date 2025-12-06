@@ -3,6 +3,8 @@ layout: page
 title: Resources
 ---
 
+![Loss Landscape]({{ site.baseurl }}/assets/images/loss_landscape.png){: style="float: right; max-width: 180px; margin-left: 15px;"}
+
 ## Books
 
 ### Introductory
@@ -50,6 +52,8 @@ title: Resources
 - **Quandl** - Financial and economic data
 
 ---
+
+![Trading Backtest]({{ site.baseurl }}/assets/images/trading_backtest.png){: style="float: right; max-width: 180px; margin-left: 15px;"}
 
 ## Interactive Tools
 
