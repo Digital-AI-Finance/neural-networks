@@ -663,5 +663,20 @@
       });
     });
   </script>
+
+  <!-- Page Analytics - Cookie-free tracking -->
+  <script>
+  (function(){
+    var ENDPOINT='https://nn-analytics.digital-ai-finance.workers.dev';
+    var SK='_pa_sid';
+    var DL=/\.(pdf|zip|csv|xlsx|docx|pptx)$/i;
+    function sid(){var s=sessionStorage.getItem(SK);if(!s){s=Math.random().toString(36).substr(2,9);sessionStorage.setItem(SK,s);}return s;}
+    function path(){var p=location.pathname;return p===''||p==='/'?'/index':p.replace(/\/$/,'');}
+    function ref(){if(!document.referrer)return'direct';try{var u=new URL(document.referrer);return u.hostname===location.hostname?'internal':u.hostname;}catch(e){return'unknown';}}
+    function send(d){d.sid=sid();d.ts=Date.now();navigator.sendBeacon?navigator.sendBeacon(ENDPOINT,JSON.stringify(d)):fetch(ENDPOINT,{method:'POST',body:JSON.stringify(d),keepalive:true});}
+    send({type:'pageview',url:path(),ref:ref(),vw:innerWidth,vh:innerHeight});
+    document.addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a)return;var h=a.href;if(DL.test(h))send({type:'download',file:h.split('/').pop(),url:path()});else try{var u=new URL(h);if(u.hostname!==location.hostname)send({type:'outbound',target:u.hostname,url:path()});}catch(x){}},true);
+  })();
+  </script>
 </body>
 </html>
